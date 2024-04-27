@@ -1,4 +1,3 @@
 .idea
-codekids_BE/src/main/resources/application.yaml
 codekids_BE/src/main/resources/application-dev.yaml
 codekids_BE/src/main/resources/application-local.yml

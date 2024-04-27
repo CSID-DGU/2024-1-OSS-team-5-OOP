@@ -1,9 +1,16 @@
 package oop.codekids.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 import oop.codekids.Concept;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Table(name = "work_book")
 public class WorkBook {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
