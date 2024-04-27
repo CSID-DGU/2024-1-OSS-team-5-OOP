@@ -1,0 +1,20 @@
+.headerbtn {
+  margin-right: 50px;
+  width: 180px;
+  height: 50px;
+  border: 3px solid #A1C398;
+  border-radius: 10px;
+
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 16px;
+  color: #A1C398;
+  background-color: #FFFFFF;
+}
+
+.headerbtn:hover {
+  color: #FFFFFF;
+  background-color: #A1C398;
+  cursor: pointer;
+}
