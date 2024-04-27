@@ -10,10 +10,21 @@ public class WorkBook {
     private Long problemId;
 
     @Column(unique = true)
-    private String problem_title;
+    private String problemTitle;
 
     @Column(nullable = false)
     private Concept concept;
 
+    @Column
+    private String blockAnswer;
+
+    @Column
+    private String blockHint;
+
+    @Column
+    private String javaAnswer;
+
+    @Column
+    private String javaHint;
 }
   
