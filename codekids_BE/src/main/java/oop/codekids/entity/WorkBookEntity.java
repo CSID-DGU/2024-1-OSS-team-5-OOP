@@ -3,6 +3,7 @@ package oop.codekids.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import oop.codekids.Concept;
 
@@ -10,8 +11,9 @@ import oop.codekids.Concept;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Getter
 @Table(name = "work_book")
-public class WorkBook {
+public class WorkBookEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long problemId;
@@ -20,7 +22,14 @@ public class WorkBook {
     private String problemTitle;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private Concept concept;
+
+    @Column
+    private String javaAnswer;
+
+    @Column
+    private String javaHint;
 
     @Column
     private String blockAnswer;
@@ -28,10 +37,4 @@ public class WorkBook {
     @Column
     private String blockHint;
 
-    @Column
-    private String javaAnswer;
-
-    @Column
-    private String javaHint;
 }
-  
