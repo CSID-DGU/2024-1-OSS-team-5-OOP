@@ -1,7 +1,6 @@
 package oop.codekids.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,11 +8,9 @@ import oop.codekids.Concept;
 
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Getter
 @Table(name = "work_book")
-public class WorkBookEntity {
+public class WorkBook {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long problemId;
@@ -37,4 +34,12 @@ public class WorkBookEntity {
     @Column
     private String blockHint;
 
+    @Builder
+    WorkBook(String problemTitle, Concept concept, String javaAnswer, String javaHint, String blockAnswer) {
+        this.problemTitle = problemTitle;
+        this.concept = concept;
+        this.javaAnswer = javaAnswer;
+        this.javaHint = javaHint;
+        this.blockAnswer = blockAnswer;
+    }
 }
