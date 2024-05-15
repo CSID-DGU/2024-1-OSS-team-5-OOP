@@ -34,8 +34,9 @@ public class Problem {
     @Column
     private String blockHint;
 
+
     @Builder
-    WorkBook(String problemTitle, Concept concept, String javaAnswer, String javaHint, String blockAnswer) {
+    Problem(String problemTitle, Concept concept, String javaAnswer, String javaHint, String blockAnswer) {
         this.problemTitle = problemTitle;
         this.concept = concept;
         this.javaAnswer = javaAnswer;
