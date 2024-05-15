@@ -8,12 +8,10 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class Image {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long imageId;
 
     @Column(nullable = false)
     private String storedFilePath;
-
 }
