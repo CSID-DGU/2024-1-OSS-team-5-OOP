@@ -15,7 +15,7 @@ import oop.codekids.Concept;
 @Table(name = "work_book")
 public class WorkBookEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long problemId;
 
     @Column(unique = true)
