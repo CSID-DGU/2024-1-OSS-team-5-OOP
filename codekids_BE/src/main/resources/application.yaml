@@ -16,6 +16,11 @@ spring:
       hibernate:
         format_sql: true
         show_sql: true
+
   logging:
     level:
-      root: DEBUG
+      org:
+        hibernate:
+          type:
+            descriptor:
+              sql: trace
