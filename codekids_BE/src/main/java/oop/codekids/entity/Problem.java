@@ -10,7 +10,7 @@ import oop.codekids.Concept;
 @NoArgsConstructor
 @Getter
 @Table(name = "work_book")
-public class WorkBook {
+public class Problem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long problemId;
