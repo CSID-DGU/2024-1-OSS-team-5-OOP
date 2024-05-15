@@ -1,13 +1,12 @@
 package oop.codekids.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import oop.codekids.Concept;
 
 import java.util.Optional;
 
 @Builder
-public class WorkBookDTO {
+public class ProblemDto {
     private Long problemId;
     private String problemTitle;
     private Concept concept;
