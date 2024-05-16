@@ -1,0 +1,11 @@
+@media (min-width: 990px) {
+    .box-container {
+        width: calc((330px) * 3);
+    }
+}
+
+@media (min-width: 1320px) {
+    .box-container {
+        width: calc((330px) * 4);
+    }
+}

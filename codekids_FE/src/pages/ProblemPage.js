@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './buttonlist.css';
+import MediaQuery from './alignlist.module.css';
 
 // 샘플 JSON 데이터
 const sampleResponse = {
@@ -62,14 +63,16 @@ const ProblemPage = () => {
 
   return (
     <div className="content" style={{ height: "calc(100% - 120px)" }}>
-      <div className="box-container">
-        {problemData && problemData.data.map(item => (
-          <div className="box" key={item.problemId} onClick={() => handleBoxClick(item.problemId)}>
-            <div className="title">
-              <p>{item.problemTitle}</p>
+      <div className={MediaQuery['box-container']}>
+        <div className="inner-container">
+          {problemData && problemData.data.map(item => (
+            <div className="box" key={item.problemId} onClick={() => handleBoxClick(item.problemId)}>
+              <div className="title">
+                <p>{item.problemTitle}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
