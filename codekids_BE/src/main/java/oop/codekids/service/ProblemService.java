@@ -24,11 +24,7 @@ public class ProblemService {
             ProblemDto problemDto = new ProblemDto(
                     problem.getProblemId(),
                     problem.getProblemTitle(),
-                    problem.getConcept(),
-                    Optional.ofNullable(problem.getJavaAnswer()),
-                    Optional.ofNullable(problem.getJavaHint()),
-                    Optional.ofNullable(problem.getBlockAnswer()),
-                    Optional.ofNullable(problem.getBlockHint())
+                    problem.getConcept()
             );
             problemDtos.add(problemDto);
         }
