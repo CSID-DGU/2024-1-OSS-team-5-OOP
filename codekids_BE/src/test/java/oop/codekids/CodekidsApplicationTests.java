@@ -1,7 +1,9 @@
 package oop.codekids;
 
 import oop.codekids.entity.Problem;
+import oop.codekids.entity.Tutorial;
 import oop.codekids.repository.ProblemRepository;
+import oop.codekids.repository.TutorialRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Profile;
 import org.springframework.test.context.ActiveProfiles;
+
+import java.util.List;
 
 @SpringBootTest
 @ActiveProfiles("local")
@@ -52,11 +56,40 @@ class CodekidsApplicationTests {
 
         Assertions.assertThat(workBookRepository.findAll()).hasSize(4);
     }
-
-    @Profile("local")
+    @Test
     void deleteData() {
         workBookRepository.deleteAll();
     }
+
+    @Autowired
+    private TutorialRepository tutorialRepository;
+
+    @Test
+    @DisplayName("튜토리얼 데이터 넣기")
+    void addTutorial() {
+        Tutorial tutorial1 = Tutorial.builder()
+                .concept(Concept.ABSTRACT)
+                .build();
+        Tutorial tutorial2 = Tutorial.builder()
+                .concept(Concept.ENCAPSULATION)
+                .build();
+        Tutorial tutorial3 = Tutorial.builder()
+                .concept(Concept.POLYMORPHISM)
+                .build();
+
+        tutorialRepository.save(tutorial1);
+        tutorialRepository.save(tutorial2);
+        tutorialRepository.save(tutorial3);
+
+        Assertions.assertThat(tutorialRepository.findAll()).hasSize(3);
+    }
+    @Test
+    @DisplayName("튜토리얼 전체 조회")
+    void getAllTutorial(){
+        List<Tutorial> tutorials = tutorialRepository.findAll();
+        Assertions.assertThat(tutorials).isNotNull();
+    }
+
 
 
 }
