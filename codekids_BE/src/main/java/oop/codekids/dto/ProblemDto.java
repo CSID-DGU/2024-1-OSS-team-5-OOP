@@ -9,10 +9,6 @@ import java.util.Optional;
 public record ProblemDto (
     Long problemId,
     String problemTitle,
-    Concept concept,
-    Optional<String> javaAnswer,
-    Optional<String> javaHint,
-    Optional<String> blockAnswer,
-    Optional<String> blockHint
+    Concept concept
     ){
 }
