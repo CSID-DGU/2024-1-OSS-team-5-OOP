@@ -15,7 +15,7 @@ const Header = () => {
 
   return (
     <header className={`header${isTutorial ? ' banner' : ''}`}>
-        <div style={{ marginLeft: '60px' }}>
+        <div style={{ marginLeft: '80px' }}>
             <a href="http://localhost:3000/tutorial"><img src="logo.png" alt="CodeKids" style={{ width: `${isTutorial ? '230px' : '120px'}`, transition: 'width 0.5s' }} /></a>
         </div>
         <div className="headerbtn-container">

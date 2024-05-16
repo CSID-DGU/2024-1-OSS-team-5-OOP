@@ -3,7 +3,10 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 import Header from './components/Header';
 import TutorialPage from './pages/TutorialPage.js';
+import TutorialDetailPage from './pages/TutorialDetailPage.js';
 import ProblemPage from './pages/ProblemPage.js';
+import BlockPage from './pages/BlockPage.js';
+import CodePage from './pages/CodePage.js';
 import SuggestionPage from './pages/SuggestionPage.js';
 import './App.css';
 
@@ -14,7 +17,10 @@ function App() {
         <Header />
         <Routes>
           <Route path="/tutorial" element={<TutorialPage />} />
+          <Route path="/tutorial/:concept" element={<TutorialDetailPage />} />
           <Route path="/problems" element={<ProblemPage />} />
+          <Route path="/problems/block/:problemId" element={<BlockPage />} />
+          <Route path="/problems/code/:problemId" element={<CodePage />} />
           <Route path="/suggestion" element={<SuggestionPage />} />
         </Routes>
       </div>
