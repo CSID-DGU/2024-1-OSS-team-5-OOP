@@ -6,7 +6,6 @@ import TutorialPage from './pages/TutorialPage.js';
 import ProblemPage from './pages/ProblemPage.js';
 import SuggestionPage from './pages/SuggestionPage.js';
 import './App.css';
-import './components/Header.css';
 
 function App() {
   return (
