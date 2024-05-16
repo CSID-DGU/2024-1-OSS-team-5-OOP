@@ -5,14 +5,14 @@ import oop.codekids.Concept;
 
 import java.util.Optional;
 
-@Builder
-public class ProblemDto {
-    private Long problemId;
-    private String problemTitle;
-    private Concept concept;
-    private Optional<String> javaAnswer;
-    private Optional<String> javaHint;
-    private Optional<String> blockAnswer;
-    private Optional<String> blockHint;
 
+public record ProblemDto (
+    Long problemId,
+    String problemTitle,
+    Concept concept,
+    Optional<String> javaAnswer,
+    Optional<String> javaHint,
+    Optional<String> blockAnswer,
+    Optional<String> blockHint
+    ){
 }
