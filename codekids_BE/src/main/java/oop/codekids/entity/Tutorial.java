@@ -20,5 +20,6 @@ public class Tutorial {
     @Builder
     Tutorial(Concept concept, String imageUrl) {
         this.concept = concept;
+        this.imageUrl = imageUrl;
     }
 }
