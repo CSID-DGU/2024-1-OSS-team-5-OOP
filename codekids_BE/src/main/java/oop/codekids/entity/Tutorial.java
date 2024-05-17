@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import oop.codekids.Concept;
+import oop.codekids.dto.TutorialDto;
 
 @Entity
 @Getter
@@ -21,5 +22,10 @@ public class Tutorial {
     Tutorial(Concept concept, String imageUrl) {
         this.concept = concept;
         this.imageUrl = imageUrl;
+    }
+
+    public TutorialDto toDto(Tutorial tutorial) {
+        TutorialDto dto = new TutorialDto(tutorial.getId(),tutorial.getConcept().getConcept(), tutorial.getImageUrl());
+        return dto;
     }
 }
