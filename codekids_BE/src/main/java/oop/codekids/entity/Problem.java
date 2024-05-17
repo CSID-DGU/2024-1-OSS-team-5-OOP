@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import oop.codekids.Concept;
+import oop.codekids.dto.ProblemDto;
 
 @Entity
 @NoArgsConstructor
@@ -46,5 +47,15 @@ public class Problem {
         this.blockAnswer = blockAnswer;
         this.blockHint = blockHint;
         this.imageUrl = imageUrl;
+    }
+
+    public ProblemDto toDto(Problem problem){
+        ProblemDto problemDto = new ProblemDto(
+                problem.getProblemId(),
+                problem.getProblemTitle(),
+                problem.getConcept(),
+                problem.getImageUrl()
+        );
+        return problemDto;
     }
 }
