@@ -17,13 +17,10 @@ public class ProblemService {
 
     public ProblemsDto getAllProblems(){
         List<Problem> problems = problemRepository.findAll();
+        // Entity ->  Dto
         List<ProblemDto> problemDtos = new ArrayList<>();
         for (Problem problem : problems) {
-            ProblemDto problemDto = new ProblemDto(
-                    problem.getProblemId(),
-                    problem.getProblemTitle(),
-                    problem.getConcept()
-            );
+            ProblemDto problemDto = problem.toDto(problem);
             problemDtos.add(problemDto);
         }
         ProblemsDto problemsDto = new ProblemsDto(problemDtos);
