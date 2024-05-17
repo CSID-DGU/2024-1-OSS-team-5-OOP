@@ -5,9 +5,12 @@ public enum Concept {
     POLYMORPHISM("다형성"),
     ENCAPSULATION("캡슐화");
 
-    private final String message;
+    private String concept;
 
-    Concept(String message) {
-        this.message = message;
+    private Concept(String concept) {
+        this.concept = concept;
+    }
+    public String getConcept() {
+        return concept;
     }
 }
