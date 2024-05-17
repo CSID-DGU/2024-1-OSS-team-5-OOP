@@ -16,11 +16,11 @@ public class TutorialService {
 
     private final TutorialRepository tutorialRepository;
 
-    public TutorialsDto getAll() {
+    public TutorialsDto getAllTutorial() {
         List<Tutorial> tutorials = tutorialRepository.findAll();
         List<TutorialDto> tutorialsDtosList = new ArrayList<>();
         for (Tutorial tutorial : tutorials) {
-            TutorialDto tutorialDto = new TutorialDto(tutorial.getId(),tutorial.getConcept().toString());
+            TutorialDto tutorialDto = tutorial.toDto(tutorial);
             tutorialsDtosList.add(tutorialDto);
         }
         TutorialsDto tutorialsDto = new TutorialsDto(tutorialsDtosList);

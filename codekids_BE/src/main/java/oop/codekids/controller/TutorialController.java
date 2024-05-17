@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TutorialController {
     private final TutorialService tutorialService;
     @GetMapping("/getAllTutorial")
-    public ResponseEntity<TutorialsDto> getTutorial() {
-        return ResponseEntity.ok(tutorialService.getAll());
+    public ResponseEntity<TutorialsDto> getAllTutorial() {
+        return ResponseEntity.ok(tutorialService.getAllTutorial());
     }
 }

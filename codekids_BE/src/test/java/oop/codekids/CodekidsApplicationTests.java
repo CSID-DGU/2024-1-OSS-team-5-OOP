@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.List;
 
 @SpringBootTest
-@ActiveProfiles("local")
+@ActiveProfiles("dev")
 class CodekidsApplicationTests {
 
     @Autowired
@@ -91,19 +91,25 @@ class CodekidsApplicationTests {
     @Test
     @DisplayName("튜토리얼 데이터 넣기")
     void addTutorial() {
-        Tutorial tutorial1 = Tutorial.builder()
-                .concept(Concept.POLYMORPHISM)
-                .build();
-        Tutorial tutorial2 = Tutorial.builder()
-                .concept(Concept.ENCAPSULATION)
-                .build();
-        Tutorial tutorial3 = Tutorial.builder()
+
+        Tutorial polymorphism = Tutorial.builder()
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/POLYMORPHISM.png")
                 .concept(Concept.POLYMORPHISM)
                 .build();
 
-        tutorialRepository.save(tutorial1);
-        tutorialRepository.save(tutorial2);
-        tutorialRepository.save(tutorial3);
+        Tutorial encapsulation = Tutorial.builder()
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/ENCAPSULATION.png")
+                .concept(Concept.ENCAPSULATION)
+                .build();
+
+        Tutorial abstract_ = Tutorial.builder()
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/ABSTRACT.png")
+                .concept(Concept.ABSTRACT)
+                .build();
+
+        tutorialRepository.save(polymorphism);
+        tutorialRepository.save(encapsulation);
+        tutorialRepository.save(abstract_);
 
         Assertions.assertThat(tutorialRepository.findAll()).hasSize(3);
     }
