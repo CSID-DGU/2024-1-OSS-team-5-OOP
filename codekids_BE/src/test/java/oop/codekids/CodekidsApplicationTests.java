@@ -5,6 +5,7 @@ import oop.codekids.entity.Problem;
 import oop.codekids.entity.Tutorial;
 import oop.codekids.repository.ProblemRepository;
 import oop.codekids.repository.TutorialRepository;
+import oop.codekids.service.S3Service;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,6 +14,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.List;
 
 @SpringBootTest
@@ -90,31 +95,51 @@ class CodekidsApplicationTests {
     }
 
 
+    @Autowired
+    private S3Service s3Service;
 
 
     @Test
-    void testPostImageWithData()  {
+    void testPostImageWithData() throws IOException {
 
-        MockMultipartFile image = new MockMultipartFile("image", "animal.png", "image/png", "anima.png".getBytes());
+        String filePath = "/Users/heoeunjeong/Desktop/codekids/codekids_BE/src/test/resource/animal.png";
+        File file = new File(filePath);
+        // 파일이 존재하는지 확인
+        if (!file.exists()) {
+            throw new IOException("File not found at " + filePath);
+        }
+        else {
+            // 파일 내용을 바이트 배열로 읽기
+            FileInputStream input = new FileInputStream(file);
+            byte[] fileContent = input.readAllBytes();
+            input.close();
 
-        Problem target = postImageWithData(image);
+            // 바이트 배열을 MultipartFile로 변환
+            MultipartFile multipartFile = new MockMultipartFile(file.getName(), file.getName(), "text/plain", fileContent);
+            Problem target = postImageWithData(multipartFile);
 
-        Assertions.assertThat(target.getImageUrl()).isEqualTo("animal.png");
+            Assertions.assertThat(target.getImageUrl()).isEqualTo("animal.png");
+
+        }
+
     }
 
     Problem postImageWithData(MultipartFile image)  {
         try{
+
+            s3Service.uploadImage("problem/",image);
             Problem problem5 = Problem.builder()
                     .problemTitle("강아지는 냐옹, 고양이는 멍멍?")
                     .concept(oop.codekids.Concept.ABSTRACT)
-                    .imageUrl(image.toString())
+                    .imageUrl(image.getOriginalFilename())
                     .build();
             problemRepository.save(problem5);
             return problem5;
-        }catch (RuntimeException e){
+        }catch (RuntimeException | IOException e){
             throw new RuntimeException(e.getMessage());
         }
     }
+
 
 
 }
