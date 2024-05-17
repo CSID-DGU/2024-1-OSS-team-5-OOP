@@ -34,13 +34,17 @@ public class Problem {
     @Column
     private String blockHint;
 
+    @Column
+    private String imageUrl;
 
     @Builder
-    Problem(String problemTitle, Concept concept, String javaAnswer, String javaHint, String blockAnswer) {
+    Problem(String problemTitle, Concept concept, String javaAnswer, String javaHint, String blockAnswer,String blockHint, String imageUrl) {
         this.problemTitle = problemTitle;
         this.concept = concept;
         this.javaAnswer = javaAnswer;
         this.javaHint = javaHint;
         this.blockAnswer = blockAnswer;
+        this.blockHint = blockHint;
+        this.imageUrl = imageUrl;
     }
 }
