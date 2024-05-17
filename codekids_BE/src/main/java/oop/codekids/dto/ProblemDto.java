@@ -6,6 +6,7 @@ import oop.codekids.Concept;
 public record ProblemDto (
     Long problemId,
     String problemTitle,
-    Concept concept
+    Concept concept,
+    String imageUrl
     ){
 }
