@@ -18,7 +18,7 @@ public class Tutorial {
     private String imageUrl;
 
     @Builder
-    Tutorial(Concept concept) {
+    Tutorial(Concept concept, String imageUrl) {
         this.concept = concept;
     }
 }
