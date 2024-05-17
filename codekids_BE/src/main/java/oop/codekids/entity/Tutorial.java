@@ -15,6 +15,7 @@ public class Tutorial {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
     private Concept concept;
+    private String imageUrl;
 
     @Builder
     Tutorial(Concept concept) {
