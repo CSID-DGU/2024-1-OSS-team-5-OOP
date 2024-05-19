@@ -42,7 +42,7 @@ public class TutorialService {
             tmpDescription.add(tutorialDetail.getDescription());
             tmpImgUrl.add(tutorialDetail.getImageUrl());
         }
-        TutorialDetailDto tutorialDetailDtos = new TutorialDetailDto(tmpDescription,tmpImgUrl);
+        TutorialDetailDto tutorialDetailDtos = new TutorialDetailDto(tmpImgUrl,tmpDescription);
         return tutorialDetailDtos;
     }
 }
