@@ -28,4 +28,8 @@ public class Tutorial {
         TutorialDto dto = new TutorialDto(tutorial.getId(),tutorial.getConcept().getConcept(), tutorial.getImageUrl());
         return dto;
     }
+
+    @OneToOne
+    @JoinColumn(name = "tutorial_detail_id")
+    private TutorialDetail tutorialDetail;
 }
