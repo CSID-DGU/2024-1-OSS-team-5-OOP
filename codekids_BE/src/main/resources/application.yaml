@@ -1,0 +1,32 @@
+
+spring:
+  thymeleaf:
+    cache: false # default는 true. 개발 시에 false로 두면 수정 시 바로 반영.
+    prefix: classpath:templates/
+    check-template-location: true
+    suffix: .html
+    mode: HTML
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+
+  logging:
+    level:
+      org:
+        hibernate:
+          type:
+            descriptor:
+              sql: trace
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 3MB
+      max-request-size: 5MB

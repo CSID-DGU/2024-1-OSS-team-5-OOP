@@ -1,0 +1,16 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${DATABASE_ENDPOINT_URL}/${DATABASE_NAME}?useSSL=false&serverTimezone=Asia/Seoul&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=utf8
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
+
+aws-property:
+  access-key: ${ACCESS_KEY}
+  secret-key: ${PRIVATE_KEY}
+  aws-region: ap-northeast-2
+  s3-bucket-name: ${BUCKET_NAME}
