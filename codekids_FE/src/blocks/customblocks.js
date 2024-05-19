@@ -47,3 +47,88 @@ Blockly.Blocks['test_react_field'] = {
     this.setStyle('loop_blocks');
   },
 };
+
+Blockly.Blocks['interface'] = {
+  init: function() {
+    this.appendValueInput("이동수단")
+        .setCheck(null)
+        .appendField("이동수단");
+    this.appendStatementInput("전진")
+        .setCheck(null)
+        .appendField("전진");
+    this.appendStatementInput("후진")
+        .setCheck(null)
+        .appendField("후진");
+    this.setColour(130);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['go'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("전진합니다");
+    this.setPreviousStatement(true, null);
+    this.setColour(135);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['back'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("후진합니다");
+    this.setPreviousStatement(true, null);
+    this.setColour(135);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['car'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("차");
+    this.setOutput(true, null);
+    this.setColour(245);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['motorcycle'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("오토바이");
+    this.setOutput(true, null);
+    this.setColour(245);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['main'] = {
+  init: function() {
+    this.appendStatementInput("main")
+        .setCheck(null)
+        .appendField("main");
+    this.setColour(240);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['carinterface'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldTextInput("테슬라"), "car")
+        .appendField(new Blockly.FieldDropdown([["차","OPTIONNAME"], ["오토바이","OPTIONNAME"]]), "carop");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(240);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
