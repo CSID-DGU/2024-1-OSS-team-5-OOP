@@ -50,12 +50,13 @@ public class Problem {
     }
 
     public ProblemDto toDto(Problem problem){
-        ProblemDto problemDto = new ProblemDto(
-                problem.getId(),
-                problem.getTitle(),
-                problem.getConcept().getConcept(),
-                problem.getImageUrl()
-        );
+        ProblemDto problemDto = ProblemDto.builder()
+                .problemId(problem.getId())
+                .concept_eng(problem.getConcept().name())
+                .concept(problem.getConcept().getConcept())
+                .problemTitle(problem.getTitle())
+                .imageUrl(problem.getImageUrl())
+                .build();
         return problemDto;
     }
 }
