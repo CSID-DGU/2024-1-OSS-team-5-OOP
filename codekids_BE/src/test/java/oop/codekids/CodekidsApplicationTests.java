@@ -3,7 +3,9 @@ package oop.codekids;
 
 import oop.codekids.entity.Problem;
 import oop.codekids.entity.Tutorial;
+import oop.codekids.entity.TutorialDetail;
 import oop.codekids.repository.ProblemRepository;
+import oop.codekids.repository.TutorialDetailRepository;
 import oop.codekids.repository.TutorialRepository;
 import oop.codekids.service.S3Service;
 import org.assertj.core.api.Assertions;
@@ -94,7 +96,7 @@ class CodekidsApplicationTests {
 
         Tutorial polymorphism = Tutorial.builder()
                 .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/POLYMORPHISM.png")
-                .concept(Concept.POLYMORPHISM)
+                .concept(Concept.ENCAPSULATION)
                 .build();
 
         Tutorial encapsulation = Tutorial.builder()
@@ -114,12 +116,44 @@ class CodekidsApplicationTests {
         Assertions.assertThat(tutorialRepository.findAll()).hasSize(3);
     }
 
+    @Autowired
+    TutorialDetailRepository tutorialDetailRepository;
+
+    @Test
+    @DisplayName("다형성 관련 데이터 넣기")
+    void getTutorial(){
+        Tutorial tutorial = tutorialRepository.findByConcept(Concept.POLYMORPHISM);
+        TutorialDetail detail1 = TutorialDetail.builder()
+                .description("안녕 나는 뽀로로야")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/ABSTRACT.png")
+                .tutorial(tutorial)
+                .build();
+        TutorialDetail detail2 = TutorialDetail.builder()
+                .description("안녕안녕")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/ABSTRACT.png")
+                .tutorial(tutorial)
+                .build();
+        TutorialDetail detail3 = TutorialDetail.builder()
+                .description("나는 다형성이지")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/ABSTRACT.png")
+                .tutorial(tutorial)
+                .build();
+
+        tutorialDetailRepository.save(detail1);
+        tutorialDetailRepository.save(detail2);
+        tutorialDetailRepository.save(detail3);
+
+        Assertions.assertThat(tutorialDetailRepository.findAll()).hasSize(3);
+
+    }
+
     @Test
     @DisplayName("튜토리얼 전체 조회")
     void getAllTutorial() {
         List<Tutorial> tutorials = tutorialRepository.findAll();
         Assertions.assertThat(tutorials).isNotNull();
     }
+
 
 
     @Autowired
