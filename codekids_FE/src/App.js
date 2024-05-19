@@ -1,24 +1,30 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+
+import Header from './components/Header';
+import TutorialPage from './pages/TutorialPage.js';
+import TutorialDetailPage from './pages/TutorialDetailPage.js';
+import ProblemPage from './pages/ProblemPage.js';
+import BlockPage from './pages/BlockPage.js';
+import CodePage from './pages/CodePage.js';
+import SuggestionPage from './pages/SuggestionPage.js';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="container">
+        <Header />
+        <Routes>
+          <Route path="/tutorial" element={<TutorialPage />} />
+          <Route path="/tutorial/:concept" element={<TutorialDetailPage />} />
+          <Route path="/problems" element={<ProblemPage />} />
+          <Route path="/problems/block/:problemId" element={<BlockPage />} />
+          <Route path="/problems/code/:problemId" element={<CodePage />} />
+          <Route path="/suggestion" element={<SuggestionPage />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
