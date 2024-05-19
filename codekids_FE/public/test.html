@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!-- HTML file to host Blockly in a mobile WebView. -->
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <style type="text/css">
+    html, body, #blocklyDiv {
+      border: 0;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+  </style>
+ <!-- Load Blockly core -->
+<script src="https://unpkg.com/blockly/blockly_compressed.js"></script>
+<!-- Load the default blocks -->
+<script src="https://unpkg.com/blockly/blocks_compressed.js"></script>
+<!-- Load a generator -->
+<script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
+<!-- Load a message file -->
+<script src="https://unpkg.com/blockly/msg/en.js"></script>
+  <script src="toolbox_standard.js"></script>
+  <script src="Mycode.js"></script>
+</head>
+<body>
+  <div id="blocklyDiv"></div>
+  <script type="text/javascript">
+    var workspacePlayground = Blockly.inject('blocklyDiv', {
+          media: 'media/',
+          toolbox: BLOCKLY_TOOLBOX_XML['standard'],
+          zoom: {controls: true}
+        });
+  </script>
+</body>
+</html>
