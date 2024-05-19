@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './buttonlist.css';
+import './ButtonList.css';
 
 const TutorialPage = () => {
   const navigate = useNavigate();
@@ -21,9 +21,9 @@ const TutorialPage = () => {
   }, []);
 
   const handleBoxClick = (id) => {
-    const concept = response.data.find(item => item.id === id)?.concept;
-    if (concept) {
-      navigate(`/tutorial/${concept}`);
+    const concept_eng = response.data.find(item => item.id === id)?.concept_eng;
+    if (concept_eng) {
+      navigate(`/tutorial/${concept_eng}`);
     }
   };
 

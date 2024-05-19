@@ -1,0 +1,44 @@
+.content {
+    display: flex;
+    flex-direction: column;
+}
+  
+.image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.description-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
+
+.description {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    font-family: "Nanum Gothic Bold", sans-serif;
+    font-size: 26px;
+    color: #A1C398;
+}
+
+.nextbutton-container {
+    height: 40px;
+}
+
+.nextbutton {
+    margin: 0;
+    font-family: "Nanum Gothic Bold", sans-serif;
+    font-size: 20px;
+    color: #555555;
+    cursor: pointer;
+}
+
+.description.fade-in {
+    opacity: 1;
+}
+
+.description.fade-out {
+    opacity: 0;
+}
