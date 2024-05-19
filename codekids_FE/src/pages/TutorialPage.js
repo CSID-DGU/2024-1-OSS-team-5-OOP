@@ -1,34 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './buttonlist.css';
 
 const TutorialPage = () => {
   const navigate = useNavigate();
+  const [response, setResponse] = useState({ data: [] });
 
-  // 샘플 응답 데이터
-  const sampleResponse = {
-    "data": [
-      {
-        "id": 1,
-        "concept": "ABSTRACT",
-        "imageUrl": "~" 
-      },
-      {
-        "id": 2,
-        "concept": "ENCAPSULATION",
-        "imageUrl": "~" 
-      },
-      {
-        "id": 3,
-        "concept": "POLYMORPHISM",
-        "imageUrl": "~" 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch('http://3.37.103.81/tutorial/getAllTutorial');
+        const data = await res.json();
+        setResponse(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
       }
-    ]
-  };
+    };
 
-  // 박스 클릭 핸들러
+    fetchData();
+  }, []);
+
   const handleBoxClick = (id) => {
-    const concept = sampleResponse.data.find(item => item.id === id)?.concept.toLowerCase();
+    const concept = response.data.find(item => item.id === id)?.concept();
     if (concept) {
       navigate(`/tutorial/${concept}`);
     }
@@ -37,7 +30,7 @@ const TutorialPage = () => {
   return (
     <div className="content" style={{ height: "calc(100% - 400px)" }}>
       <div className="box-container">
-        {sampleResponse.data.map(item => (
+        {response.data.map(item => (
           <div className="box" key={item.id} onClick={() => handleBoxClick(item.id)}>
             <div className="title">
               <p>{item.concept}</p>

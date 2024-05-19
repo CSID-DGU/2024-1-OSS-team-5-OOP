@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 
 import Header from './components/Header';
 import TutorialPage from './pages/TutorialPage.js';
@@ -16,6 +16,7 @@ function App() {
       <div className="container">
         <Header />
         <Routes>
+          <Route path="/" element={<Navigate to="/tutorial" />} />
           <Route path="/tutorial" element={<TutorialPage />} />
           <Route path="/tutorial/:concept" element={<TutorialDetailPage />} />
           <Route path="/problems" element={<ProblemPage />} />
