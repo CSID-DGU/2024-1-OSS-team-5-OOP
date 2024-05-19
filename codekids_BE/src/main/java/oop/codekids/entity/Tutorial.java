@@ -29,7 +29,12 @@ public class Tutorial {
     }
 
     public TutorialDto toDto(Tutorial tutorial) {
-        TutorialDto dto = new TutorialDto(tutorial.getId(),tutorial.getConcept().getConcept(), tutorial.getImageUrl());
+        TutorialDto dto = TutorialDto.builder()
+                .id(tutorial.getId())
+                .imageUrl(tutorial.getImageUrl())
+                .concept_eng(tutorial.getConcept().name())
+                .concept(tutorial.getConcept().getConcept())
+                .build();
         return dto;
     }
 
