@@ -21,7 +21,7 @@ const TutorialPage = () => {
   }, []);
 
   const handleBoxClick = (id) => {
-    const concept = response.data.find(item => item.id === id)?.concept();
+    const concept = response.data.find(item => item.id === id)?.concept;
     if (concept) {
       navigate(`/tutorial/${concept}`);
     }
@@ -32,6 +32,7 @@ const TutorialPage = () => {
       <div className="box-container">
         {response.data.map(item => (
           <div className="box" key={item.id} onClick={() => handleBoxClick(item.id)}>
+            <img src={item.imageUrl} alt={item.concept} className="box-image" />
             <div className="title">
               <p>{item.concept}</p>
             </div>
