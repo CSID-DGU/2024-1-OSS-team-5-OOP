@@ -16,4 +16,5 @@ public class WebConfig implements WebMvcConfigurer {
                 .exposedHeaders("Custom-Header", "Custom-Value");
 
     }
+
 }
