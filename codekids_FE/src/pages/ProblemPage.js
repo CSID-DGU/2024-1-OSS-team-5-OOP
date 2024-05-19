@@ -11,7 +11,7 @@ const ProblemPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('http://3.37.103.81/tutorial/getAllTutorial');
+        const res = await fetch('/problem/getAllProblems');
         const data = await res.json();
         setResponse(data);
       } catch (error) {

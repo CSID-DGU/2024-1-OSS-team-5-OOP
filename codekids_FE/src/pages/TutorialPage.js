@@ -9,7 +9,7 @@ const TutorialPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('http://3.37.103.81/tutorial/getAllTutorial');
+        const res = await fetch('/tutorial/getAllTutorial');
         const data = await res.json();
         setResponse(data);
       } catch (error) {
@@ -32,7 +32,7 @@ const TutorialPage = () => {
       <div className="box-container">
         {response.data.map(item => (
           <div className="box" key={item.id} onClick={() => handleBoxClick(item.id)}>
-            <img src={item.imageUrl} alt={item.concept} className="box-image" />
+            <img src={item.imageUrl} alt={item.problemTitle} className="box-image" />
             <div className="title">
               <p>{item.concept}</p>
             </div>
