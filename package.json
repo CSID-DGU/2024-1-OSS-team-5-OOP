@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@blockly/field-date": "^8.0.17",
+    "blockly": "^10.4.3",
+    "bootstrap": "^5.3.3",
+    "react-blockly": "^8.1.1",
+    "react-bootstrap": "^2.10.2",
+    "react-datepicker": "^6.9.0"
+  }
+}
