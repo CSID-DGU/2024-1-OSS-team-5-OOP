@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import './buttonlist.css';
+import './ButtonList.css';
 import MediaQuery from './alignlist.module.css';
 
 const ProblemPage = () => {
