@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './ButtonList.css';
 import MediaQuery from './alignlist.module.css';
 
 const ProblemPage = () => {
-  const { problemId } = useParams();
   const [response, setResponse] = useState({ data: [] });
   const navigate = useNavigate();
 
@@ -20,10 +19,10 @@ const ProblemPage = () => {
     };
 
     fetchData();
-  }, [problemId]);
+  }, []);
 
-  const handleBoxClick = (problemId) => {
-    navigate(`/problems/block/${problemId}`);
+  const handleBoxClick = (problemId, concept) => {
+    navigate(`/problems/block/${problemId}`, { state: { concept } });
   };
 
   return (
@@ -31,7 +30,11 @@ const ProblemPage = () => {
       <div className={MediaQuery['box-container']}>
         <div className="inner-container">
           {response.data.map(item => (
-            <div className="box" key={item.problemId} onClick={() => handleBoxClick(item.problemId)}>
+            <div
+              key={item.problemId}
+              className="box"
+              onClick={() => handleBoxClick(item.problemId, item.concept_eng)}
+            >
               <img src={item.imageUrl} alt={item.problemTitle} className="box-image" />
               <div className="title">
                 <p>{item.problemTitle}</p>

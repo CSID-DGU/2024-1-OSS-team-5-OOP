@@ -1,5 +1,6 @@
 import React, {useState, useRef} from 'react';
 import './BlockPage.css';
+import { useLocation } from 'react-router-dom';
 import BlocklyComponent, { Block} from '../Blockly';
 import '../blocks/customblocks';
 import '../generator/generator';
@@ -8,6 +9,8 @@ import {FaPlay} from 'react-icons/fa'
 
 
 function BlockPage(props) {
+  const location = useLocation();
+  const { concept } = location.state || {};
   const [visible, setVisible] = useState(false);
   const onPress = () => {
     setVisible(!visible);

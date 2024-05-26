@@ -6,6 +6,7 @@ import TutorialPage from './pages/TutorialPage.js';
 import TutorialDetailPage from './pages/TutorialDetailPage.js';
 import ProblemPage from './pages/ProblemPage.js';
 import BlockPage from './pages/BlockPage.js';
+import QuizPage from './pages/QuizPage.js';
 import SuggestionPage from './pages/SuggestionPage.js';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/tutorial/:concept" element={<TutorialDetailPage />} />
           <Route path="/problems" element={<ProblemPage />} />
           <Route path="/problems/block/:problemId" element={<BlockPage />} />
+          <Route path="/problems/quiz/:problemId" element={<QuizPage />} />
           <Route path="/suggestion" element={<SuggestionPage />} />
         </Routes>
       </div>
