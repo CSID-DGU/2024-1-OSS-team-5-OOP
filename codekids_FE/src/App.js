@@ -13,12 +13,14 @@ function App() {
   return (
     <BrowserRouter>
       <div className="container">
+        <audio src="/bgm.mp3" autoPlay loop />
         <Header />
         <Routes>
           <Route path="/" element={<Navigate to="/tutorial" />} />
           <Route path="/tutorial" element={<TutorialPage />} />
           <Route path="/tutorial/:concept" element={<TutorialDetailPage />} />
           <Route path="/problems" element={<ProblemPage />} />
+          <Route path="/problems/:problemId" element={<ProblemPage />} />
           <Route path="/problems/block/:problemId" element={<BlockPage />} />
           <Route path="/problems/quiz/:problemId" element={<QuizPage />} />
           <Route path="/suggestion" element={<SuggestionPage />} />

@@ -2,9 +2,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import './TutorialDetailPage.css';
 import SuccessModal from './SuccessModal.js';
-import Modal from 'react-modal';
-
-Modal.setAppElement('#root');
 
 const TutorialDetailPage = () => {
   const { concept } = useParams();
@@ -40,15 +37,37 @@ const TutorialDetailPage = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
+    resetTutorial();
   };
 
-  useEffect(() => {
+  const resetTutorial = () => {
+    setCurrentIndex(0);
+    setIsModalOpen(false);
     if (response) {
-      const interval = setInterval(nextDescription, 3000);
+      const interval = setInterval(nextDescription, 5000);
       const timeout = setTimeout(() => {
         clearInterval(interval);
         showPopup();
-      }, (response?.description.length || 0) * 3000);
+      }, (response?.description.length || 0) * 5000);
+
+      return () => {
+        clearInterval(interval);
+        clearTimeout(timeout);
+      };
+    }
+  };
+
+  const modalTitle = '학습을 완료했어요!';
+  const modalButtonName = '문제 풀러가기';
+  const modalLink = `/problems/${concept}`;
+
+  useEffect(() => {
+    if (response) {
+      const interval = setInterval(nextDescription, 5000);
+      const timeout = setTimeout(() => {
+        clearInterval(interval);
+        showPopup();
+      }, (response?.description.length || 0) * 5000);
 
       return () => {
         clearInterval(interval);
@@ -62,7 +81,7 @@ const TutorialDetailPage = () => {
       {response && (
         <>
           <div className="image-container">
-            <img src={response.imageUrl[currentIndex]} className="image" alt="Tutorial" />
+            <img src={response.imageUrl[currentIndex]} className={`image ${isFading ? 'fade-out' : 'fade-in'}`} alt="Tutorial" />
           </div>
           <div className="description-container">
             <div>
@@ -71,10 +90,16 @@ const TutorialDetailPage = () => {
               </p>
             </div>
           </div>
-          <div className="nextbutton-container">
+          {/* <div className="nextbutton-container">
             <p className="nextbutton" onClick={showPopup}>[설명 건너뛰기]</p>
-          </div>
-          <SuccessModal isOpen={isModalOpen} closeModal={closeModal} />
+          </div> */}
+          <SuccessModal
+            isOpen={isModalOpen}
+            closeModal={closeModal}
+            title={modalTitle}
+            buttonName={modalButtonName}
+            modalLink={modalLink}
+          />
         </>
       )}
     </div>
