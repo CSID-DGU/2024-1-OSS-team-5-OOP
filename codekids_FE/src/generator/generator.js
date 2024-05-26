@@ -33,3 +33,32 @@ javascriptGenerator.forBlock['test_react_field'] = function (block) {
 javascriptGenerator.forBlock['test_react_date_field'] = function (block) {
   return 'console.log(' + block.getField('DATE').getText() + ');\n';
 };
+
+javascriptGenerator.forBlock['interface'] = function(block, generator) {
+  
+  return "console.log('interface block');\n";
+};
+
+javascriptGenerator.forBlock['go'] = function(block, generator) {
+  return "console.log('go block');\n";
+};
+
+javascriptGenerator.forBlock['back'] = function(block, generator) {
+  return "console.log('back block');\n";
+};
+
+javascriptGenerator.forBlock['car'] = function(block, generator) {
+  return "console.log('car block');\n";
+};
+
+javascriptGenerator.forBlock['motorcycle'] = function(block, generator) {
+  return "console.log('motorcycle block');\n";
+};
+
+javascriptGenerator.forBlock['main'] = function(block, generator) {
+  return "console.log('main block');\n";
+};
+
+javascriptGenerator.forBlock['carinterface'] = function(block, generator) {
+  return "console.log('main block');\n";
+};
