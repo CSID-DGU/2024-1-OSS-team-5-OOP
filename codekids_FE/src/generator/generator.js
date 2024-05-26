@@ -35,6 +35,7 @@ javascriptGenerator.forBlock['test_react_date_field'] = function (block) {
 };
 
 javascriptGenerator.forBlock['interface'] = function(block, generator) {
+  
   return "console.log('interface block');\n";
 };
 

@@ -59,7 +59,7 @@ Blockly.Blocks['interface'] = {
     this.appendStatementInput("후진")
         .setCheck(null)
         .appendField("후진");
-    this.setColour(130);
+    this.setColour('#EF9090');
  this.setTooltip("");
  this.setHelpUrl("");
   }
@@ -70,7 +70,7 @@ Blockly.Blocks['go'] = {
     this.appendDummyInput()
         .appendField("전진합니다");
     this.setPreviousStatement(true, null);
-    this.setColour(135);
+    this.setColour('#EFB290');
  this.setTooltip("");
  this.setHelpUrl("");
   }
@@ -81,7 +81,7 @@ Blockly.Blocks['back'] = {
     this.appendDummyInput()
         .appendField("후진합니다");
     this.setPreviousStatement(true, null);
-    this.setColour(135);
+    this.setColour('#EFB290');
  this.setTooltip("");
  this.setHelpUrl("");
   }
@@ -92,7 +92,7 @@ Blockly.Blocks['car'] = {
     this.appendDummyInput()
         .appendField("차");
     this.setOutput(true, null);
-    this.setColour(245);
+    this.setColour('#B5D893');
  this.setTooltip("");
  this.setHelpUrl("");
   }
@@ -103,7 +103,7 @@ Blockly.Blocks['motorcycle'] = {
     this.appendDummyInput()
         .appendField("오토바이");
     this.setOutput(true, null);
-    this.setColour(245);
+    this.setColour('#B5D893');
  this.setTooltip("");
  this.setHelpUrl("");
   }
@@ -114,7 +114,7 @@ Blockly.Blocks['main'] = {
     this.appendStatementInput("main")
         .setCheck(null)
         .appendField("main");
-    this.setColour(240);
+    this.setColour("#93BBD8");
  this.setTooltip("");
  this.setHelpUrl("");
   }

@@ -7,10 +7,8 @@ import { javascriptGenerator } from 'blockly/javascript';
 import locale from 'blockly/msg/en';
 import 'blockly/blocks';
 import picture1 from './quiz.png'
-import {FaPlay} from 'react-icons/fa'
 
 Blockly.setLocale(locale);
-
 
 function BlocklyComponent(props) {
   const blocklyDiv = useRef();
@@ -22,10 +20,27 @@ function BlocklyComponent(props) {
     console.log(code);
   };
 
+  Blockly.Themes.Halloween = Blockly.Theme.defineTheme('halloween', {
+    'base': Blockly.Themes.Classic,
+    'componentStyles': {
+      'workspaceBackgroundColour': "#E7F6D9",
+      'flyoutBackgroundColour': '#F3F9E1',
+      'flyoutForegroundColour': '#000000',
+      'flyoutOpacity': 0.5,
+      'scrollbarColour': '#91B886',
+      'insertionMarkerColour': '#fff',
+      'insertionMarkerOpacity': 0.3,
+      'scrollbarOpacity': 0.4,
+      'cursorColour': '#d0d0d0',
+      'blackBackground': '#333'
+    }
+  });
+
   useEffect(() => {
     const { initialXml, children, ...rest } = props;
     primaryWorkspace.current = Blockly.inject(blocklyDiv.current, {
       toolbox: toolbox.current,
+      theme: Blockly.Themes.Halloween,
       ...rest,
     });
 
@@ -44,14 +59,10 @@ function BlocklyComponent(props) {
       <div><img className='quizImg' src={picture1} />
         <span className='quiz'>인터페이스를 이용하여, 테슬라가 전진하도록 메인 클래스를 만드세요</span></div>
       <div ref={blocklyDiv} id="blocklyDiv" />
-      <div style={{ display: 'none' }} ref={toolbox}>
+      <div style={{ display: 'none'}} ref={toolbox}>
         {props.children}
       </div>
-      <div className='btnBox'>
-      <button className='convertBtn' onClick={generateCode}>
-        <FaPlay className='FaPlayBtn' size="30" color='#20CF26' />
-        <span className='Btn'>실행하기</span></button>
-        </div>
+      
     </React.Fragment>
   );
 }
