@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import './TutorialDetailPage.css';
 import SuccessModal from './SuccessModal.js';
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root');
 
 const TutorialDetailPage = () => {
   const { concept } = useParams();
@@ -20,22 +23,25 @@ const TutorialDetailPage = () => {
         console.error('Error fetching tutorial:', error);
       }
     };
-
     fetchTutorial();
   }, [concept]);
 
-  const nextDescription = () => {
+  const nextDescription = useCallback(() => {
     setIsFading(true);
     setTimeout(() => {
       setCurrentIndex(prevIndex => (prevIndex + 1) % (response?.description.length || 0));
       setIsFading(false);
     }, 500);
-  };
+  }, [response]);
 
   const showPopup = () => {
     setIsModalOpen(true);
   };
-  
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   useEffect(() => {
     if (response) {
       const interval = setInterval(nextDescription, 3000);
@@ -49,7 +55,7 @@ const TutorialDetailPage = () => {
         clearTimeout(timeout);
       };
     }
-  }, [response]);
+  }, [response, nextDescription]);
 
   return (
     <div className="content" style={{ height: "calc(100% - 120px)" }}>
@@ -68,11 +74,11 @@ const TutorialDetailPage = () => {
           <div className="nextbutton-container">
             <p className="nextbutton" onClick={showPopup}>[설명 건너뛰기]</p>
           </div>
-          {isModalOpen && <SuccessModal />}
+          <SuccessModal isOpen={isModalOpen} closeModal={closeModal} />
         </>
       )}
     </div>
-  );  
+  );
 };
 
 export default TutorialDetailPage;
