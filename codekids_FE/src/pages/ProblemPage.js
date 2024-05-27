@@ -4,11 +4,11 @@ import './ButtonList.css';
 import MediaQuery from './alignlist.module.css';
 
 const ProblemPage = () => {
-  const { conceptfilter } = useParams();
+  const { concept } = useParams();
   const [response, setResponse] = useState({ data: [] });
   const navigate = useNavigate();
 
-  const url = conceptfilter ? `/problem/getFilteredProblems?query=${conceptfilter}` : '/problem/getAllProblems';
+  const url = concept ? `/problem/getFilteredProblems?query=${concept}` : '/problem/getAllProblems';
   useEffect(() => {
     const fetchData = async () => {
       try {
