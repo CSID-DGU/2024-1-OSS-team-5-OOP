@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.util.List;
 
 @SpringBootTest
-@ActiveProfiles("dev")
 class CodekidsApplicationTests {
 
     @Autowired
@@ -120,30 +119,68 @@ class CodekidsApplicationTests {
     TutorialDetailRepository tutorialDetailRepository;
 
     @Test
-    @DisplayName("다형성 관련 데이터 넣기")
-    void getTutorial(){
-        Tutorial tutorial = tutorialRepository.findByConcept(Concept.POLYMORPHISM);
-        TutorialDetail detail1 = TutorialDetail.builder()
-                .description("안녕 나는 뽀로로야")
-                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/ABSTRACT.png")
-                .tutorial(tutorial)
-                .build();
-        TutorialDetail detail2 = TutorialDetail.builder()
-                .description("안녕안녕")
-                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/ABSTRACT.png")
-                .tutorial(tutorial)
-                .build();
-        TutorialDetail detail3 = TutorialDetail.builder()
-                .description("나는 다형성이지")
-                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/ABSTRACT.png")
-                .tutorial(tutorial)
-                .build();
+    @DisplayName("개념 설명 관련 데이터 넣기")
+    void getTutorial() {
 
-        tutorialDetailRepository.save(detail1);
-        tutorialDetailRepository.save(detail2);
-        tutorialDetailRepository.save(detail3);
+        Tutorial encapsulation = tutorialRepository.findByConcept(Concept.ENCAPSULATION);
+        TutorialDetail encap_detail1 = TutorialDetail.builder()
+                .description("캡슐화는 하나의 클래스라는 큰 단위 안에서 기능을 처리하는 방식이에요.")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/encapsulation/cap1.jpg")
+                .tutorial(encapsulation)
+                .build();
+        TutorialDetail encap_detail2 = TutorialDetail.builder()
+                .description("랜덤 뽑기 기계를 만들었다고 생각해 보자구요.")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/encapsulation/cap2.jpg")
+                .tutorial(encapsulation)
+                .build();
+        TutorialDetail encap_detail3 = TutorialDetail.builder()
+                .description("만약 10개의 뽑기 게임이 있는데, 일일이 확률 조정을 하기 어렵겠죠?")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/encapsulation/cap3.jpg")
+                .tutorial(encapsulation)
+                .build();
+        TutorialDetail encap_detail4 = TutorialDetail.builder()
+                .description("이 때, 확률 조정하는 프로그램을 하나만 만들면, 모든 게임의 확률을 한번에 조정할 수 있을 거에요!")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/encapsulation/cap4.jpg")
+                .tutorial(encapsulation)
+                .build();
+        TutorialDetail encap_detail5 = TutorialDetail.builder()
+                .description("이걸 캡슐화 개념에 대입해 보면, 확률 조정하는 기능을 따로 떼어서 클래스라는 단위로 묶었다고 볼 수 있습니다.")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/encapsulation/cap5.jpg")
+                .tutorial(encapsulation)
+                .build();
+        TutorialDetail encap_detail6 = TutorialDetail.builder()
+                .description("자, 이제 캡슐화 문제를 풀러 가볼까요?")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/encapsulation/cap6.jpg")
+                .tutorial(encapsulation)
+                .build();
+        tutorialDetailRepository.save(encap_detail1);
+        tutorialDetailRepository.save(encap_detail2);
+        tutorialDetailRepository.save(encap_detail3);
+        tutorialDetailRepository.save(encap_detail4);
+        tutorialDetailRepository.save(encap_detail5);
+        tutorialDetailRepository.save(encap_detail6);
 
-        Assertions.assertThat(tutorialDetailRepository.findAll()).hasSize(3);
+        Tutorial con_abstract = tutorialRepository.findByConcept(Concept.ABSTRACT);
+        TutorialDetail ab_detail1 = TutorialDetail.builder()
+                .description("우리 모두 동물원에 가본 적이 있죠? 동물원에는 사자, 호랑이, 코끼리 등 여러 가지 동물이 있어요.")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/encapsulation/cap4.jpg")
+                .tutorial(con_abstract)
+                .build();
+        TutorialDetail ab_detail2 = TutorialDetail.builder()
+                .description("사자와 호랑이는 모두 고양잇과 동물이에요. 그래서 사자 객체와 호랑이 객체는 고양잇과 동물의 특징을 가지고 있어요. 이걸 더 간단하게 \"고양잇과 동물 객체\"라고 할 수 있어요.")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/encapsulation/cap4.jpg")
+                .tutorial(con_abstract)
+                .build();
+        TutorialDetail ab_detail3 = TutorialDetail.builder()
+                .description("또, 모든 동물은 숨 쉬고, 먹고, 잠을 자요. 그래서 사자 객체, 호랑이 객체, 코끼리 객체 모두 \"숨 쉬기\", \"먹기\", \"잠자기\"라는 역할을 가지고 있어요. 이걸 더 크게 보면 \"동물 객체\"라고 할 수 있어요.")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/encapsulation/cap4.jpg")
+                .tutorial(con_abstract)
+                .build();
+        TutorialDetail ab_detail4 = TutorialDetail.builder()
+                .description("이렇게 각각의 동물들이 가지고 있는 공통적인 특징과 역할을 모아서 더 큰 개념으로 만드는 것을 \"추상화\"라고 해요.")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/encapsulation/cap4.jpg")
+                .tutorial(con_abstract)
+                .build();
 
     }
 
@@ -153,7 +190,6 @@ class CodekidsApplicationTests {
         List<Tutorial> tutorials = tutorialRepository.findAll();
         Assertions.assertThat(tutorials).isNotNull();
     }
-
 
 
     @Autowired
