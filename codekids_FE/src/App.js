@@ -20,7 +20,7 @@ function App() {
           <Route path="/tutorial" element={<TutorialPage />} />
           <Route path="/tutorial/:concept" element={<TutorialDetailPage />} />
           <Route path="/problems" element={<ProblemPage />} />
-          <Route path="/problems/:problemId" element={<ProblemPage />} />
+          <Route path="/problems/:concept" element={<ProblemPage />} />
           <Route path="/problems/block/:problemId" element={<BlockPage />} />
           <Route path="/problems/quiz/:problemId" element={<QuizPage />} />
           <Route path="/suggestion" element={<SuggestionPage />} />

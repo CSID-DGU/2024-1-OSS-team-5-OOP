@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './ButtonList.css';
 import MediaQuery from './alignlist.module.css';
 
 const ProblemPage = () => {
+  const { concept } = useParams();
   const [response, setResponse] = useState({ data: [] });
   const navigate = useNavigate();
 
+  const url = concept ? `/problem/getFilteredProblems?query=${concept}` : '/problem/getAllProblems';
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('/problem/getAllProblems');
+        const res = await fetch(url);
         const data = await res.json();
         setResponse(data);
       } catch (error) {
@@ -29,7 +31,7 @@ const ProblemPage = () => {
     <div className="content" style={{ height: "calc(100% - 120px)" }}>
       <div className={MediaQuery['box-container']}>
         <div className="inner-container">
-          {response.data.map(item => (
+          {response.data && response.data.map(item => (
             <div
               key={item.problemId}
               className="box"

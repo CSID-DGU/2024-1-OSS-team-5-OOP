@@ -13,6 +13,7 @@ const SuccessModal = ({ isOpen, closeModal, title, buttonName, modalLink }) => {
 
   return (
     <div className="modal-overlay">
+      <audio src="/kidsclap.mp3" autoPlay />
       <div className="modal-content">
         <div className="modal-title"><h2>{title}</h2></div>
         <div className="modal-button"><button onClick={closeModal}>다시 학습하기</button><button onClick={handleButtonClick}>{buttonName}</button></div>
