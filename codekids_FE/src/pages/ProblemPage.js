@@ -38,6 +38,9 @@ const ProblemPage = () => {
   const [problemData, setProblemData] = useState(null);
   const navigate = useNavigate();
 
+
+  const url = concept ? `/problem/getFilteredProblems?concept=${concept}` : '/problem/getAllProblems';
+
   useEffect(() => {
     // 실제로는 fetch 등을 통해 데이터를 가져오는 코드가 필요합니다.
     // 여기서는 샘플 데이터를 바로 설정합니다.
