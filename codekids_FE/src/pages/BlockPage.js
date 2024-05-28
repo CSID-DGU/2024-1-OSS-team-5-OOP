@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import './BlockPage.css';
 import BlocklyComponent, { Block } from '../Blockly';
 import '../blocks/customblocks';
