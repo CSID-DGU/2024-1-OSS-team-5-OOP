@@ -1,26 +1,13 @@
-@font-face {
-  font-family: Nanum Gothic;
-  src: url(./fonts/NanumGothic-Regular.ttf);
-}
-
-@font-face {
-  font-family: Nanum Gothic Bold;
-  src: url(./fonts/NanumGothic-ExtraBold.ttf);
-}
-
 body {
   margin: 0;
-  font-family: "Nanum Gothic", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, aConsolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-.container {
-  height: 100vh;
-  background-color: #FEFDE9;
 }

@@ -5,4 +5,3 @@ codekids_BE/.idea
 codekids_BE/build
 codekids_BE/src/main/resources/application-dev.yaml
 codekids_BE/src/main/resources/application-local.yml
-node_modules
