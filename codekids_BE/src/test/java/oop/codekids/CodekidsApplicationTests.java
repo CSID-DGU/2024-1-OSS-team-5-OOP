@@ -2,10 +2,7 @@ package oop.codekids;
 
 
 import oop.codekids.entity.*;
-import oop.codekids.repository.ProblemRepository;
-import oop.codekids.repository.QuizRepository;
-import oop.codekids.repository.TutorialDetailRepository;
-import oop.codekids.repository.TutorialRepository;
+import oop.codekids.repository.*;
 import oop.codekids.service.S3Service;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -34,7 +31,7 @@ class CodekidsApplicationTests {
     }
 
     @Test
-    @DisplayName("문제 데이터 전부 저장하기")
+    @DisplayName("3. 문제 데이터 전부 저장하기")
     void saveAllProblem() {
         Problem workBook1 = Problem.builder()
                 .title("업앤다운 게임 만들기")
@@ -90,8 +87,11 @@ class CodekidsApplicationTests {
     @Autowired
     private TutorialRepository tutorialRepository;
 
+    @Autowired
+    private MultiChooseRepository multiChooseRepository;
+
     @Test
-    @DisplayName("튜토리얼 데이터 넣기")
+    @DisplayName("1.튜토리얼 데이터 넣기")
     void addTutorial() {
 
         Tutorial polymorphism = Tutorial.builder()
@@ -116,7 +116,7 @@ class CodekidsApplicationTests {
         Assertions.assertThat(tutorialRepository.findAll()).hasSize(3);
     }
     @Test
-    @DisplayName("퀴즈 데이터 넣기")
+    @DisplayName("2. 퀴즈 데이터 넣기")
     void quizData(){
         Tutorial polymorphism = tutorialRepository.findByConcept(Concept.POLYMORPHISM);
         Quiz quiz = Quiz.builder()
@@ -126,6 +126,9 @@ class CodekidsApplicationTests {
                 .tutorial(polymorphism)
                 .description("‘다’ ‘형’ 성 , 말 그대로 다양한 형태로 동작할 수 있음을 의미하는거 잊지 않았죠?")
                 .build();
+        quizRepository.save(quiz);
+
+
         Quiz quiz1 =  Quiz.builder()
                 .quizType(QuizType.OX)
                 .title("다형성은 같은 이름의 함수가 항상 같은 일을 해야 한다는 뜻입니다. ")
@@ -133,6 +136,9 @@ class CodekidsApplicationTests {
                 .tutorial(polymorphism)
                 .description("‘다형성에서는 동작이 같은 이름을 가지더라도 상황에 따라 다른 동작을 수행할 수 있어요!")
                 .build();
+        quizRepository.save(quiz1);
+
+
         Quiz quiz2 = Quiz.builder()
                 .quizType(QuizType.MULTI)
                 .title("다음 중 다형성(polymorphism)에 대한 설명으로 가장 적절한 것은 무엇인가요?")
@@ -140,6 +146,40 @@ class CodekidsApplicationTests {
                 .tutorial(polymorphism)
                 .description("다형성은 객체지향 프로그래밍에서 동일한 인터페이스를 사용하여 서로 다른 구현을 가능하게 하는 개념입니다.")
                 .build();
+        MultiChoose multiChoose2_1 = MultiChoose.builder()
+                .Choice(1)
+                .detail("다형성은 같은 이름의 함수가 항상 같은 일을 해야 한다는 뜻입니다.")
+                .quiz(quiz2)
+                .build();
+        MultiChoose multiChoose2_2 = MultiChoose.builder()
+                .Choice(2)
+                .detail("다형성은 객체지향 프로그래밍에서 동일한 인터페이스를 사용하여 서로 다른 구현을 가능하게 하는 개념입니다.")
+                .quiz(quiz2)
+                .build();
+        MultiChoose multiChoose2_3 = MultiChoose.builder()
+                .Choice(3)
+                .detail("다형성은 프로그램에서 변수가 여러 가지 다른 값을 가질 수 있다는 뜻입니다.")
+                .quiz(quiz2)
+                .build();
+        MultiChoose multiChoose2_4 = MultiChoose.builder()
+                .Choice(4)
+                .detail("다형성은 함수를 작성할 때 항상 다른 이름을 사용해야 한다는 뜻입니다.")
+                .quiz(quiz2)
+                .build();
+        MultiChoose multiChoose2_5 = MultiChoose.builder()
+                .Choice(5)
+                .detail("다형성은 모든 프로그램이 같은 방식으로 실행된다는 뜻입니다.")
+                .quiz(quiz2)
+                .build();
+        quizRepository.save(quiz2);
+        multiChooseRepository.save(multiChoose2_1);
+        multiChooseRepository.save(multiChoose2_2);
+        multiChooseRepository.save(multiChoose2_3);
+        multiChooseRepository.save(multiChoose2_4);
+        multiChooseRepository.save(multiChoose2_5);
+
+
+
         Quiz quiz3 = Quiz.builder()
                 .quizType(QuizType.MULTI)
                 .title("다형성(polymorphism)이 무엇을 의미하는지 가장 잘 설명하는 것은 무엇일까요?")
@@ -147,16 +187,48 @@ class CodekidsApplicationTests {
                 .tutorial(polymorphism)
                 .description("다형성은 객체지향 프로그래밍에서 동일한 인터페이스를 사용하여 서로 다른 구현을 가능하게 하는 개념입니다.")
                 .build();
-        quizRepository.save(quiz);
-        quizRepository.save(quiz1);
-        quizRepository.save(quiz2);
+        MultiChoose multiChoose3_1 = MultiChoose.builder()
+                .Choice(1)
+                .detail("여러 가지 동물들이 같은 소리를 낼 수 있는 것")
+                .quiz(quiz3)
+                .build();
+        MultiChoose multiChoose3_2 = MultiChoose.builder()
+                .Choice(2)
+                .detail("같은 이름의 함수가 다양한 일을 할 수 있는 것")
+                .quiz(quiz3)
+                .build();
+        MultiChoose multiChoose3_3 = MultiChoose.builder()
+                .Choice(3)
+                .detail("여러 종류의 꽃이 같은 색을 가지는 것")
+                .quiz(quiz3)
+                .build();
+        MultiChoose multiChoose3_4 = MultiChoose.builder()
+                .Choice(4)
+                .detail("같은 프로그램을 여러 번 실행하는 것")
+                .quiz(quiz3)
+                .build();
+        MultiChoose multiChoose3_5 = MultiChoose.builder()
+                .Choice(5)
+                .detail("여러 가지 색깔의 펜을 사용하는 것")
+                .quiz(quiz3)
+                .build();
+        quizRepository.save(quiz3);
+        multiChooseRepository.save(multiChoose3_1);
+        multiChooseRepository.save(multiChoose3_2);
+        multiChooseRepository.save(multiChoose3_3);
+        multiChooseRepository.save(multiChoose3_4);
+        multiChooseRepository.save(multiChoose3_5);
+
+
+
+
     }
 
     @Autowired
     TutorialDetailRepository tutorialDetailRepository;
 
     @Test
-    @DisplayName("TutorialDetail : 개념 설명 관련 데이터 넣기 - finish")
+    @DisplayName("2. TutorialDetail : 개념 설명 관련 데이터 넣기 - finish")
     void getTutorial() {
 
         Tutorial encapsulation = tutorialRepository.findByConcept(Concept.ENCAPSULATION);
