@@ -8,7 +8,7 @@ const ProblemPage = () => {
   const [response, setResponse] = useState({ data: [] });
   const navigate = useNavigate();
 
-  const url = concept ? `/problem/getFilteredProblems?query=${concept}` : '/problem/getAllProblems';
+  const url = concept ? `/problem/getFilteredProblems?concept=${concept}` : '/problem/getAllProblems';
   useEffect(() => {
     const fetchData = async () => {
       try {
