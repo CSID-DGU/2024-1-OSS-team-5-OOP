@@ -6,10 +6,10 @@ import TutorialPage from './pages/TutorialPage.js';
 import TutorialDetailPage from './pages/TutorialDetailPage.js';
 import ProblemPage from './pages/ProblemPage.js';
 import BlockPage from './pages/BlockPage.js';
-import SuggestionPage from './pages/SuggestionPage.js';
-import QuizPage from './pages/QuizPage.js';
 import BlockPage2 from './pages/BlockPage2.js';
 import BlockPage3 from './pages/BlockPage3.js';
+import QuizPage from './pages/QuizPage.js';
+import SuggestionPage from './pages/SuggestionPage.js';
 
 function App() {
   return (
