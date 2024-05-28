@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import oop.codekids.QuizType;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,5 +30,7 @@ public class Quiz {
         this.description = description;
         this.answer = answer;
     }
+    @OneToMany(mappedBy = "quiz")
+    private List<MultiChoose> multiChooseList = new ArrayList<>();
 
 }
