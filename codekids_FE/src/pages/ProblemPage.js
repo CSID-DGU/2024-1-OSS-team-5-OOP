@@ -24,7 +24,7 @@ const ProblemPage = () => {
   }, []);
 
   const handleBoxClick = (problemId, concept) => {
-    navigate(`/problems/block/${problemId}`, { state: { concept } });
+    navigate(`/problems/block/${problemId}`, { state: { concept} });
   };
 
   return (
