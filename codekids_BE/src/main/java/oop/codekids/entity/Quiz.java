@@ -19,6 +19,7 @@ public class Quiz {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "quiz_type")
+    @Enumerated(EnumType.STRING)
     private QuizType quizType;
     private String title;
     private String description;
