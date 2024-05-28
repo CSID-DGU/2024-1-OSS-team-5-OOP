@@ -13,6 +13,6 @@ import java.util.List;
 
 
 public interface QuizRepository extends JpaRepository<Quiz,Double> {
-    @Query(value = "SELECT * FROM Quiz Q WHERE Q.tutorial = :tutorial ORDER BY RAND() LIMIT 3", nativeQuery = true)
+    @Query(value = "SELECT * FROM quiz Q WHERE Q.tutorial = :tutorial ORDER BY RAND() LIMIT 3", nativeQuery = true)
     List<Quiz> findRandomQuizzesByTutorial(@Param("tutorial") Long tutorial);
 }
