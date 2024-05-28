@@ -34,36 +34,36 @@ class CodekidsApplicationTests {
     }
 
     @Test
-    @DisplayName("문제 데이터 전부 저장하기")
+    @DisplayName("2 Problem: 문제 데이터 전부 저장하기")
     void saveAllProblem() {
         Problem workBook1 = Problem.builder()
-                .title("업앤다운 게임 만들기")
+                .title("업/앤 다운 게임 만들기")
                 .concept(Concept.ENCAPSULATION)
-                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/upAndDown.png")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/upanddown.png")
                 .build();
 
         Problem workBook2 = Problem.builder()
-                .title("자판기 유지보수하기")
+                .title("계산기 만들기")
                 .concept(Concept.ENCAPSULATION)
-                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/vendingMachine.png")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/calculator.png")
                 .build();
 
         Problem workBook3 = Problem.builder()
-                .title("도형 넓이 계산하기")
-                .concept(Concept.ABSTRACT)
-                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/car.png")
+                .title("도형의 넓이를 구해볼까요? ")
+                .concept(Concept.POLYMORPHISM)
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/shape.png")
                 .build();
 
         Problem workBook4 = Problem.builder()
-                .title("자동차 움직이기")
-                .concept(Concept.ABSTRACT)
+                .title("각 동물들은 어떤 소리를 낼까요?")
+                .concept(Concept.POLYMORPHISM)
                 .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/car.png")
                 .build();
 
         Problem workBook5 = Problem.builder()
-                .title("동물친구들과 놀기")
-                .concept(Concept.POLYMORPHISM)
-                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/animalFriends.png")
+                .title("로봇과 함께 편리한 세상을 위하여~!")
+                .concept(Concept.ABSTRACT)
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/robot.png")
                 .build();
 
         Problem workBook6 = Problem.builder()
@@ -91,7 +91,7 @@ class CodekidsApplicationTests {
     private TutorialRepository tutorialRepository;
 
     @Test
-    @DisplayName("튜토리얼 데이터 넣기")
+    @DisplayName("1.Tutorial: 튜토리얼 데이터 넣기")
     void addTutorial() {
 
         Tutorial polymorphism = Tutorial.builder()
@@ -116,7 +116,7 @@ class CodekidsApplicationTests {
         Assertions.assertThat(tutorialRepository.findAll()).hasSize(3);
     }
     @Test
-    @DisplayName("퀴즈 데이터 넣기")
+    @DisplayName("Quiz: 퀴즈 데이터 넣기")
     void quizData(){
         Tutorial polymorphism = tutorialRepository.findByConcept(Concept.POLYMORPHISM);
         Quiz quiz = Quiz.builder()
