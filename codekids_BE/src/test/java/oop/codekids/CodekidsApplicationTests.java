@@ -1,10 +1,9 @@
 package oop.codekids;
 
 
-import oop.codekids.entity.Problem;
-import oop.codekids.entity.Tutorial;
-import oop.codekids.entity.TutorialDetail;
+import oop.codekids.entity.*;
 import oop.codekids.repository.ProblemRepository;
+import oop.codekids.repository.QuizRepository;
 import oop.codekids.repository.TutorialDetailRepository;
 import oop.codekids.repository.TutorialRepository;
 import oop.codekids.service.S3Service;
@@ -27,6 +26,8 @@ class CodekidsApplicationTests {
 
     @Autowired
     private ProblemRepository problemRepository;
+    @Autowired
+    private QuizRepository quizRepository;
 
     @Test
     void contextLoads() {
@@ -95,7 +96,7 @@ class CodekidsApplicationTests {
 
         Tutorial polymorphism = Tutorial.builder()
                 .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/POLYMORPHISM.png")
-                .concept(Concept.ENCAPSULATION)
+                .concept(Concept.POLYMORPHISM)
                 .build();
 
         Tutorial encapsulation = Tutorial.builder()
@@ -114,12 +115,48 @@ class CodekidsApplicationTests {
 
         Assertions.assertThat(tutorialRepository.findAll()).hasSize(3);
     }
+    @Test
+    @DisplayName("퀴즈 데이터 넣기")
+    void quizData(){
+        Tutorial polymorphism = tutorialRepository.findByConcept(Concept.POLYMORPHISM);
+        Quiz quiz = Quiz.builder()
+                .quizType(QuizType.OX)
+                .title("다형성은 객체지향 프로그래밍에서 다양한 형태로 사용할 수 있는 능력을 말해요.")
+                .answer(Answer.CORRECT)
+                .tutorial(polymorphism)
+                .description("‘다’ ‘형’ 성 , 말 그대로 다양한 형태로 동작할 수 있음을 의미하는거 잊지 않았죠?")
+                .build();
+        Quiz quiz1 =  Quiz.builder()
+                .quizType(QuizType.OX)
+                .title("다형성은 같은 이름의 함수가 항상 같은 일을 해야 한다는 뜻입니다. ")
+                .answer(Answer.INCORRECT)
+                .tutorial(polymorphism)
+                .description("‘다형성에서는 동작이 같은 이름을 가지더라도 상황에 따라 다른 동작을 수행할 수 있어요!")
+                .build();
+        Quiz quiz2 = Quiz.builder()
+                .quizType(QuizType.MULTI)
+                .title("다음 중 다형성(polymorphism)에 대한 설명으로 가장 적절한 것은 무엇인가요?")
+                .answer(Answer.TWO)
+                .tutorial(polymorphism)
+                .description("다형성은 객체지향 프로그래밍에서 동일한 인터페이스를 사용하여 서로 다른 구현을 가능하게 하는 개념입니다.")
+                .build();
+        Quiz quiz3 = Quiz.builder()
+                .quizType(QuizType.MULTI)
+                .title("다형성(polymorphism)이 무엇을 의미하는지 가장 잘 설명하는 것은 무엇일까요?")
+                .answer(Answer.TWO)
+                .tutorial(polymorphism)
+                .description("다형성은 객체지향 프로그래밍에서 동일한 인터페이스를 사용하여 서로 다른 구현을 가능하게 하는 개념입니다.")
+                .build();
+        quizRepository.save(quiz);
+        quizRepository.save(quiz1);
+        quizRepository.save(quiz2);
+    }
 
     @Autowired
     TutorialDetailRepository tutorialDetailRepository;
 
     @Test
-    @DisplayName("개념 설명 관련 데이터 넣기")
+    @DisplayName("TutorialDetail : 개념 설명 관련 데이터 넣기 - finish")
     void getTutorial() {
 
         Tutorial encapsulation = tutorialRepository.findByConcept(Concept.ENCAPSULATION);
@@ -160,27 +197,88 @@ class CodekidsApplicationTests {
         tutorialDetailRepository.save(encap_detail5);
         tutorialDetailRepository.save(encap_detail6);
 
+        /*
+        캡슐화
+         */
         Tutorial con_abstract = tutorialRepository.findByConcept(Concept.ABSTRACT);
         TutorialDetail ab_detail1 = TutorialDetail.builder()
-                .description("우리 모두 동물원에 가본 적이 있죠? 동물원에는 사자, 호랑이, 코끼리 등 여러 가지 동물이 있어요.")
-                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/encapsulation/cap4.jpg")
+                .description("우리가 로봇을 만든다고 상상해봐요. 로봇에는 여러 가지 종류가 있을 수 있어요. 청소하는 로봇, 요리하는 로봇, 춤추는 로봇 등이 있어요.")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/abstract/abs1.jpg")
                 .tutorial(con_abstract)
                 .build();
         TutorialDetail ab_detail2 = TutorialDetail.builder()
-                .description("사자와 호랑이는 모두 고양잇과 동물이에요. 그래서 사자 객체와 호랑이 객체는 고양잇과 동물의 특징을 가지고 있어요. 이걸 더 간단하게 \"고양잇과 동물 객체\"라고 할 수 있어요.")
-                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/encapsulation/cap4.jpg")
+                .description("이 로봇들은 각각 다른 일을 하지만, 모두 \"움직이기\"라는 공통된 역할을 해요. 그래서 우리는 \"로봇 객체\"에 \"움직이기\"라는 역할을 정의할 수 있어요.")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/abstract/abs2.jpg")
                 .tutorial(con_abstract)
                 .build();
         TutorialDetail ab_detail3 = TutorialDetail.builder()
-                .description("또, 모든 동물은 숨 쉬고, 먹고, 잠을 자요. 그래서 사자 객체, 호랑이 객체, 코끼리 객체 모두 \"숨 쉬기\", \"먹기\", \"잠자기\"라는 역할을 가지고 있어요. 이걸 더 크게 보면 \"동물 객체\"라고 할 수 있어요.")
-                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/encapsulation/cap4.jpg")
+                .description("청소 로봇을 만들 때는 \"움직이기\" 역할을 청소하는 방법으로 채우고, 요리 로봇을 만들 때는 \"움직이기\" 역할을 요리하는 방법으로 채우면 돼요. 춤추는 로봇도 마찬가지로 \"움직이기\" 역할을 춤추는 방법으로 채우면 돼요.")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/abstract/abs3.jpg")
                 .tutorial(con_abstract)
                 .build();
         TutorialDetail ab_detail4 = TutorialDetail.builder()
-                .description("이렇게 각각의 동물들이 가지고 있는 공통적인 특징과 역할을 모아서 더 큰 개념으로 만드는 것을 \"추상화\"라고 해요.")
-                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/encapsulation/cap4.jpg")
+                .description("이렇게 복잡한 것을 간단하게 만들고, 공통된 특징을 찾아내어 다양한 로봇을 만드는 것이 바로 추상화예요.")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/abstract/abs4.jpg")
                 .tutorial(con_abstract)
                 .build();
+        TutorialDetail ab_detail5 = TutorialDetail.builder()
+                .description("이제 추상화가 무엇인지 알겠죠? 여러 가지 복잡한 것들을 더 단순하게 만들고, 중요한 특징을 찾아내어 사용하는 것이 바로 추상화예요!")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/abstract/abs5.jpg")
+                .tutorial(con_abstract)
+                .build();
+
+        tutorialDetailRepository.save(ab_detail1);
+        tutorialDetailRepository.save(ab_detail2);
+        tutorialDetailRepository.save(ab_detail3);
+        tutorialDetailRepository.save(ab_detail4);
+        tutorialDetailRepository.save(ab_detail5);
+
+        /*
+        다형성
+         */
+        Tutorial poly = tutorialRepository.findByConcept(Concept.POLYMORPHISM);
+        TutorialDetail po_detail1 = TutorialDetail.builder()
+                .description("다형성은 같은 이름을 가진 행동이 상황에 따라 다르게 행동할 수 있는 능력이에요. 예를 들어,  '걷다'라는 행동을 생각해 보세요.")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/polymorphism/poly1.jpg")
+                .tutorial(poly)
+                .build();
+        TutorialDetail po_detail2 = TutorialDetail.builder()
+                .description("사람이 걷는다면 두 발로 걷겠죠?")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/polymorphism/poly2.jpg")
+                .tutorial(poly)
+                .build();
+        TutorialDetail po_detail3 = TutorialDetail.builder()
+                .description("강아지가 걷는다면 네 발로 걸을거에요.")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/polymorphism/poly3.jpg")
+                .tutorial(poly)
+                .build();
+        TutorialDetail po_detail4 = TutorialDetail.builder()
+                .description("새가 걷는다면 두 발로 걷지만, 날아다닐 수도 있겠죠? 그럼 이걸 컴퓨터 프로그램에서는 어떻게 사용할까요?")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/polymorphism/poly4.jpg")
+                .tutorial(poly)
+                .build();
+        TutorialDetail po_detail5 = TutorialDetail.builder()
+                .description("컴퓨터 프로그램에서 다형성을 사용하면, 같은 이름의 함수나 메소드를 여러 클래스에서 다르게 구현할 수 있어요. ")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/polymorphism/poly5.jpg")
+                .tutorial(poly)
+                .build();
+        TutorialDetail po_detail6 = TutorialDetail.builder()
+                .description("즉 , 앞에서 얘기했던 것처럼 같은 '걷다’라는 행동이지만, 어떤 동물이 걷느냐에 따라 다르게 동작하는거예요. 이렇게 다양한 행동을 할 수 있는 능력을 다형성이라고 해요.")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/polymorphism/poly4.jpg")
+                .tutorial(poly)
+                .build();
+        TutorialDetail po_detail7 = TutorialDetail.builder()
+                .description("다형성을 이해하면, 프로그래밍에서 더 유연하고 재사용 가능한 코드를 작성할 수 있어요. 상황에 따라 다르게 행동하는 프로그램을 만들 수 있는 멋진 능력이랍니다!")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/polymorphism/poly5.jpg")
+                .tutorial(poly)
+                .build();
+        tutorialDetailRepository.save(po_detail1);
+        tutorialDetailRepository.save(po_detail2);
+        tutorialDetailRepository.save(po_detail3);
+        tutorialDetailRepository.save(po_detail4);
+        tutorialDetailRepository.save(po_detail5);
+        tutorialDetailRepository.save(po_detail6);
+        tutorialDetailRepository.save(po_detail7);
 
     }
 
