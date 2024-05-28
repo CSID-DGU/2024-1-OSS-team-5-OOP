@@ -6,7 +6,6 @@ import Blockly from 'blockly/core';
 import { javascriptGenerator } from 'blockly/javascript';
 import locale from 'blockly/msg/en';
 import 'blockly/blocks';
-import picture1 from './quiz.png'
 
 Blockly.setLocale(locale);
 
@@ -54,10 +53,6 @@ function BlocklyComponent(props) {
 
   return (
     <React.Fragment>
-      <div className="div1">
-        <p className='problem'>자동차 움직이기</p></div>
-      <div><img className='quizImg' src={picture1} />
-        <span className='quiz'>인터페이스를 이용하여, 테슬라가 전진하도록 메인 클래스를 만드세요</span></div>
       <div ref={blocklyDiv} id="blocklyDiv" />
       <div style={{ display: 'none'}} ref={toolbox}>
         {props.children}

@@ -1,0 +1,21 @@
+.Quizdiv {
+    height: 50dp;
+    width: 10%;
+    background-color: #BBE8B9;
+    display: inline-block;
+    margin-left: 1%;
+    margin-top: 1%;
+    border-radius: 100px;
+    border: 1px solid black;
+}
+
+.Quiz {
+    text-align: center;
+    font-family: "Nanum Gothic", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 38px;
+    text-decoration: none;
+    color: #FEFDE9;
+    text-shadow: -2px 0 #91B886, 0 2px #91B886, 2px 0 #91B886, 0 -2px #91B886;
+  }
