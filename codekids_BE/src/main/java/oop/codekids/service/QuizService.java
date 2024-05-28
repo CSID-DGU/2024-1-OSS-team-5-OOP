@@ -29,9 +29,9 @@ public class QuizService {
         Concept concept = Concept.valueOf(concept_s);
         Tutorial tutorial = tutorialRepository.findByConcept(concept);
         List<Quiz> quizList = quizRepository.findRandomQuizzesByTutorial(tutorial.getId());
-        List<MultiChooseDto> multiChooseDtoList = new ArrayList<>();
         List<QuizDto> quizDtoList = new ArrayList<>();
         for (Quiz quiz: quizList){
+            List<MultiChooseDto> multiChooseDtoList = new ArrayList<>();
             List<MultiChoose> multiChooseList = multiChooseRepository.findAllByQuizId(quiz.getId());
             for (MultiChoose multiChoose: multiChooseList){
                 multiChooseDtoList.add(multiChoose.toDto());
