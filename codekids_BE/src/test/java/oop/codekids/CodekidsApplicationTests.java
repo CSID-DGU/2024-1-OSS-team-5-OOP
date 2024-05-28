@@ -2,9 +2,11 @@ package oop.codekids;
 
 
 import oop.codekids.entity.Problem;
+import oop.codekids.entity.Quiz;
 import oop.codekids.entity.Tutorial;
 import oop.codekids.entity.TutorialDetail;
 import oop.codekids.repository.ProblemRepository;
+import oop.codekids.repository.QuizRepository;
 import oop.codekids.repository.TutorialDetailRepository;
 import oop.codekids.repository.TutorialRepository;
 import oop.codekids.service.S3Service;
@@ -27,6 +29,8 @@ class CodekidsApplicationTests {
 
     @Autowired
     private ProblemRepository problemRepository;
+    @Autowired
+    private QuizRepository quizRepository;
 
     @Test
     void contextLoads() {
@@ -95,7 +99,7 @@ class CodekidsApplicationTests {
 
         Tutorial polymorphism = Tutorial.builder()
                 .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/POLYMORPHISM.png")
-                .concept(Concept.ENCAPSULATION)
+                .concept(Concept.POLYMORPHISM)
                 .build();
 
         Tutorial encapsulation = Tutorial.builder()
@@ -113,6 +117,35 @@ class CodekidsApplicationTests {
         tutorialRepository.save(abstract_);
 
         Assertions.assertThat(tutorialRepository.findAll()).hasSize(3);
+    }
+    @Test
+    @DisplayName("퀴즈 데이터 넣기")
+    void quizData(){
+        Tutorial polymorphism = tutorialRepository.findByConcept(Concept.POLYMORPHISM);
+        Quiz quiz = Quiz.builder()
+                .quizType(QuizType.OX)
+                .title("다형성은 객체지향 프로그래밍에서 다양한 형태로 사용할 수 있는 능력을 말해요.")
+                .answer(Answer.CORRECT)
+                .tutorial(polymorphism)
+                .description("‘다’ ‘형’ 성 , 말 그대로 다양한 형태로 동작할 수 있음을 의미하는거 잊지 않았죠?")
+                .build();
+        Quiz quiz1 =  Quiz.builder()
+                .quizType(QuizType.OX)
+                .title("다형성은 같은 이름의 함수가 항상 같은 일을 해야 한다는 뜻입니다. ")
+                .answer(Answer.INCORRECT)
+                .tutorial(polymorphism)
+                .description("‘다형성에서는 동작이 같은 이름을 가지더라도 상황에 따라 다른 동작을 수행할 수 있어요!")
+                .build();
+        Quiz quiz2 = Quiz.builder()
+                .quizType(QuizType.MULTI)
+                .title("다음 중 다형성(polymorphism)에 대한 설명으로 가장 적절한 것은 무엇인가요?")
+                .answer(Answer.TWO)
+                .tutorial(polymorphism)
+                .description("‘다형성에서는 동작이 같은 이름을 가지더라도 상황에 따라 다른 동작을 수행할 수 있어요!")
+                .build();
+        quizRepository.save(quiz);
+        quizRepository.save(quiz1);
+        quizRepository.save(quiz2);
     }
 
     @Autowired
