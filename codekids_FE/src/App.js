@@ -6,23 +6,22 @@ import TutorialPage from './pages/TutorialPage.js';
 import TutorialDetailPage from './pages/TutorialDetailPage.js';
 import ProblemPage from './pages/ProblemPage.js';
 import BlockPage from './pages/BlockPage.js';
-import QuizPage from './pages/QuizPage.js';
+import CodePage from './pages/CodePage.js';
 import SuggestionPage from './pages/SuggestionPage.js';
+import './App.css';
 
 function App() {
   return (
     <BrowserRouter>
       <div className="container">
-        <audio src="/bgm.mp3" autoPlay loop />
         <Header />
         <Routes>
           <Route path="/" element={<Navigate to="/tutorial" />} />
           <Route path="/tutorial" element={<TutorialPage />} />
           <Route path="/tutorial/:concept" element={<TutorialDetailPage />} />
           <Route path="/problems" element={<ProblemPage />} />
-          <Route path="/problems/:concept" element={<ProblemPage />} />
           <Route path="/problems/block/:problemId" element={<BlockPage />} />
-          <Route path="/problems/quiz/:problemId" element={<QuizPage />} />
+          <Route path="/problems/code/:problemId" element={<CodePage />} />
           <Route path="/suggestion" element={<SuggestionPage />} />
         </Routes>
       </div>

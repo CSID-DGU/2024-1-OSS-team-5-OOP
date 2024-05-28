@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './ButtonList.css';
+import './buttonlist.css';
 
 const TutorialPage = () => {
   const navigate = useNavigate();
@@ -9,7 +9,7 @@ const TutorialPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('/tutorial/getAllTutorial');
+        const res = await fetch('http://3.37.103.81/tutorial/getAllTutorial');
         const data = await res.json();
         setResponse(data);
       } catch (error) {
@@ -21,9 +21,9 @@ const TutorialPage = () => {
   }, []);
 
   const handleBoxClick = (id) => {
-    const concept_eng = response.data.find(item => item.id === id)?.concept_eng;
-    if (concept_eng) {
-      navigate(`/tutorial/${concept_eng}`);
+    const concept = response.data.find(item => item.id === id)?.concept();
+    if (concept) {
+      navigate(`/tutorial/${concept}`);
     }
   };
 
@@ -32,7 +32,6 @@ const TutorialPage = () => {
       <div className="box-container">
         {response.data.map(item => (
           <div className="box" key={item.id} onClick={() => handleBoxClick(item.id)}>
-            <img src={item.imageUrl} alt={item.problemTitle} className="box-image" />
             <div className="title">
               <p>{item.concept}</p>
             </div>

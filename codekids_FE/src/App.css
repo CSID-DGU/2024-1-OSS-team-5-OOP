@@ -1,0 +1,9 @@
+@font-face {
+  font-family: Nanum Gothic;
+  src: url(./fonts/NanumGothic-Regular.ttf);
+}
+
+.container {
+  height: 100vh;
+  background-color: #FEFDE9;
+}

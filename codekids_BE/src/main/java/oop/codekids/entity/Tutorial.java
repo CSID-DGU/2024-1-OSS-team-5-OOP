@@ -7,9 +7,6 @@ import lombok.NoArgsConstructor;
 import oop.codekids.Concept;
 import oop.codekids.dto.TutorialDto;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
 @Getter
 @NoArgsConstructor
@@ -17,7 +14,6 @@ import java.util.List;
 public class Tutorial {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tutorial_id")
     private Long Id;
     private Concept concept;
     private String imageUrl;
@@ -29,15 +25,11 @@ public class Tutorial {
     }
 
     public TutorialDto toDto(Tutorial tutorial) {
-        TutorialDto dto = TutorialDto.builder()
-                .id(tutorial.getId())
-                .imageUrl(tutorial.getImageUrl())
-                .concept_eng(tutorial.getConcept().name())
-                .concept(tutorial.getConcept().getConcept())
-                .build();
+        TutorialDto dto = new TutorialDto(tutorial.getId(),tutorial.getConcept().getConcept(), tutorial.getImageUrl());
         return dto;
     }
 
-    @OneToMany(mappedBy = "tutorial")
-    private List<TutorialDetail> tutorialDetails = new ArrayList<>();
+    @OneToOne
+    @JoinColumn(name = "tutorial_detail_id")
+    private TutorialDetail tutorialDetail;
 }
