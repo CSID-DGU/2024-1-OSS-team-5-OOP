@@ -19,6 +19,7 @@ public class Tutorial {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tutorial_id")
     private Long Id;
+    @Enumerated(EnumType.STRING)
     private Concept concept;
     private String imageUrl;
 
@@ -38,8 +39,4 @@ public class Tutorial {
         return dto;
     }
 
-    @OneToMany(mappedBy = "tutorial")
-    private List<TutorialDetail> tutorialDetails = new ArrayList<>();
-    @OneToMany(mappedBy = "tutorial")
-    private List<Quiz> tutorialQuizzes = new ArrayList<>();
 }
