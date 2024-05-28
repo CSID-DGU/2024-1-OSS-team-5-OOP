@@ -40,4 +40,6 @@ public class Tutorial {
 
     @OneToMany(mappedBy = "tutorial")
     private List<TutorialDetail> tutorialDetails = new ArrayList<>();
+    @OneToMany(mappedBy = "tutorial")
+    private List<Quiz> tutorialQuizzes = new ArrayList<>();
 }
