@@ -22,7 +22,7 @@ public class Quiz {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "quiz_id")
-    private int id;
+    private Long id;
     @Column(name = "quiz_type")
     @Enumerated(EnumType.STRING)
     private QuizType quizType;
@@ -30,9 +30,6 @@ public class Quiz {
     private String description;
     @Enumerated(EnumType.STRING)
     private Answer answer;
-
-    @OneToMany(mappedBy = "quiz", fetch =  FetchType.LAZY)
-    private List<MultiChoose> multiChooseList = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "tutorial")
