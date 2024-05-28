@@ -1,0 +1,48 @@
+.image-container {
+    position: fixed;
+    top: calc(50% - 250px);
+}
+
+.image {
+    height: 500px;
+    opacity: 0;
+    transition: opacity 3s ease-in-out;
+}
+
+.description-container {
+    position: fixed;
+    top: calc(50% + 260px);
+    display: flex;
+    justify-content: center;
+    width: 80%;
+}
+
+.description {
+    opacity: 0;
+    transition: opacity 3s ease-in-out;
+    font-family: "Nanum Gothic Bold", sans-serif;
+    font-size: 26px;
+    color: #A1C398;
+}
+
+.nextbutton-container {
+    height: 40px;
+}
+
+.nextbutton {
+    margin: 0;
+    font-family: "Nanum Gothic Bold", sans-serif;
+    font-size: 20px;
+    color: #555555;
+    cursor: pointer;
+}
+
+.fade-in {
+    opacity: 1;
+    transition: opacity 0.5s ease-in;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
