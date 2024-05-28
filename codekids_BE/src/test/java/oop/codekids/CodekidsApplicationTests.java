@@ -130,27 +130,27 @@ class CodekidsApplicationTests {
                 .build();
         TutorialDetail encap_detail2 = TutorialDetail.builder()
                 .description("랜덤 뽑기 기계를 만들었다고 생각해 보자구요.")
-                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/encapsulation/cap2.jpg")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/encapsulation/cap3.jpg")
                 .tutorial(encapsulation)
                 .build();
         TutorialDetail encap_detail3 = TutorialDetail.builder()
                 .description("만약 10개의 뽑기 게임이 있는데, 일일이 확률 조정을 하기 어렵겠죠?")
-                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/encapsulation/cap3.jpg")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/encapsulation/cap4.jpg")
                 .tutorial(encapsulation)
                 .build();
         TutorialDetail encap_detail4 = TutorialDetail.builder()
                 .description("이 때, 확률 조정하는 프로그램을 하나만 만들면, 모든 게임의 확률을 한번에 조정할 수 있을 거에요!")
-                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/encapsulation/cap4.jpg")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/encapsulation/cap5.jpg")
                 .tutorial(encapsulation)
                 .build();
         TutorialDetail encap_detail5 = TutorialDetail.builder()
                 .description("이걸 캡슐화 개념에 대입해 보면, 확률 조정하는 기능을 따로 떼어서 클래스라는 단위로 묶었다고 볼 수 있습니다.")
-                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/encapsulation/cap5.jpg")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/encapsulation/cap6.jpg")
                 .tutorial(encapsulation)
                 .build();
         TutorialDetail encap_detail6 = TutorialDetail.builder()
                 .description("자, 이제 캡슐화 문제를 풀러 가볼까요?")
-                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/encapsulation/cap6.jpg")
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/encapsulation/cap7.jpg")
                 .tutorial(encapsulation)
                 .build();
         tutorialDetailRepository.save(encap_detail1);
