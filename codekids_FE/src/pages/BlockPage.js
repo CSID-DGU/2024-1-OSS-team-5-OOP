@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import './BlockPage.css';
 import BlocklyComponent, { Block} from '../Blockly';
 import '../blocks/customblocks';
@@ -16,7 +16,6 @@ function BlockPage() {
   let primaryWorkspace = useRef();
 
   const concept = location.state.concept;
-  const problemId = location.state.problemId;
   const path = location.pathname;
 
   const generateCode = () => {
@@ -31,8 +30,9 @@ function BlockPage() {
   return (
     <div className="BlockPage">
       <div className="div1">
-        <p className='problem'>로봇 만들기</p></div>
-      <div><img className='quizImg' src={picture1} />
+        <p className='problemtitle'>로봇 만들기</p></div>
+      <div className='quizdiv'>
+        <img className='quizImg' src={picture1} />
         <span className='quiz'>전원 켜기, 전원 끄기를 할 수 있는 로봇 인터페이스를 만드세요.</span></div>
 
       <BlocklyComponent

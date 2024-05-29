@@ -28,8 +28,8 @@ function BlockPage3() {
   return (
     <div className="BlockPage">
         <div className="div1">
-        <p className='problem'>로봇 만들기</p></div>
-      <div><img className='quizImg' src={picture1} />
+        <p className='problemtitle'>로봇 만들기</p></div>
+        <div className='quizdiv'><img className='quizImg' src={picture1} />
         <span className='quiz'>앞에서 만든 클래스를 이용해서 청소 로봇 '아이언맨'과 요리 로봇 '토르' 객체를 생성하고 아이언맨이 전원을 키고 청소를 하도록 main을 채우시오.</span></div>
       <BlocklyComponent
         readOnly={false}
