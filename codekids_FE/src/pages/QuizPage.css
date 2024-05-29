@@ -1,4 +1,4 @@
-.Quizdiv {
+.Quizdiv{
     height: 50dp;
     width: 10%;
     background-color: #BBE8B9;
@@ -9,7 +9,7 @@
     border: 1px solid black;
 }
 
-.Quiz {
+.Quiz{
     text-align: center;
     font-family: "Nanum Gothic", sans-serif;
     font-weight: bold;
@@ -17,5 +17,130 @@
     font-size: 38px;
     text-decoration: none;
     color: #FEFDE9;
-    text-shadow: -2px 0 #91B886, 0 2px #91B886, 2px 0 #91B886, 0 -2px #91B886;
+    text-shadow: -2px 0px #91B886, 0px 2px #91B886, 2px 0px #91B886, 0px -2px #91B886;
+}
+
+.check{
+    margin-left: 1%;
+    font-family: "Nanum Gothic", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 20px;
+    text-decoration: none;
+    color: #FEFDE9;
+    text-shadow: -2px 0px #91B886, 0px 2px #91B886, 2px 0px #91B886, 0px -2px #91B886;
+
+}
+
+.topdiv{
+    height: 100dp;
+    width: 90%;
+    background-color: #FFFFFF;
+    margin-left: 5%;
+    margin-top: 1%;
+    border-radius: 50px 50px 0px 0px;
+    border: 7px solid #91B886;
+    display: table;
+}
+
+.Q{
+    text-align: left;
+    margin-left: 50px;
+    font-family: "Nanum Gothic", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 50px;
+    text-decoration:none;
+    color: #FB7F7F;
+}
+
+.quiztitle{
+    font-family: "Nanum Gothic", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 45px;
+    text-decoration: none;
+    color: #91B886;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.bottomdiv{
+    height: 100dp;
+    width: 90%;
+    background-color: #FFFFFF;
+    margin-left: 5%;
+    border-radius: 0px 0px 50px 50px;
+    border-bottom: 7px solid #91B886 ;
+    border-left: 7px solid #91B886 ;
+    border-right: 7px solid #91B886 ;
+    border-top: 7px solid #FFFFFF ;
+}
+
+.OXBtn{
+    border: none;
+    background-color: #FFFFFF;
+    font-size: 50px;
+    width: 100px;
+    height: 30px;
+    margin-left: 30%;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    color: #91B886;
+    font-family: "Nanum Gothic", sans-serif;
+
+  }
+
+.OBtn{
+    border: none;
+    background-color: #FFFFFF;
+    font-size: 40px;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    margin-left: 3%;
+    margin-top: 3%;
+    color: #91B886;
+    font-family: "Nanum Gothic", sans-serif;
+
+
+}
+
+.fivediv{
+    height: 100dp;
+    width: 90%;
+    background-color: #FFFFFF;
+    margin-left: 5%;
+    border-radius: 0px 0px 50px 50px;
+    border-bottom: 7px solid #91B886 ;
+    border-left: 7px solid #91B886 ;
+    border-right: 7px solid #91B886 ;
+    border-top: 7px solid #FFFFFF ;
+}
+
+.fivetext{
+    font-size: 50px;
+    margin-right: 50%;
+    margin-bottom: 3%;
+    color: #91B886;
+    font-family: "Nanum Gothic", sans-serif;
+}
+
+.goBtn{
+    height: 100dp;
+    width: 10%;
+    background-color: #BBE8B9;
+    margin-left: 45%;
+    margin-top: 1%;
+    margin-bottom: 3%;
+    border-radius: 100px;
+    border: 1px solid black;
+    font-size: 40px;
+    color: #FEFDE9;
+}
+
+.BlockPage {
+    height: max-content;
+    background-color: #FEFDE9;
   }
