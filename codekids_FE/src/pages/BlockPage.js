@@ -17,7 +17,6 @@ function BlockPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const concept = location.state.concept;
-  const problemId = location.state.problemId;
   const path = location.pathname;
 
   const generateCode = () => {
@@ -47,8 +46,9 @@ function BlockPage() {
             body={modalContent}
         />
       <div className="div1">
-        <p className='problem'>로봇 만들기</p></div>
-      <div><img className='quizImg' src={picture1} />
+        <p className='problemtitle'>로봇 만들기</p></div>
+      <div className='quizdiv'>
+        <img className='quizImg' src={picture1} />
         <span className='quiz'>전원 켜기, 전원 끄기를 할 수 있는 로봇 인터페이스를 만드세요.</span></div>
       <div style={{ display: 'flex', justifyContent: 'center', right: '20%', width: '100%' }}><p className="nextbutton" onClick={showPopup}>힌트</p></div>
       <BlocklyComponent

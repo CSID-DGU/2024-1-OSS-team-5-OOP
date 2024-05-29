@@ -17,6 +17,7 @@ function BlockPage2() {
   
   const concept = location.state.concept;
   const path = location.pathname;
+  
   const generateCode = () => {
     var code = javascriptGenerator.workspaceToCode(primaryWorkspace.current);
     console.log(code);
@@ -28,8 +29,8 @@ function BlockPage2() {
   return (
     <div className="BlockPage">
         <div className="div1">
-        <p className='problem'>로봇 만들기</p></div>
-      <div><img className='quizImg' src={picture1} />
+        <p className='problemtitle'>로봇 만들기</p></div>
+        <div className='quizdiv'><img className='quizImg' src={picture1} />
         <span className='quiz'>앞에서 만든 로봇 인터페이스를 이용해서 '청소하기' 기능을 가진 청소 로봇 클래스와 '요리하기'기능을 가진 요리 로봇 클래스를 만드시오.</span></div>
       <BlocklyComponent
         readOnly={false}

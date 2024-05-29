@@ -46,7 +46,7 @@
 .Q{
     text-align: left;
     margin-left: 50px;
-    font-family: "Nanum Gothic", sans-serif;
+    font-family: Nanum Gothic Bold;
     font-weight: bold;
     font-style: normal;
     font-size: 50px;
@@ -76,6 +76,7 @@
     border-left: 7px solid #91B886 ;
     border-right: 7px solid #91B886 ;
     border-top: 7px solid #FFFFFF ;
+    padding-bottom: 2%;
 }
 
 .OXBtn{
@@ -88,11 +89,10 @@
     margin-top: 1%;
     margin-bottom: 2%;
     color: #91B886;
-    font-family: "Nanum Gothic", sans-serif;
-
+    font-family: Nanum Gothic Bold;
   }
 
-.OBtn{
+.fiveBtn{
     border: none;
     background-color: #FFFFFF;
     font-size: 40px;
@@ -102,29 +102,15 @@
     margin-left: 3%;
     margin-top: 3%;
     color: #91B886;
-    font-family: "Nanum Gothic", sans-serif;
-
-
-}
-
-.fivediv{
-    height: 100dp;
-    width: 90%;
-    background-color: #FFFFFF;
-    margin-left: 5%;
-    border-radius: 0px 0px 50px 50px;
-    border-bottom: 7px solid #91B886 ;
-    border-left: 7px solid #91B886 ;
-    border-right: 7px solid #91B886 ;
-    border-top: 7px solid #FFFFFF ;
+    font-family: Nanum Gothic Bold;
 }
 
 .fivetext{
-    font-size: 50px;
-    margin-right: 50%;
+    font-size: 40px;
     margin-bottom: 3%;
+    margin-left: 1%;
     color: #91B886;
-    font-family: "Nanum Gothic", sans-serif;
+    font-family: Nanum Gothic Bold;
 }
 
 .goBtn{
