@@ -79,14 +79,14 @@ function BlockPage() {
         <Block type="off()" />
         <Block type="robot" />
     </BlocklyComponent>
-    <div className='btnBox'>
-      <button className='convertBtn' onClick={() => {
-                  handleBoxClick(concept);
-                  generateCode();
-                  }}>
+      <div className='btnBox'>
+        <button className='convertBtn' onClick={() => {
+          handleBoxClick(concept);
+          generateCode();
+        }}>
         <FaPlay className='FaPlayBtn' size="30" color='#20CF26' />
         <span className='Btn'>실행하기</span></button>
-        </div>
+      </div>
     </div >
   );
 }

@@ -21,7 +21,7 @@ const Header = () => {
         <div className="headerbtn-container">
           <NavLink to="/tutorial" className="headerbtn" style={ activeStyle }>튜토리얼</NavLink>
           <NavLink to="/problems" className="headerbtn" style={ activeStyle }>문제 풀어보기</NavLink>
-          <NavLink to="/suggestion" className="headerbtn" style={ activeStyle }>개발자에게 제안하기</NavLink>
+          <a href="https://github.com/CSID-DGU/2024-1-OSS-team-5-OOP/issues" target="_blank" rel="noopener noreferrer" className="headerbtn">개발자에게 제안하기</a>
         </div>
     </header>
   );
