@@ -1,0 +1,16 @@
+.modalContent {
+    height: 600px;
+}
+
+.modalTitle {
+    height: 20%;
+}
+
+.modalBody {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    white-space: pre-wrap;
+    font-size: 22px;
+}
