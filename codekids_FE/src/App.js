@@ -9,7 +9,6 @@ import BlockPage from './pages/BlockPage.js';
 import BlockPage2 from './pages/BlockPage2.js';
 import BlockPage3 from './pages/BlockPage3.js';
 import QuizPage from './pages/QuizPage.js';
-import SuggestionPage from './pages/SuggestionPage.js';
 
 function App() {
   return (
@@ -24,12 +23,9 @@ function App() {
           <Route path="/problems" element={<ProblemPage />} />
           <Route path="/problems/:concept" element={<ProblemPage />} />
           <Route path="/problems/block/:problemId" element={<BlockPage />} />
-          <Route path="/suggestion" element={<SuggestionPage />} />
           <Route path="/problems/block/:problemId/2/3/quiz" element={<QuizPage />} />
           <Route path="/problems/block/:problemId/2" element={<BlockPage2 />} />
           <Route path="/problems/block/:problemId/2/3" element={<BlockPage3 />} />
-
-
         </Routes>
       </div>
     </BrowserRouter>

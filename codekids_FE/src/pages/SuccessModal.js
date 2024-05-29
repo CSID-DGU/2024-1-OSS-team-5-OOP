@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './SuccessModal.css';
+import './Modal.css';
 
 const SuccessModal = ({ isOpen, closeModal, title, buttonName, modalLink }) => {
   const navigate = useNavigate();
