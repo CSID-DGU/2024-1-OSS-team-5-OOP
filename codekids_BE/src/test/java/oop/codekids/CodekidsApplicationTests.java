@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest
@@ -24,6 +25,8 @@ class CodekidsApplicationTests {
     @Autowired
     private ProblemRepository problemRepository;
     @Autowired
+    private ProblemDetailRepository problemDetailRepository;
+    @Autowired
     private QuizRepository quizRepository;
 
     @Test
@@ -31,58 +34,89 @@ class CodekidsApplicationTests {
     }
 
     @Test
-    @DisplayName("3. 문제 데이터 전부 저장하기")
+    @DisplayName("3. Problem: 문제 데이터 전부 저장하기")
     void saveAllProblem() {
+
         Problem workBook1 = Problem.builder()
                 .title("업/앤 다운 게임 만들기")
                 .concept(Concept.ENCAPSULATION)
                 .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/upanddown.png")
                 .build();
+        problemRepository.save(workBook1);
 
         Problem workBook2 = Problem.builder()
                 .title("계산기 만들기")
                 .concept(Concept.ENCAPSULATION)
                 .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/calculator.png")
                 .build();
+        problemRepository.save(workBook2);
 
         Problem workBook3 = Problem.builder()
                 .title("도형의 넓이를 구해볼까요? ")
                 .concept(Concept.POLYMORPHISM)
                 .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/shape.png")
                 .build();
+        problemRepository.save(workBook3);
 
         Problem workBook4 = Problem.builder()
                 .title("각 동물들은 어떤 소리를 낼까요?")
                 .concept(Concept.POLYMORPHISM)
                 .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/car.png")
                 .build();
+        problemRepository.save(workBook4);
 
         Problem workBook5 = Problem.builder()
                 .title("로봇과 함께 편리한 세상을 위하여~!")
                 .concept(Concept.ABSTRACT)
                 .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/robot.png")
                 .build();
+        problemRepository.save(workBook5);
+
+        ProblemDetail problemDetail1 = ProblemDetail.builder()
+                .level(1)
+                .concept(Concept.ABSTRACT)
+                .hint("로봇 1단계 힌트입니다~")
+                .title("전원 켜기,전원 끄기를 할 수 있는 로봇 인터페이스를 만드세요")
+                .answer("interface(로봇)메소드:  전원켜기()전원끄기()")
+                .problem(workBook5)
+                .build();
+
+        ProblemDetail problemDetail2 = ProblemDetail.builder()
+                .level(2)
+                .concept(Concept.ABSTRACT)
+                .hint("로봇 2단계 힌트입니다~")
+                .title("앞에서 만든 로봇 인터페이스를 이용해서 '청소하기' 기능을 가진 청소 로봇 클래스와 '요리하기' 기능을 가진 요리 로봇 클래스를 만드시오")
+                .answer("클래스이름:청소클래스:(로봇)전원켜기:  청소하기전원끄기:  청소하기기능추가:  청소하기" +
+                        "클래스이름:요리클래스:(로봇)전원켜기:  요리하기전원끄기:  요리하기기능추가:  요리하기")
+                .problem(workBook5)
+                .build();
+
+        ProblemDetail problemDetail3 = ProblemDetail.builder()
+                .level(3)
+                .concept(Concept.ABSTRACT)
+                .hint("로봇 2단계 힌트입니다~")
+                .title("앞에서 만든 클래스를 이용해서 청소 로봇 '아이언맨'과 요리 로봇 '토르' 객체를 생성하고 아이언맨이 전원을 키고 청소를 하도록 main을 채우시오")
+                .answer("청소로봇클래스:(로봇이름:아이언맨)요리로봇클래스:(로봇이름:토르)객체이름:아이언맨메소드 선택:op1객체이름:아이언맨메소드 선택:op3")
+                .problem(workBook5)
+                .build();
+
+        problemDetailRepository.save(problemDetail1);
+        problemDetailRepository.save(problemDetail2);
+        problemDetailRepository.save(problemDetail3);
 
         Problem workBook6 = Problem.builder()
                 .title("연극 배우 공통점 찾기")
                 .concept(Concept.POLYMORPHISM)
                 .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/show.png")
                 .build();
-
-        problemRepository.save(workBook1);
-        problemRepository.save(workBook2);
-        problemRepository.save(workBook3);
-        problemRepository.save(workBook4);
-        problemRepository.save(workBook5);
         problemRepository.save(workBook6);
+
+
+
 
         Assertions.assertThat(problemRepository.findAll()).hasSize(6);
     }
 
-    @Test
-    void deleteData() {
-        problemRepository.deleteAll();
-    }
 
     @Autowired
     private TutorialRepository tutorialRepository;
@@ -119,6 +153,8 @@ class CodekidsApplicationTests {
     @DisplayName("2. Quiz: 퀴즈 데이터 넣기")
     void quizData(){
         Tutorial polymorphism = tutorialRepository.findByConcept(Concept.POLYMORPHISM);
+        Tutorial abstract_tu = tutorialRepository.findByConcept(Concept.ABSTRACT);
+        Tutorial encapsulation = tutorialRepository.findByConcept(Concept.ENCAPSULATION);
         Quiz quiz = Quiz.builder()
                 .quizType(QuizType.OX)
                 .title("다형성은 객체지향 프로그래밍에서 다양한 형태로 사용할 수 있는 능력을 말해요.")
@@ -219,8 +255,277 @@ class CodekidsApplicationTests {
         multiChooseRepository.save(multiChoose3_4);
         multiChooseRepository.save(multiChoose3_5);
 
+        Quiz quiz4 =  Quiz.builder()
+                .quizType(QuizType.OX)
+                .title("다형성은 객체지향 프로그래밍에서 다양한 형태로 사용할 수 있는 능력을 말해요.")
+                .answer(Answer.CORRECT)
+                .tutorial(polymorphism)
+                .description("‘다’ ‘형’ 성 , 말 그대로 다양한 형태로 동작할 수 있음을 의미하는거 잊지 않았죠? ")
+                .build();
+        quizRepository.save(quiz4);
+
+        Quiz quiz5 =  Quiz.builder()
+                .quizType(QuizType.MULTI)
+                .title("다형성(polymorphism)이 무엇을 의미하는지 가장 잘 설명하는 것은 무엇일까요?")
+                .answer(Answer.ONE)
+                .tutorial(polymorphism)
+                .description("다형성을 사용하면 같은 이름의 함수가 다양한 작업을 수행할 수 있습니다. 예를 들어, 같은 이름의 함수가 숫자를 더하거나 문자열을 이어붙일 수 있습니다.")
+                .build();
+        MultiChoose multiChoose5_1 = MultiChoose.builder()
+                .Choice(1)
+                .detail("프로그램이 더 느려집니다.")
+                .quiz(quiz5)
+                .build();
+        MultiChoose multiChoose5_2 = MultiChoose.builder()
+                .Choice(2)
+                .detail("프로그램이 더 어려워집니다.")
+                .quiz(quiz5)
+                .build();
+        MultiChoose multiChoose5_3 = MultiChoose.builder()
+                .Choice(3)
+                .detail("같은 이름의 함수로 다양한 작업을 수행할 수 있습니다.")
+                .quiz(quiz5)
+                .build();
+        MultiChoose multiChoose5_4 = MultiChoose.builder()
+                .Choice(4)
+                .detail("변수의 이름을 더 많이 만들어야 합니다.")
+                .quiz(quiz5)
+                .build();
+        MultiChoose multiChoose5_5 = MultiChoose.builder()
+                .Choice(5)
+                .detail("프로그램이 더 많은 메모리를 사용합니다.")
+                .quiz(quiz5)
+                .build();
+        quizRepository.save(quiz5);
+        multiChooseRepository.save(multiChoose5_1);
+        multiChooseRepository.save(multiChoose5_2);
+        multiChooseRepository.save(multiChoose5_3);
+        multiChooseRepository.save(multiChoose5_4);
+        multiChooseRepository.save(multiChoose5_5);
+
+        /*
+        추상화
+         */
+        Quiz quiz6 =  Quiz.builder()
+                .quizType(QuizType.MULTI)
+                .title("추상화란 무엇인가요?")
+                .answer(Answer.TWO)
+                .tutorial(abstract_tu)
+                .description("추상화는 여러 구체적인 물건의 공통된 특징을 모아서 하나의 개념으로 만드는 것입니다.")
+                .build();
+        MultiChoose multiChoose6_1 = MultiChoose.builder()
+                .Choice(1)
+                .detail("코드를 더 복잡하게 만드는 것")
+                .quiz(quiz6)
+                .build();
+        MultiChoose multiChoose6_2 = MultiChoose.builder()
+                .Choice(2)
+                .detail("구체적인 물건의 특징을 하나로 모으는 것")
+                .quiz(quiz6)
+                .build();
+        MultiChoose multiChoose6_3 = MultiChoose.builder()
+                .Choice(3)
+                .detail("컴퓨터를 더 빨리 작동하게 만드는 것")
+                .quiz(quiz6)
+                .build();
+        MultiChoose multiChoose6_4 = MultiChoose.builder()
+                .Choice(4)
+                .detail("색을 더 많이 사용하는 것")
+                .quiz(quiz6)
+                .build();
+        MultiChoose multiChoose6_5 = MultiChoose.builder()
+                .Choice(5)
+                .detail("코드를 더 길게 만드는 것")
+                .quiz(quiz6)
+                .build();
+        quizRepository.save(quiz6);
+        multiChooseRepository.save(multiChoose6_1);
+        multiChooseRepository.save(multiChoose6_2);
+        multiChooseRepository.save(multiChoose6_3);
+        multiChooseRepository.save(multiChoose6_4);
+        multiChooseRepository.save(multiChoose6_5);
+
+        Quiz quiz7 = Quiz.builder()
+                .quizType(QuizType.OX)
+                .title("추상화는 여러 가지 물건의 공통된 특징을 모아서 하나로 만드는 것이다.")
+                .answer(Answer.CORRECT)
+                .tutorial(abstract_tu)
+                .description("추상화는 여러 물건의 공통된 특징을 모아서 더 간단하게 만드는 과정입니다.")
+                .build();
+        quizRepository.save(quiz7);
+
+        Quiz quiz8 = Quiz.builder()
+                .quizType(QuizType.OX)
+                .title("추상화는 코드를 더 복잡하게 만드는 과정이다.")
+                .answer(Answer.INCORRECT)
+                .tutorial(abstract_tu)
+                .description("추상화는 코드를 더 간단하게 하고 이해하기 쉽게 만드는 과정입니다.")
+                .build();
+        quizRepository.save(quiz8);
+
+        Quiz quiz9 = Quiz.builder()
+                .quizType(QuizType.OX)
+                .title("인터페이스는 추상화의 한 형태로, 객체의 공통된 행동을 정의할 수 있다.")
+                .answer(Answer.CORRECT)
+                .tutorial(abstract_tu)
+                .description("인터페이스는 객체의 공통된 행동을 정의하는 추상화의 한 형태입니다.")
+                .build();
+        quizRepository.save(quiz9);
 
 
+        Quiz quiz10 =  Quiz.builder()
+                .quizType(QuizType.MULTI)
+                .title("'동물'이라는 추상 클래스에 어떤 동물도 포함될 수 있는 이유는 무엇인가요?")
+                .answer(Answer.THREE)
+                .tutorial(abstract_tu)
+                .description("모든 동물은 숨쉬기, 먹기 등 공통된 특징을 가지고 있기 때문에 '동물' 추상 클래스에 포함될 수 있습니다.")
+                .build();
+        MultiChoose multiChoose10_1 = MultiChoose.builder()
+                .Choice(1)
+                .detail("동물은 모두 비슷하게 생겼기 때문에")
+                .quiz(quiz10)
+                .build();
+        MultiChoose multiChoose10_2 = MultiChoose.builder()
+                .Choice(2)
+                .detail("동물은 모두 물에서 살기 때문에")
+                .quiz(quiz10)
+                .build();
+        MultiChoose multiChoose10_3 = MultiChoose.builder()
+                .Choice(3)
+                .detail("동물은 공통된 특징을 가지고 있기 때문에")
+                .quiz(quiz10)
+                .build();
+        MultiChoose multiChoose10_4 = MultiChoose.builder()
+                .Choice(4)
+                .detail("동물은 모두 크기 때문")
+                .quiz(quiz10)
+                .build();
+        MultiChoose multiChoose10_5 = MultiChoose.builder()
+                .Choice(5)
+                .detail("동물은 모두 같은 색이기 때문")
+                .quiz(quiz10)
+                .build();
+        quizRepository.save(quiz10);
+        multiChooseRepository.save(multiChoose10_1);
+        multiChooseRepository.save(multiChoose10_2);
+        multiChooseRepository.save(multiChoose10_3);
+        multiChooseRepository.save(multiChoose10_4);
+        multiChooseRepository.save(multiChoose10_5);
+
+        /*
+        캡슐화
+         */
+        Quiz quiz11 =  Quiz.builder()
+                .quizType(QuizType.MULTI)
+                .title("캡슐화에 대한 설명으로 옳지 않은 것은?")
+                .answer(Answer.ONE)
+                .tutorial(encapsulation)
+                .description("")
+                .build();
+        MultiChoose multiChoose11_1 = MultiChoose.builder()
+                .Choice(1)
+                .detail("캡슐화는 하나의 클래스 안에서 기능을 처리하는 방식이다.")
+                .quiz(quiz11)
+                .build();
+        MultiChoose multiChoose11_2 = MultiChoose.builder()
+                .Choice(2)
+                .detail("캡슐화를 통해 프로그램을 효과적으로 관리할 수 있다.")
+                .quiz(quiz11)
+                .build();
+        MultiChoose multiChoose11_3 = MultiChoose.builder()
+                .Choice(3)
+                .detail("캡슐화를 통해 정보를 보호할 수 있다.")
+                .quiz(quiz10)
+                .build();
+
+        quizRepository.save(quiz11);
+        multiChooseRepository.save(multiChoose11_1);
+        multiChooseRepository.save(multiChoose11_2);
+        multiChooseRepository.save(multiChoose11_3);
+
+        Quiz quiz12 =  Quiz.builder()
+                .quizType(QuizType.MULTI)
+                .title("캡슐화와 관련된 단어인 것은?")
+                .answer(Answer.ONE)
+                .tutorial(encapsulation)
+                .description("")
+                .build();
+        MultiChoose multiChoose12_1 = MultiChoose.builder()
+                .Choice(1)
+                .detail("다형성")
+                .quiz(quiz12)
+                .build();
+        MultiChoose multiChoose12_2 = MultiChoose.builder()
+                .Choice(2)
+                .detail("상속")
+                .quiz(quiz12)
+                .build();
+        MultiChoose multiChoose12_3 = MultiChoose.builder()
+                .Choice(3)
+                .detail("클래스")
+                .quiz(quiz12)
+                .build();
+
+        quizRepository.save(quiz12);
+        multiChooseRepository.save(multiChoose12_1);
+        multiChooseRepository.save(multiChoose12_2);
+        multiChooseRepository.save(multiChoose12_3);
+
+        Quiz quiz13 =  Quiz.builder()
+                .quizType(QuizType.MULTI)
+                .title("캡슐화를 사용하여 구현된 프로그래밍 언어는?")
+                .answer(Answer.TWO)
+                .tutorial(abstract_tu)
+                .description("")
+                .build();
+
+        MultiChoose multiChoose13_1 = MultiChoose.builder()
+                .Choice(1)
+                .detail("C")
+                .quiz(quiz13)
+                .build();
+        MultiChoose multiChoose13_2 = MultiChoose.builder()
+                .Choice(2)
+                .detail("Java")
+                .quiz(quiz13)
+                .build();
+        MultiChoose multiChoose13_3 = MultiChoose.builder()
+                .Choice(3)
+                .detail("JavaScript")
+                .quiz(quiz13)
+                .build();
+
+        quizRepository.save(quiz13);
+        multiChooseRepository.save(multiChoose13_1);
+        multiChooseRepository.save(multiChoose13_2);
+        multiChooseRepository.save(multiChoose13_3);
+
+        Quiz quiz14 = Quiz.builder()
+                .quizType(QuizType.OX)
+                .title("캡슐화의 장점으로 객체 간의 의존성이 증가한다.")
+                .answer(Answer.INCORRECT)
+                .tutorial(encapsulation)
+                .description("")
+                .build();
+        quizRepository.save(quiz14);
+
+        Quiz quiz15 = Quiz.builder()
+                .quizType(QuizType.OX)
+                .title("캡슐화는 객체의 내부 상태를 보호하기 위해 사용되는가?")
+                .answer(Answer.CORRECT)
+                .tutorial(encapsulation)
+                .description("")
+                .build();
+        quizRepository.save(quiz15);
+
+        Quiz quiz16 = Quiz.builder()
+                .quizType(QuizType.OX)
+                .title("캡슐화를 통해 코드의 재사용성이 향상되는가?")
+                .answer(Answer.CORRECT)
+                .tutorial(encapsulation)
+                .description("")
+                .build();
+        quizRepository.save(quiz16);
 
     }
 
