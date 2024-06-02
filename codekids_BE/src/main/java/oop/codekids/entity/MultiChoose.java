@@ -16,6 +16,7 @@ public class MultiChoose {
     private Double id;
     private int Choice;
     private String detail;
+
     @ManyToOne
     @JoinColumn(name = "quiz_id")
     private Quiz quiz;
