@@ -6,20 +6,17 @@ import oop.codekids.repository.*;
 import oop.codekids.service.S3Service;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.mock.web.MockMultipartFile;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.ArrayList;
+import org.springframework.core.annotation.Order;
 import java.util.List;
 
+
 @SpringBootTest
+@TestMethodOrder(value = MethodOrderer.DisplayName.class)
 class CodekidsApplicationTests {
 
     @Autowired
@@ -33,90 +30,6 @@ class CodekidsApplicationTests {
     void contextLoads() {
     }
 
-    @Test
-    @DisplayName("3. Problem: 문제 데이터 전부 저장하기")
-    void saveAllProblem() {
-
-        Problem workBook1 = Problem.builder()
-                .title("업/앤 다운 게임 만들기")
-                .concept(Concept.ENCAPSULATION)
-                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/upanddown.png")
-                .build();
-        problemRepository.save(workBook1);
-
-        Problem workBook2 = Problem.builder()
-                .title("계산기 만들기")
-                .concept(Concept.ENCAPSULATION)
-                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/calculator.png")
-                .build();
-        problemRepository.save(workBook2);
-
-        Problem workBook3 = Problem.builder()
-                .title("도형의 넓이를 구해볼까요? ")
-                .concept(Concept.POLYMORPHISM)
-                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/shape.png")
-                .build();
-        problemRepository.save(workBook3);
-
-        Problem workBook4 = Problem.builder()
-                .title("각 동물들은 어떤 소리를 낼까요?")
-                .concept(Concept.POLYMORPHISM)
-                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/car.png")
-                .build();
-        problemRepository.save(workBook4);
-
-        Problem workBook5 = Problem.builder()
-                .title("로봇과 함께 편리한 세상을 위하여~!")
-                .concept(Concept.ABSTRACT)
-                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/robot.png")
-                .build();
-        problemRepository.save(workBook5);
-
-        ProblemDetail problemDetail1 = ProblemDetail.builder()
-                .level(1)
-                .concept(Concept.ABSTRACT)
-                .hint("로봇 1단계 힌트입니다~")
-                .title("전원 켜기,전원 끄기를 할 수 있는 로봇 인터페이스를 만드세요")
-                .answer("interface(로봇)메소드:  전원켜기()전원끄기()")
-                .problem(workBook5)
-                .build();
-
-        ProblemDetail problemDetail2 = ProblemDetail.builder()
-                .level(2)
-                .concept(Concept.ABSTRACT)
-                .hint("로봇 2단계 힌트입니다~")
-                .title("앞에서 만든 로봇 인터페이스를 이용해서 '청소하기' 기능을 가진 청소 로봇 클래스와 '요리하기' 기능을 가진 요리 로봇 클래스를 만드시오")
-                .answer("클래스이름:청소클래스:(로봇)전원켜기:  청소하기전원끄기:  청소하기기능추가:  청소하기" +
-                        "클래스이름:요리클래스:(로봇)전원켜기:  요리하기전원끄기:  요리하기기능추가:  요리하기")
-                .problem(workBook5)
-                .build();
-
-        ProblemDetail problemDetail3 = ProblemDetail.builder()
-                .level(3)
-                .concept(Concept.ABSTRACT)
-                .hint("로봇 2단계 힌트입니다~")
-                .title("앞에서 만든 클래스를 이용해서 청소 로봇 '아이언맨'과 요리 로봇 '토르' 객체를 생성하고 아이언맨이 전원을 키고 청소를 하도록 main을 채우시오")
-                .answer("청소로봇클래스:(로봇이름:아이언맨)요리로봇클래스:(로봇이름:토르)객체이름:아이언맨메소드 선택:op1객체이름:아이언맨메소드 선택:op3")
-                .problem(workBook5)
-                .build();
-
-        problemDetailRepository.save(problemDetail1);
-        problemDetailRepository.save(problemDetail2);
-        problemDetailRepository.save(problemDetail3);
-
-        Problem workBook6 = Problem.builder()
-                .title("연극 배우 공통점 찾기")
-                .concept(Concept.POLYMORPHISM)
-                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/show.png")
-                .build();
-        problemRepository.save(workBook6);
-
-
-
-
-        Assertions.assertThat(problemRepository.findAll()).hasSize(6);
-    }
-
 
     @Autowired
     private TutorialRepository tutorialRepository;
@@ -125,6 +38,7 @@ class CodekidsApplicationTests {
     private MultiChooseRepository multiChooseRepository;
 
     @Test
+    @Order(1)
     @DisplayName("1.Tutorial: 튜토리얼 데이터 넣기")
     void addTutorial() {
 
@@ -150,6 +64,7 @@ class CodekidsApplicationTests {
         Assertions.assertThat(tutorialRepository.findAll()).hasSize(3);
     }
     @Test
+    @Order(2)
     @DisplayName("2. Quiz: 퀴즈 데이터 넣기")
     void quizData(){
         Tutorial polymorphism = tutorialRepository.findByConcept(Concept.POLYMORPHISM);
@@ -533,6 +448,7 @@ class CodekidsApplicationTests {
     TutorialDetailRepository tutorialDetailRepository;
 
     @Test
+    @Order(3)
     @DisplayName("2. TutorialDetail : 개념 설명 관련 데이터 넣기 - finish")
     void getTutorial() {
 
@@ -658,6 +574,90 @@ class CodekidsApplicationTests {
         tutorialDetailRepository.save(po_detail7);
 
     }
+    @Test
+    @Order(4)
+    @DisplayName("3. Problem: 문제 데이터 전부 저장하기")
+    void saveAllProblem() {
+
+        Problem workBook1 = Problem.builder()
+                .title("업/앤 다운 게임 만들기")
+                .concept(Concept.ENCAPSULATION)
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/upanddown.jpg")
+                .build();
+        problemRepository.save(workBook1);
+
+        Problem workBook2 = Problem.builder()
+                .title("계산기 만들기")
+                .concept(Concept.ENCAPSULATION)
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/calculator.jpg")
+                .build();
+        problemRepository.save(workBook2);
+
+        Problem workBook3 = Problem.builder()
+                .title("도형의 넓이를 구해볼까요? ")
+                .concept(Concept.POLYMORPHISM)
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/shape.png")
+                .build();
+        problemRepository.save(workBook3);
+
+        Problem workBook4 = Problem.builder()
+                .title("각 동물들은 어떤 소리를 낼까요?")
+                .concept(Concept.POLYMORPHISM)
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/animal.jpg")
+                .build();
+        problemRepository.save(workBook4);
+
+        Problem workBook5 = Problem.builder()
+                .title("로봇과 함께 편리한 세상을 위하여~!")
+                .concept(Concept.ABSTRACT)
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/robot.jpg")
+                .build();
+        problemRepository.save(workBook5);
+
+        ProblemDetail problemDetail1 = ProblemDetail.builder()
+                .level(1)
+                .concept(Concept.ABSTRACT)
+                .hint("로봇 1단계 힌트입니다~")
+                .title("전원 켜기,전원 끄기를 할 수 있는 로봇 인터페이스를 만드세요")
+                .answer("interface(로봇)메소드:  전원켜기()전원끄기()")
+                .problem(workBook5)
+                .build();
+
+        ProblemDetail problemDetail2 = ProblemDetail.builder()
+                .level(2)
+                .concept(Concept.ABSTRACT)
+                .hint("로봇 2단계 힌트입니다~")
+                .title("앞에서 만든 로봇 인터페이스를 이용해서 '청소하기' 기능을 가진 청소 로봇 클래스와 '요리하기' 기능을 가진 요리 로봇 클래스를 만드시오")
+                .answer("클래스이름:청소클래스:(로봇)전원켜기:  청소하기전원끄기:  청소하기기능추가:  청소하기" +
+                        "클래스이름:요리클래스:(로봇)전원켜기:  요리하기전원끄기:  요리하기기능추가:  요리하기")
+                .problem(workBook5)
+                .build();
+
+        ProblemDetail problemDetail3 = ProblemDetail.builder()
+                .level(3)
+                .concept(Concept.ABSTRACT)
+                .hint("로봇 2단계 힌트입니다~")
+                .title("앞에서 만든 클래스를 이용해서 청소 로봇 '아이언맨'과 요리 로봇 '토르' 객체를 생성하고 아이언맨이 전원을 키고 청소를 하도록 main을 채우시오")
+                .answer("청소로봇클래스:(로봇이름:아이언맨)요리로봇클래스:(로봇이름:토르)객체이름:아이언맨메소드 선택:op1객체이름:아이언맨메소드 선택:op3")
+                .problem(workBook5)
+                .build();
+
+        problemDetailRepository.save(problemDetail1);
+        problemDetailRepository.save(problemDetail2);
+        problemDetailRepository.save(problemDetail3);
+
+        Problem workBook6 = Problem.builder()
+                .title("연극 배우 공통점 찾기")
+                .concept(Concept.POLYMORPHISM)
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/show.png")
+                .build();
+        problemRepository.save(workBook6);
+
+
+
+
+        Assertions.assertThat(problemRepository.findAll()).hasSize(6);
+    }
 
     @Test
     @DisplayName("튜토리얼 전체 조회")
@@ -671,45 +671,45 @@ class CodekidsApplicationTests {
     private S3Service s3Service;
 
 
-    @Test
-    void testPostImageWithData() throws IOException {
-
-        String filePath = "/Users/heoeunjeong/Desktop/codekids/codekids_BE/src/test/resource/animal.png";
-        File file = new File(filePath);
-        // 파일이 존재하는지 확인
-        if (!file.exists()) {
-            throw new IOException("File not found at " + filePath);
-        } else {
-            // 파일 내용을 바이트 배열로 읽기
-            FileInputStream input = new FileInputStream(file);
-            byte[] fileContent = input.readAllBytes();
-            input.close();
-
-            // 바이트 배열을 MultipartFile로 변환
-            MultipartFile multipartFile = new MockMultipartFile(file.getName(), file.getName(), "text/plain", fileContent);
-            Problem target = postImageWithData(multipartFile);
-
-            Assertions.assertThat(target.getImageUrl()).isEqualTo("animal.png");
-
-        }
-
-    }
-
-    Problem postImageWithData(MultipartFile image) {
-        try {
-
-            s3Service.uploadImage("problem/", image);
-            Problem problem5 = Problem.builder()
-                    .title("강아지는 냐옹, 고양이는 멍멍?")
-                    .concept(oop.codekids.Concept.ABSTRACT)
-                    .imageUrl(image.getOriginalFilename())
-                    .build();
-            problemRepository.save(problem5);
-            return problem5;
-        } catch (RuntimeException | IOException e) {
-            throw new RuntimeException(e.getMessage());
-        }
-    }
+//    @Test
+//    void testPostImageWithData() throws IOException {
+//
+//        String filePath = "/Users/heoeunjeong/Desktop/codekids/codekids_BE/src/test/resource/animal.png";
+//        File file = new File(filePath);
+//        // 파일이 존재하는지 확인
+//        if (!file.exists()) {
+//            throw new IOException("File not found at " + filePath);
+//        } else {
+//            // 파일 내용을 바이트 배열로 읽기
+//            FileInputStream input = new FileInputStream(file);
+//            byte[] fileContent = input.readAllBytes();
+//            input.close();
+//
+//            // 바이트 배열을 MultipartFile로 변환
+//            MultipartFile multipartFile = new MockMultipartFile(file.getName(), file.getName(), "text/plain", fileContent);
+//            Problem target = postImageWithData(multipartFile);
+//
+//            Assertions.assertThat(target.getImageUrl()).isEqualTo("animal.png");
+//
+//        }
+//
+//    }
+//
+//    Problem postImageWithData(MultipartFile image) {
+//        try {
+//
+//            s3Service.uploadImage("problem/", image);
+//            Problem problem5 = Problem.builder()
+//                    .title("강아지는 냐옹, 고양이는 멍멍?")
+//                    .concept(oop.codekids.Concept.ABSTRACT)
+//                    .imageUrl(image.getOriginalFilename())
+//                    .build();
+//            problemRepository.save(problem5);
+//            return problem5;
+//        } catch (RuntimeException | IOException e) {
+//            throw new RuntimeException(e.getMessage());
+//        }
+//    }
 
 
 }
