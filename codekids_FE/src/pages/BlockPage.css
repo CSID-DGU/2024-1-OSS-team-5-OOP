@@ -5,7 +5,7 @@
   display: inline-block;
 }
 
-.problem {
+.problemtitle {
   margin-left: 2%;
   font-family: "Nanum Gothic", sans-serif;
   font-weight: bold;
@@ -13,6 +13,7 @@
   font-size: 35px;
   text-decoration: none;
   color: #FEFDE9;
+  text-shadow: -2px 0px #91B886, 0px 2px #91B886, 2px 0px #91B886, 0px -2px #91B886;
 }
 
 .quiz {
@@ -25,9 +26,12 @@
   color: #000000;
 }
 
+.quizdiv{
+  margin-top: 1%;
+}
+
 .quizImg {
   width: 70px;
-  margin-top: 20px;
   margin-left: 20px;
   vertical-align: middle;
 }

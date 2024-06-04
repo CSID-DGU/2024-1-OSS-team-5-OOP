@@ -11,4 +11,6 @@ import java.util.Optional;
 @Repository
 public interface ProblemRepository extends JpaRepository<Problem, Long> {
     List<Problem> findAllByConcept(Concept concept);
+
+//    Optional<Problem> findById(Long id);
 }

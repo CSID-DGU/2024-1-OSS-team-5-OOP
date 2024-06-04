@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import './BlockPage.css';
 import BlocklyComponent, { Block} from '../Blockly';
 import '../blocks/customblocks';
@@ -7,31 +7,56 @@ import { javascriptGenerator } from 'blockly/javascript';
 import {FaPlay} from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import picture1 from './quiz.png'
+var index=0;
 
-function BlockPage2() {
+function NextBlockPage() {
   const navigate = useNavigate();
   const location = useLocation();
   let primaryWorkspace = useRef();
 
-  
+  const concept_eng = location.state.concept_eng;
   const concept = location.state.concept;
   const path = location.pathname;
+  const [response, setResponse] = useState({ data: [] });
+  const problemId = location.state.problemId;
+  
+  const url = `/problem/getOneProblem?id=${problemId}&level=2`;
+  useEffect(() => {
+    const fetchBlock = async () => {
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        setResponse(data);
+      } catch (error) {
+        console.log('Error fetching data:', error);
+      }
+    };
+
+    fetchBlock();
+  }, []);
+
   const generateCode = () => {
     var code = javascriptGenerator.workspaceToCode(primaryWorkspace.current);
     console.log(code);
   };
-  const handleBoxClick = (concept) => {
-    navigate(`${path}/3`, { state: { concept } });
+  const handleBoxClick = (problemId, concept_eng, concept) => {
+    navigate(`${path}/final`, { state: {problemId, concept_eng, concept } });
+  };
+  const call = (index) => {
+    console.log(index)
+    if (index == 1) {
+      return true
+    }
+    else return false
   };
 
   return (
     <div className="BlockPage">
         <div className="div1">
-        <p className='problem'>로봇 만들기</p></div>
-      <div><img className='quizImg' src={picture1} />
-        <span className='quiz'>앞에서 만든 로봇 인터페이스를 이용해서 '청소하기' 기능을 가진 청소 로봇 클래스와 '요리하기'기능을 가진 요리 로봇 클래스를 만드시오.</span></div>
-      <BlocklyComponent
+        <p className='problemtitle'>{response.data.problem_title}</p></div>
+        <div className='quizdiv'><img className='quizImg' src={`${process.env.PUBLIC_URL}/quiz.png`} />
+        <span className='quiz'>{response.data.problem_detail_title}</span></div>
+        {call(index++) && <BlocklyComponent
         readOnly={false}
         trashcan={true}
         media={'/media'}
@@ -67,11 +92,12 @@ function BlockPage2() {
       <Block type="off" />
       <Block type="robot" />
       <Block type="methodname" />
-    </BlocklyComponent>
+    </BlocklyComponent>}
     <div className='btnBox'>
       <button className='convertBtn' onClick={() => {
-                  handleBoxClick(concept);
+                  handleBoxClick(problemId, concept_eng, concept);
                   generateCode();
+                  index=0;
                   }}>
         <FaPlay className='FaPlayBtn' size="30" color='#20CF26' />
         <span className='Btn'>실행하기</span></button>
@@ -80,4 +106,4 @@ function BlockPage2() {
   );
 }
 
-export default BlockPage2;
+export default NextBlockPage;

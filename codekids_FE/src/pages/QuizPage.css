@@ -38,32 +38,43 @@
     background-color: #FFFFFF;
     margin-left: 5%;
     margin-top: 1%;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
     border-radius: 50px 50px 0px 0px;
     border: 7px solid #91B886;
-    display: table;
+    position: relative;
+
+}
+
+.correctImg{
+    position: absolute;
+    width: 100px;
+    height: 100px;
 }
 
 .Q{
+    position: absolute;
     text-align: left;
-    margin-left: 50px;
-    font-family: "Nanum Gothic", sans-serif;
+    margin-left: 1.5%;
+    vertical-align: middle;
+    font-family: Nanum Gothic Bold;
     font-weight: bold;
     font-style: normal;
     font-size: 50px;
     text-decoration:none;
     color: #FB7F7F;
+
 }
 
 .quiztitle{
     font-family: "Nanum Gothic", sans-serif;
     font-weight: bold;
+    margin-left: 5%;
     font-style: normal;
     font-size: 45px;
     text-decoration: none;
     color: #91B886;
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
+    text-align: left;
 }
 
 .bottomdiv{
@@ -76,6 +87,7 @@
     border-left: 7px solid #91B886 ;
     border-right: 7px solid #91B886 ;
     border-top: 7px solid #FFFFFF ;
+    padding-bottom: 2%;
 }
 
 .OXBtn{
@@ -88,11 +100,15 @@
     margin-top: 1%;
     margin-bottom: 2%;
     color: #91B886;
-    font-family: "Nanum Gothic", sans-serif;
+    font-family: Nanum Gothic Bold;
 
+    &.active {
+        color: #FB7F7F;
+    }
   }
 
-.OBtn{
+
+.fiveBtn{
     border: none;
     background-color: #FFFFFF;
     font-size: 40px;
@@ -102,38 +118,36 @@
     margin-left: 3%;
     margin-top: 3%;
     color: #91B886;
-    font-family: "Nanum Gothic", sans-serif;
+    font-family: Nanum Gothic Bold;
 
-
-}
-
-.fivediv{
-    height: 100dp;
-    width: 90%;
-    background-color: #FFFFFF;
-    margin-left: 5%;
-    border-radius: 0px 0px 50px 50px;
-    border-bottom: 7px solid #91B886 ;
-    border-left: 7px solid #91B886 ;
-    border-right: 7px solid #91B886 ;
-    border-top: 7px solid #FFFFFF ;
+    &.active {
+        color: #FB7F7F;
+    }
 }
 
 .fivetext{
-    font-size: 50px;
-    margin-right: 50%;
+    font-size: 40px;
     margin-bottom: 3%;
+    margin-left: 1%;
     color: #91B886;
-    font-family: "Nanum Gothic", sans-serif;
+    font-family: Nanum Gothic Bold;
+}
+
+.descrip{
+    font-size: 25px;
+    margin-left: 3%;
+    color: #D3D3D3;
+    font-family: Nanum Gothic;
+    margin-top: 2%;
 }
 
 .goBtn{
     height: 100dp;
-    width: 10%;
+    width:fit-content;
     background-color: #BBE8B9;
-    margin-left: 45%;
+    margin : auto; 
+    display : block;
     margin-top: 1%;
-    margin-bottom: 3%;
     border-radius: 100px;
     border: 1px solid black;
     font-size: 40px;
@@ -143,4 +157,5 @@
 .BlockPage {
     height: max-content;
     background-color: #FEFDE9;
+    padding-bottom: 1%;
   }
