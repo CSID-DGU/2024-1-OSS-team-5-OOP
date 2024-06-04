@@ -58,6 +58,7 @@ public class ProblemService {
         }
     }
 
+
     public ResponseDto checkAnswer(Long id, int level, String answer) {
 
         Optional<ProblemDetail> problemDetail = problemDetailRepository.findByProblemIdAndLevel(id, level);

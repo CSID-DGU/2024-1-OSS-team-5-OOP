@@ -23,8 +23,8 @@ const ProblemPage = () => {
     fetchData();
   }, []);
 
-  const handleBoxClick = (problemId, concept) => {
-    navigate(`/problems/block/${problemId}`, { state: { concept} });
+  const handleBoxClick = (problemId, concept_eng, concept) => {
+    navigate(`/problems/block/${problemId}`, { state: { problemId, concept_eng, concept} });
   };
 
   return (
@@ -35,7 +35,7 @@ const ProblemPage = () => {
             <div
               key={item.problemId}
               className="box"
-              onClick={() => handleBoxClick(item.problemId, item.concept_eng)}
+              onClick={() => handleBoxClick(item.problemId, item.concept_eng, item.concept)}
             >
               <img src={item.imageUrl} alt={item.problemTitle} className="box-image" />
               <div className="title">

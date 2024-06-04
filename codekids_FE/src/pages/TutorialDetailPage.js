@@ -99,6 +99,9 @@ const TutorialDetailPage = () => {
             title={modalTitle}
             buttonName={modalButtonName}
             modalLink={modalLink}
+            problemId=''
+            concept_eng=''
+            concept=''
           />
         </>
       )}

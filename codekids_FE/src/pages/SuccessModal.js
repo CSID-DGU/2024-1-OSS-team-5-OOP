@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Modal.css';
 
-const SuccessModal = ({ isOpen, closeModal, title, buttonName, modalLink }) => {
+const SuccessModal = ({ isOpen, closeModal, title, buttonName, modalLink, problemId, concept_eng, concept}) => {
   const navigate = useNavigate();
   const [fade, setFade] = useState(false);
 
@@ -22,7 +22,7 @@ const SuccessModal = ({ isOpen, closeModal, title, buttonName, modalLink }) => {
   if (!isOpen && !fade) return null;
 
   const handleButtonClick = () => {
-    navigate(modalLink);
+    navigate(modalLink, { state: { problemId, concept_eng, concept } });
   };
 
   return (

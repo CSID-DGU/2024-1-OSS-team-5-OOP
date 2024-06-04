@@ -3,7 +3,6 @@ import './BlocklyComponent.css';
 import { useEffect, useRef } from 'react';
 
 import Blockly from 'blockly/core';
-import { javascriptGenerator } from 'blockly/javascript';
 import locale from 'blockly/msg/en';
 import 'blockly/blocks';
 
@@ -12,12 +11,7 @@ Blockly.setLocale(locale);
 function BlocklyComponent(props) {
   const blocklyDiv = useRef();
   const toolbox = useRef();
-  let primaryWorkspace = useRef();
-
-  const generateCode = () => {
-    var code = javascriptGenerator.workspaceToCode(primaryWorkspace.current);
-    console.log(code);
-  };
+  const primaryWorkspace = useRef();
 
   Blockly.Themes.Halloween = Blockly.Theme.defineTheme('halloween', {
     'base': Blockly.Themes.Classic,
@@ -36,7 +30,7 @@ function BlocklyComponent(props) {
   });
 
   useEffect(() => {
-    const { initialXml, children, ...rest } = props;
+    const { initialXml, ...rest } = props;
     primaryWorkspace.current = Blockly.inject(blocklyDiv.current, {
       toolbox: toolbox.current,
       theme: Blockly.Themes.Halloween,
@@ -49,15 +43,14 @@ function BlocklyComponent(props) {
         primaryWorkspace.current,
       );
     }
-  }, [primaryWorkspace, toolbox, blocklyDiv, props]);
+  }, [props]);
 
   return (
     <React.Fragment>
       <div ref={blocklyDiv} id="blocklyDiv" />
-      <div style={{ display: 'none'}} ref={toolbox}>
+      <div style={{ display: "None" }} ref={toolbox}>
         {props.children}
       </div>
-      
     </React.Fragment>
   );
 }
