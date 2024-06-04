@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import './BlockPage.css';
 import BlocklyComponent, { Block} from '../Blockly';
 import '../blocks/customblocks';
@@ -7,31 +7,56 @@ import { javascriptGenerator } from 'blockly/javascript';
 import {FaPlay} from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import picture1 from './quiz.png'
+var index=0;
 
-function BlockPage3() {
+function NextBlockPage() {
   const navigate = useNavigate();
   const location = useLocation();
   let primaryWorkspace = useRef();
 
-  
+  const concept_eng = location.state.concept_eng;
   const concept = location.state.concept;
   const path = location.pathname;
+  const [response, setResponse] = useState({ data: [] });
+  const problemId = location.state.problemId;
+  
+  const url = `/problem/getOneProblem?id=${problemId}&level=2`;
+  useEffect(() => {
+    const fetchBlock = async () => {
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        setResponse(data);
+      } catch (error) {
+        console.log('Error fetching data:', error);
+      }
+    };
+
+    fetchBlock();
+  }, []);
+
   const generateCode = () => {
     var code = javascriptGenerator.workspaceToCode(primaryWorkspace.current);
     console.log(code);
   };
-  const handleBoxClick = (concept) => {
-    navigate(`${path}/quiz`, { state: { concept } });
+  const handleBoxClick = (problemId, concept_eng, concept) => {
+    navigate(`${path}/final`, { state: {problemId, concept_eng, concept } });
+  };
+  const call = (index) => {
+    console.log(index)
+    if (index == 1) {
+      return true
+    }
+    else return false
   };
 
   return (
     <div className="BlockPage">
         <div className="div1">
-        <p className='problemtitle'>로봇 만들기</p></div>
-        <div className='quizdiv'><img className='quizImg' src={picture1} />
-        <span className='quiz'>앞에서 만든 클래스를 이용해서 청소 로봇 '아이언맨'과 요리 로봇 '토르' 객체를 생성하고 아이언맨이 전원을 키고 청소를 하도록 main을 채우시오.</span></div>
-      <BlocklyComponent
+        <p className='problemtitle'>{response.data.problem_title}</p></div>
+        <div className='quizdiv'><img className='quizImg' src={`${process.env.PUBLIC_URL}/quiz.png`} />
+        <span className='quiz'>{response.data.problem_detail_title}</span></div>
+        {call(index++) && <BlocklyComponent
         readOnly={false}
         trashcan={true}
         media={'/media'}
@@ -62,17 +87,17 @@ function BlockPage3() {
 </xml>
       `}>
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="96px" height="124px"></svg>
-      <Block type="main" />
-      <Block type="cleanuprobot" />
-      <Block type="cookrobot" />
-      <Block type="robotname" />
-      <Block type="cleanup" />
-      <Block type="cook" />
-    </BlocklyComponent>
+      <Block type="robotclass" />
+      <Block type="on" />
+      <Block type="off" />
+      <Block type="robot" />
+      <Block type="methodname" />
+    </BlocklyComponent>}
     <div className='btnBox'>
       <button className='convertBtn' onClick={() => {
-                  handleBoxClick(concept);
+                  handleBoxClick(problemId, concept_eng, concept);
                   generateCode();
+                  index=0;
                   }}>
         <FaPlay className='FaPlayBtn' size="30" color='#20CF26' />
         <span className='Btn'>실행하기</span></button>
@@ -81,4 +106,4 @@ function BlockPage3() {
   );
 }
 
-export default BlockPage3;
+export default NextBlockPage;
