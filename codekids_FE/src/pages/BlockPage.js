@@ -41,11 +41,11 @@ function BlockPage() {
 
   return (
     <div className="BlockPage">
-        <HintModal
-            isOpen={isModalOpen}
-            closeModal={closeModal}
-            body={modalContent}
-        />
+      <HintModal
+          isOpen={isModalOpen}
+          closeModal={closeModal}
+          body={modalContent}
+      />
       <div className="div1">
         <p className='problem'>로봇 만들기</p></div>
       <div><img className='quizImg' src={picture1} />

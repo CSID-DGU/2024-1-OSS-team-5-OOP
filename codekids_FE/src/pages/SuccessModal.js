@@ -8,15 +8,13 @@ const SuccessModal = ({ isOpen, closeModal, title, buttonName, modalLink }) => {
 
   useEffect(() => {
     if (isOpen) {
-      setFade(false);
+      setFade(true);
     }
   }, [isOpen]);
 
   const handleClose = () => {
-    setFade(true);
-    setTimeout(() => {
-      closeModal();
-    }, 200);
+    setFade(false);
+    closeModal();
   };
 
   if (!isOpen && !fade) return null;
@@ -25,8 +23,10 @@ const SuccessModal = ({ isOpen, closeModal, title, buttonName, modalLink }) => {
     navigate(modalLink);
   };
 
+  if(!fade) return null;
+
   return (
-    <div className={`modal-overlay ${fade ? 'fade-out' : 'fade-in'}`}>
+    <div className={`modal-overlay ${fade ? 'fade-in' : 'fade-out'}`}>
       <audio src="/kidsclap.mp3" autoPlay />
       <div className="modal-content">
         <div className="modal-title"><h2>{title}</h2></div>
