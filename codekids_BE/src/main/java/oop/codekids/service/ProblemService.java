@@ -2,10 +2,7 @@ package oop.codekids.service;
 
 import lombok.RequiredArgsConstructor;
 import oop.codekids.Concept;
-import oop.codekids.dto.ProblemDetailDto;
-import oop.codekids.dto.ProblemDto;
-import oop.codekids.dto.ProblemsDto;
-import oop.codekids.dto.ResponseDto;
+import oop.codekids.dto.*;
 import oop.codekids.entity.Problem;
 import oop.codekids.entity.ProblemDetail;
 import oop.codekids.repository.ProblemDetailRepository;
@@ -21,7 +18,8 @@ import java.util.Optional;
 public class ProblemService {
     private final ProblemRepository problemRepository;
     private final ProblemDetailRepository problemDetailRepository;
-    public ProblemsDto getAllProblems(){
+
+    public ProblemsDto getAllProblems() {
         List<Problem> problems = problemRepository.findAll();
         // Entity ->  Dto
         List<ProblemDto> problemDtos = new ArrayList<>();
@@ -32,7 +30,8 @@ public class ProblemService {
         ProblemsDto problemsDto = new ProblemsDto(problemDtos);
         return problemsDto;
     }
-    public ProblemsDto getFilteredProblemId(String concept_s){
+
+    public ProblemsDto getFilteredProblemId(String concept_s) {
         Concept concept = Concept.valueOf(concept_s);
         List<Problem> problems = problemRepository.findAllByConcept(concept);
         List<ProblemDto> problemDtos = new ArrayList<>();
@@ -43,20 +42,33 @@ public class ProblemService {
         ProblemsDto problemsDto = new ProblemsDto(problemDtos);
         return problemsDto;
     }
-    public ResponseDto getOneProblem(Long id, int level){
+
+    public ResponseDto getOneProblem(Long id, int level) {
         Optional<Problem> problem = problemRepository.findById(id);
         if (problem.isPresent()) {
-            Optional<ProblemDetail> problemDetail = problemDetailRepository.findByProblemIdAndLevel(id,level);
-            if(problemDetail.isPresent()){
-                ProblemDetailDto problemDetailDto = problemDetail.get().toDto(problem.get().getTitle(),problem.get().getConcept().toString());
+            Optional<ProblemDetail> problemDetail = problemDetailRepository.findByProblemIdAndLevel(id, level);
+            if (problemDetail.isPresent()) {
+                ProblemDetailDto problemDetailDto = problemDetail.get().toDto(problem.get().getTitle(), problem.get().getConcept().toString());
                 return new ResponseDto(problemDetailDto);
-            }else {
+            } else {
                 return new ResponseDto("ProblemDetail not found");
             }
-        }else {
+        } else {
             return new ResponseDto("Problem not found");
         }
+    }
 
+    public ResponseDto checkAnswer(Long id, int level, AnswerRequestDto answer) {
+
+        Optional<ProblemDetail> problemDetail = problemDetailRepository.findByProblemIdAndLevel(id, level);
+        if (problemDetail.isPresent()) {
+            if (problemDetail.get().getAnswer().equals(answer.answer()))
+                return new ResponseDto<Boolean>(true);
+            else
+                return new ResponseDto<Boolean>(false);
+        } else {
+            return new ResponseDto("ProblemDetail not found");
+        }
 
     }
 }
