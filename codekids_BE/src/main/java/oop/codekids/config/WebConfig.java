@@ -13,7 +13,7 @@ public class WebConfig extends WebMvcConfigurationSupport {
                         "https://localhost:3000",
                         "http://localhost:3002",
                         "https://localhost:3002",
-                        "http://3.37.103.81"
+                        "http://3.37.103.81:80"
                 )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH")
                 .allowedHeaders("*")
