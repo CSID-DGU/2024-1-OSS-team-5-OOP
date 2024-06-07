@@ -8,7 +8,7 @@
 }
 
 .banner {
-  height: 400px;
+  height: 45%;
 }
 
 .headerbtn {
@@ -18,21 +18,18 @@
 .headerbtn-container {
   display: flex;
   margin-left: auto;
-  margin-right: 30px;
 }
 
 .headerbtn {
   display: flex;
   align-items: center;
   justify-content: center;
-
   margin-right: 50px;
   width: 180px;
   height: 50px;
   border: 3px solid #A1C398;
   border-radius: 10px;
   font-weight: bold;
-  font-style: normal;
   font-size: 16px;
   text-decoration: none;
   color: #A1C398;
@@ -43,4 +40,19 @@
   color: #FFFFFF;
   background-color: #A1C398;
   cursor: pointer;
+}
+
+.toggle-button {
+  margin: 60px;
+  display: inline-block;
+  color: #A1C398;
+  cursor: pointer;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE */
+  user-select: none;
+}
+
+.toggle-button span {
+  font-size: 30px;
 }
