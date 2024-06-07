@@ -15,7 +15,6 @@ function App() {
   return (
     <BrowserRouter>
       <div className="container">
-      <audio src="/bgm.mp3" autoPlay loop />
         <Header />
         <Routes>
           <Route path="/" element={<Navigate to="/tutorial" />} />

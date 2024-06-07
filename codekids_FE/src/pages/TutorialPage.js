@@ -28,7 +28,7 @@ const TutorialPage = () => {
   };
 
   return (
-    <div className="content" style={{ height: "calc(100% - 400px)" }}>
+    <div className="content" style={{ height: '55%' }}>
       <div className="box-container">
         {response.data.map(item => (
           <div className="box" key={item.id} onClick={() => handleBoxClick(item.id)}>
