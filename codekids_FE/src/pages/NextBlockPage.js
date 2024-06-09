@@ -5,6 +5,7 @@ import '../blocks/customblocks';
 import '../generator/generator';
 import { javascriptGenerator } from 'blockly/javascript';
 import { FaPlay } from 'react-icons/fa';
+import { FaQuestion } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import HintModal from './HintModal.js';
@@ -100,11 +101,11 @@ function NextBlockPage() {
     setIsFModalOpen(false);
   };
 
-  const FmodalTitle = '틀렸습니다!';
+  const FmodalTitle = '문제를 해결하지 못했어요ㅠㅠ!';
   const FmodalButtonName = '이론 페이지로~';
   const FmodalLink = `/`;
 
-  const modalTitle = '정답입니다!';
+  const modalTitle = '대단해요!! 문제 해결에 성공했어요!!';
   const modalButtonName = '다음 단계로~';
   const modalLink = `${path}/final`;
 
@@ -189,6 +190,12 @@ function NextBlockPage() {
         modalLink={FmodalLink}
       />
       <div className='btnBox'>
+      <button className='hintBtn' onClick={() => {
+          showPopup();
+        }}>
+          <FaQuestion className='FaPlayBtn' size="30" color='#FFD15B' />
+          <span className='Btn'>힌트</span>
+        </button>
         <button className='convertBtn' onClick={() => {
           generateCode();
         }}>

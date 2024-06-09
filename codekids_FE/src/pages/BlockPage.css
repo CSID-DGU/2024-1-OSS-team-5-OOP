@@ -59,6 +59,12 @@
   background-color: #FEFDE9;
   margin-right: 10%;
 }
+.hintBtn {
+  border: none;
+  background-color: #FEFDE9;
+  margin-right: 1%;
+
+}
 
 .FaPlayBtn {
   vertical-align: middle;
