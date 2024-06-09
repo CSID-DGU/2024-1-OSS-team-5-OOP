@@ -22,15 +22,7 @@ const QuizCheckPage = () => {
 
     }
 
-    const Corr = (isCorrect) => {
-        console.log(isCorrect)
-        const corr = isCorrect;
-        if (corr === "true") {
-            return true
-        }
-        else return false
 
-    }
 
     return (
         <div className="BlockPage">

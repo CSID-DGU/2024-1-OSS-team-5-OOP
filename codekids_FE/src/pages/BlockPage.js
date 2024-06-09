@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import HintModal from './HintModal.js';
 import SuccessModal from './SuccessModal.js';
+import FailureModal from './FailureModal.js';
+
 
 function BlockPage() {
   const navigate = useNavigate();
@@ -16,6 +18,7 @@ function BlockPage() {
   const primaryWorkspace = useRef(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSModalOpen, setIsSModalOpen] = useState(false);
+  const [isFModalOpen, setIsFModalOpen] = useState(false);
   const [response, setResponse] = useState({ data: [] });
   const [check, setCheck] = useState({ data: [] });
   const [isBlocklyVisible, setIsBlocklyVisible] = useState(false);
@@ -48,19 +51,26 @@ function BlockPage() {
 
   const generateCode = () => {
     const code = String(javascriptGenerator.workspaceToCode(primaryWorkspace.current));
-    const fetchBlock = async () => {
+    const fetchCheck = async () => {
       const url2 = `/problem/checkAnswer?id=${problemId}&level=1&answer=interface`;
       try {
         const res = await fetch(url2);
         const data = await res.json();
         setCheck(data);
+        if (data.data == true) {
+          showSPopup();
+        } else {
+          showFPopup();
+        }
+        console.log(data.data);
       } catch (error) {
         console.log('Error fetching data:', error);
       }
     };
 
-    fetchBlock();
-    console.log(code);
+    fetchCheck(); // Wait for fetchBlock to complete
+
+  
   };
 
   const modalContent = '나는 읽기 쉬운 마음이야 당신도 쓱 훑고 가셔요\n달랠 길 없는 외로운 마음 있지 머물다 가셔요\n내게 긴 여운을 남겨줘요 사랑을, 사랑을 해줘요 할 수 있다면 그럴 수만 있다면 새하얀 빛으로 그댈 비춰 줄게요\n그러다 밤이 찾아오면 우리 둘만의 비밀을 새겨요 추억할 그 밤 위에 갈피를 꽂고선 남몰래 펼쳐보아요\n나의 자라나는 마음을 못 본채 꺾어 버릴 순 없네 미련 남길 바엔 그리워 아픈 게 나아\n서둘러 안겨본 그 품은 따스할 테니';
@@ -81,7 +91,19 @@ function BlockPage() {
     setIsSModalOpen(false);
   };
 
-  const modalTitle = '학습을 완료했어요!';
+  const showFPopup = () => {
+    setIsFModalOpen(true);
+  };
+
+  const closeFModal = () => {
+    setIsFModalOpen(false);
+  };
+
+  const FmodalTitle = '틀렸습니다!';
+  const FmodalButtonName = '이론 페이지로~';
+  const FmodalLink = `/`;
+
+  const modalTitle = '정답입니다!';
   const modalButtonName = '다음 단계로~';
   const modalLink = `${path}/next`;
 
@@ -103,7 +125,7 @@ function BlockPage() {
         <p className="nextbutton" onClick={showPopup}>힌트</p>
       </div>
 
-      {isBlocklyVisible && !isModalOpen && !isSModalOpen && (
+      {isBlocklyVisible && !isModalOpen && !isSModalOpen && !isFModalOpen && (
         <BlocklyComponent
           ref={primaryWorkspace}
           readOnly={false}
@@ -141,10 +163,16 @@ function BlockPage() {
         concept_eng={concept_eng}
         concept={concept}
       />
+      <FailureModal
+        isOpen={isFModalOpen}
+        closeModal={closeFModal}
+        title={FmodalTitle}
+        buttonName={FmodalButtonName}
+        modalLink={FmodalLink}
+      />
       <div className='btnBox'>
         <button className='convertBtn' onClick={() => {
           generateCode();
-          showSPopup();
         }}>
           <FaPlay className='FaPlayBtn' size="30" color='#20CF26' />
           <span className='Btn'>실행하기</span>
