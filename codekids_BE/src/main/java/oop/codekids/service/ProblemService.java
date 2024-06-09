@@ -61,14 +61,11 @@ public class ProblemService {
 
     public ResponseDto checkAnswer(Long id, int level, String answer) {
 
-        Optional<ProblemDetail> problemDetail = problemDetailRepository.findByProblemIdAndLevel(id, level);
+        Optional<ProblemDetail> problemDetail = problemDetailRepository.findByProblemIdAndLevelAndAnswer(id, level,answer);
         if (problemDetail.isPresent()) {
-            if (problemDetail.get().getAnswer().equals(answer))
-                return new ResponseDto<Boolean>(true);
-            else
-                return new ResponseDto<Boolean>(false);
+            return new ResponseDto<Boolean>(true);
         } else {
-            return new ResponseDto("ProblemDetail not found");
+            return new ResponseDto<Boolean>(false);
         }
 
     }
