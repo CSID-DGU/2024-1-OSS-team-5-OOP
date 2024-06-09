@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './BlockPage.css';
-import BlocklyComponent, { Block } from '../Blockly';
+import BlocklyComponent, { Block, Value, Field, Shadow } from '../Blockly';
 import '../blocks/customblocks';
 import '../generator/generator';
 import { javascriptGenerator } from 'blockly/javascript';
@@ -52,7 +52,7 @@ function FinalBlockPage() {
   const generateCode = () => {
     const code = String(javascriptGenerator.workspaceToCode(primaryWorkspace.current));
     const fetchCheck = async () => {
-      const url2 = `/problem/checkAnswer?id=${problemId}&level=3&answer=interface`;
+      const url2 = `/problem/checkAnswer?id=${problemId}&level=3&answer=${code}`;
       try {
         const res = await fetch(url2);
         const data = await res.json();
@@ -68,6 +68,7 @@ function FinalBlockPage() {
       }
     };
 
+    console.log(code);
     fetchCheck(); // Wait for fetchBlock to complete
 
 
@@ -147,12 +148,26 @@ function FinalBlockPage() {
             pinch: true
           }}
           initialXml={`<xml xmlns="http://www.w3.org/1999/xhtml"></xml>`}>
-          <Block type="main" />
-          <Block type="cleanuprobot" />
-          <Block type="cookrobot" />
-          <Block type="robotname" />
-          <Block type="cleanup" />
-          <Block type="cook" />
+          {problemId === 2 && <>
+            
+          </>}
+          {problemId === 4 && <>
+            <Block type="main" />
+            <Block type="dog" />
+            <Block type="cat" />
+            <Block type="bird" />
+            <Block type="objectname" />
+            <Block type="obmethod" />
+          </>}
+          {problemId === 5 && <>
+            <Block type="main" />
+            <Block type="cleanuprobot" />
+            <Block type="cookrobot" />
+            <Block type="objectname" />
+            <Block type="cleanup" />
+            <Block type="cook" />
+          </>}
+
         </BlocklyComponent>
       )}
       <SuccessModal

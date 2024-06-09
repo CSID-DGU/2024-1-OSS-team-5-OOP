@@ -52,7 +52,7 @@ function NextBlockPage() {
   const generateCode = () => {
     const code = String(javascriptGenerator.workspaceToCode(primaryWorkspace.current));
     const fetchCheck = async () => {
-      const url2 = `/problem/checkAnswer?id=${problemId}&level=2&answer=interface`;
+      const url2 = `/problem/checkAnswer?id=${problemId}&level=2&answer=${code}`;
       try {
         const res = await fetch(url2);
         const data = await res.json();
@@ -68,6 +68,7 @@ function NextBlockPage() {
       }
     };
 
+    console.log(code);
     fetchCheck(); // Wait for fetchBlock to complete
 
 
@@ -147,11 +148,27 @@ function NextBlockPage() {
             pinch: true
           }}
           initialXml={`<xml xmlns="http://www.w3.org/1999/xhtml"></xml>`}>
-          <Block type="robotclass" />
-          <Block type="on" />
-          <Block type="off" />
-          <Block type="robot" />
-          <Block type="methodname" />
+          {problemId === 2 && <>
+            <block type="procedures_callreturn">
+      <mutation name="계산">
+        <arg name="숫자1"></arg>
+        <arg name="숫자2"></arg>
+        <arg name="연산자"></arg>
+      </mutation>
+    </block>
+          </>}
+          {problemId === 4 && <>
+            <Block type="animalclass" />
+            <Block type="animal" />
+            <Block type="methodname" />
+          </>}
+          {problemId === 5 && <>
+            <Block type="robotclass" />
+            <Block type="on" />
+            <Block type="off" />
+            <Block type="robot" />
+            <Block type="methodname" />
+          </>}
         </BlocklyComponent>
       )}
       <SuccessModal
