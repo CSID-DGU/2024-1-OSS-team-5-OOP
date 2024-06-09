@@ -11,12 +11,25 @@
     z-index: 999;
 }
 
+.modal-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: calc(50% - 308px);
+    width: 170px;
+    height: 170px;
+    background: rgb(255, 255, 255);
+    border: 3px solid rgb(200, 200, 200);
+    border-radius: 50%;
+}
+
 .modal-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 620px;
     height: 400px;
     background: white;
     padding: 20px;
