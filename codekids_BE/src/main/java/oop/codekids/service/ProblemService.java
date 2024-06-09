@@ -46,9 +46,9 @@ public class ProblemService {
     public ResponseDto getOneProblem(Long id, int level) {
         Optional<Problem> problem = problemRepository.findById(id);
         if (problem.isPresent()) {
-            Optional<ProblemDetail> problemDetail = problemDetailRepository.findByProblemIdAndLevel(id, level);
-            if (problemDetail.isPresent()) {
-                ProblemDetailDto problemDetailDto = problemDetail.get().toDto(problem.get().getTitle(), problem.get().getConcept().toString());
+            List<ProblemDetail> problemDetail = problemDetailRepository.findByProblemIdAndLevel(id, level);
+            if (problemDetail.size() > 0) {
+                ProblemDetailDto problemDetailDto = problemDetail.get(0).toDto(problem.get().getTitle(), problem.get().getConcept().toString());
                 return new ResponseDto(problemDetailDto);
             } else {
                 return new ResponseDto("ProblemDetail not found");
