@@ -27,7 +27,7 @@ const FailureModal = ({ isOpen, closeModal, title, buttonName, modalLink }) => {
 
   return (
     <div className={`modal-overlay ${fade ? 'fade-in' : 'fade-out'}`}>
-      <audio src="/kidsclap.mp3" autoPlay />
+      <audio src="/failure.mp3" autoPlay />
       <div className="modal-content">
         <div className="modal-title"><h2>{title}</h2></div>
         <div className="modal-button">
