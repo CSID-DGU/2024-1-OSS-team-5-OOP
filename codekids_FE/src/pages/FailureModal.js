@@ -31,7 +31,7 @@ const FailureModal = ({ isOpen, closeModal, title, buttonName, modalLink }) => {
       <div className="modal-content">
         <div className="modal-title"><h2>{title}</h2></div>
         <div className="modal-button">
-          <button onClick={handleClose}>힌트 보기</button>
+          <button onClick={handleClose}>다시 풀기</button>
           <button onClick={handleButtonClick}>{buttonName}</button>
         </div>
       </div>
