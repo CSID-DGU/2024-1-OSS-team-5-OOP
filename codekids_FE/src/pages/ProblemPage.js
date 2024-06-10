@@ -27,6 +27,12 @@ const ProblemPage = () => {
     navigate(`/problems/block/${problemId}`, { state: { problemId, concept_eng, concept} });
   };
 
+  const isSolved = () => {
+    return (
+      <div className="solved"><img src="/solved.png" className="solvedIcon"></img></div>
+    )
+  }
+
   return (
     <div className="content" style={{ height: "calc(100% - 120px)" }}>
       <div className={MediaQuery['box-container']}>
@@ -37,6 +43,7 @@ const ProblemPage = () => {
               className="box"
               onClick={() => handleBoxClick(item.problemId, item.concept_eng, item.concept)}
             >
+              {localStorage.getItem(item.problemId) ? isSolved() : null}
               <img src={item.imageUrl} alt={item.problemTitle} className="box-image" />
               <div className="title">
                 <p>{item.problemTitle}</p>

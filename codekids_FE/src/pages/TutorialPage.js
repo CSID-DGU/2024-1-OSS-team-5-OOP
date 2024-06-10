@@ -32,6 +32,7 @@ const TutorialPage = () => {
       <div className="box-container">
         {response.data.map(item => (
           <div className="box" key={item.id} onClick={() => handleBoxClick(item.id)}>
+            
             <img src={item.imageUrl} alt={item.problemTitle} className="box-image" />
             <div className="title">
               <p>{item.concept}</p>
