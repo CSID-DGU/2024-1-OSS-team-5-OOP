@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import './BlockPage.css';
 import BlocklyComponent, { Block } from '../Blockly';
 import '../blocks/customblocks';
@@ -11,7 +11,6 @@ import { useLocation } from 'react-router-dom';
 import HintModal from './HintModal.js';
 import SuccessModal from './SuccessModal.js';
 import FailureModal from './FailureModal.js';
-
 
 function BlockPage() {
   const navigate = useNavigate();
@@ -36,6 +35,7 @@ function BlockPage() {
         const res = await fetch(url);
         const data = await res.json();
         setResponse(data);
+        setIsBlocklyVisible(true);
       } catch (error) {
         console.log('Error fetching data:', error);
       }
@@ -43,12 +43,6 @@ function BlockPage() {
 
     fetchBlock();
   }, [problemId]);
-
-  useEffect(() => {
-    if (response.data && response.data.problem_title && response.data.problem_detail_title) {
-      setIsBlocklyVisible(true);
-    }
-  }, [response]);
 
   const generateCode = () => {
     const code = String(javascriptGenerator.workspaceToCode(primaryWorkspace.current));
@@ -58,7 +52,7 @@ function BlockPage() {
         const res = await fetch(url2);
         const data = await res.json();
         setCheck(data);
-        if (data.data == true) {
+        if (data.data === true) {
           showSPopup();
         } else {
           showFPopup();
@@ -72,8 +66,6 @@ function BlockPage() {
     console.log(code);
 
     fetchCheck(); // Wait for fetchBlock to complete
-
-
   };
 
   const modalContent = '나는 읽기 쉬운 마음이야 당신도 쓱 훑고 가셔요\n달랠 길 없는 외로운 마음 있지 머물다 가셔요\n내게 긴 여운을 남겨줘요 사랑을, 사랑을 해줘요 할 수 있다면 그럴 수만 있다면 새하얀 빛으로 그댈 비춰 줄게요\n그러다 밤이 찾아오면 우리 둘만의 비밀을 새겨요 추억할 그 밤 위에 갈피를 꽂고선 남몰래 펼쳐보아요\n나의 자라나는 마음을 못 본채 꺾어 버릴 순 없네 미련 남길 바엔 그리워 아픈 게 나아\n서둘러 안겨본 그 품은 따스할 테니';
@@ -110,6 +102,78 @@ function BlockPage() {
   const modalButtonName = '다음 단계로~';
   const modalLink = `${path}/next`;
 
+  const memoizedBlocklyComponent = useMemo(() => (
+    <BlocklyComponent
+      ref={primaryWorkspace}
+      readOnly={false}
+      trashcan={true}
+      media={'/media'}
+      move={{
+        scrollbars: true, drag: true, wheel: true,
+      }}
+      grid={{
+        spacing: 20, length: 3, colour: '#ccc', snap: true
+      }}
+      zoom={{
+        controls: true,
+        wheel: true,
+        startScale: 1.0,
+        maxScale: 3,
+        minScale: 0.3,
+        scaleSpeed: 1.2,
+        pinch: true
+      }}
+      initialXml={`<xml xmlns="http://www.w3.org/1999/xhtml"></xml>`}>
+      {problemId === 2 && <>
+        <block type="procedures_defreturn">
+          <mutation>
+            <arg name="숫자1" varid="leS^$N[KH/Z7)]rhVVLi"></arg>
+            <arg name="숫자2" varid="td#f$7B6Z42sg%hibisy"></arg>
+            <arg name="연산자" varid="oj5b^NZ@bqwFmI`@%H^3"></arg>
+          </mutation>
+          <field name="NAME">계산</field>
+          <comment pinned="false" h="80" w="160">Describe this function...</comment>
+        </block>
+        <block type="controls_if"></block>
+        <block type="variables_get">
+          <field name="VAR" id="leS^$N[KH/Z7)]rhVVLi">숫자1</field>
+        </block>
+        <block type="text">
+          <field name="TEXT"></field>
+        </block>
+        <block type="variables_get">
+          <field name="VAR" id="td#f$7B6Z42sg%hibisy">숫자2</field>
+        </block>
+        <block type="variables_get">
+          <field name="VAR" id="a3CW{#TKinMYsYWSIM{K">결과</field>
+        </block>
+        <block type="variables_get">
+          <field name="VAR" id="oj5b^NZ@bqwFmI`@%H^3">연산자</field>
+        </block>
+        <block type="variables_set">
+          <field name="VAR" id="a3CW{#TKinMYsYWSIM{K">결과</field>
+        </block>
+        <block type="logic_compare">
+          <field name="OP">EQ</field>
+        </block>
+        <block type="math_arithmetic">
+          <field name="OP">ADD</field>
+        </block>
+      </>}
+      {problemId === 4 && <>
+        <Block type="interface" />
+        <Block type="sound()" />
+        <Block type="animal" />
+      </>}
+      {problemId === 5 && <>
+        <Block type="interface" />
+        <Block type="on()" />
+        <Block type="off()" />
+        <Block type="robot" />
+      </>}
+    </BlocklyComponent>
+  ), [problemId, response]);
+
   return (
     <div className="BlockPage">
       <HintModal
@@ -125,77 +189,8 @@ function BlockPage() {
         <span className='quiz'>{response.data.problem_detail_title}</span>
       </div>
 
-      {isBlocklyVisible && !isModalOpen && !isSModalOpen && !isFModalOpen && (
-        <BlocklyComponent
-          ref={primaryWorkspace}
-          readOnly={false}
-          trashcan={true}
-          media={'/media'}
-          move={{
-            scrollbars: true, drag: true, wheel: true,
-          }}
-          grid={{
-            spacing: 20, length: 3, colour: '#ccc', snap: true
-          }}
-          zoom={{
-            controls: true,
-            wheel: true,
-            startScale: 1.0,
-            maxScale: 3,
-            minScale: 0.3,
-            scaleSpeed: 1.2,
-            pinch: true
-          }}
-          initialXml={`<xml xmlns="http://www.w3.org/1999/xhtml"></xml>`}>
-          {problemId === 2 && <>
-            <block type="procedures_defreturn">
-              <mutation>
-                <arg name="숫자1" varid="leS^$N[KH/Z7)]rhVVLi"></arg>
-                <arg name="숫자2" varid="td#f$7B6Z42sg%hibisy"></arg>
-                <arg name="연산자" varid="oj5b^NZ@bqwFmI`@%H^3"></arg>
-              </mutation>
-              <field name="NAME">계산</field>
-              <comment pinned="false" h="80" w="160">Describe this function...</comment>
-            </block>
-            <block type="controls_if"></block>
-            <block type="variables_get">
-              <field name="VAR" id="leS^$N[KH/Z7)]rhVVLi">숫자1</field>
-            </block>
-            <block type="text">
-              <field name="TEXT"></field>
-            </block>
-            <block type="variables_get">
-              <field name="VAR" id="td#f$7B6Z42sg%hibisy">숫자2</field>
-            </block>
-            <block type="variables_get">
-              <field name="VAR" id="a3CW{#TKinMYsYWSIM{K">결과</field>
-            </block>
-            <block type="variables_get">
-              <field name="VAR" id="oj5b^NZ@bqwFmI`@%H^3">연산자</field>
-            </block>
-            <block type="variables_set">
-              <field name="VAR" id="a3CW{#TKinMYsYWSIM{K">결과</field>
-            </block>
-            <block type="logic_compare">
-              <field name="OP">EQ</field>
-            </block>
-            <block type="math_arithmetic">
-              <field name="OP">ADD</field>
-            </block>
-          </>}
-          {problemId === 4 && <>
-            <Block type="interface" />
-            <Block type="sound()" />
-            <Block type="animal" />
-          </>}
-          {problemId === 5 && <>
-            <Block type="interface" />
-            <Block type="on()" />
-            <Block type="off()" />
-            <Block type="robot" />
-          </>}
-        </BlocklyComponent>
-      )}
+      {isBlocklyVisible && memoizedBlocklyComponent}
+      
       <SuccessModal
         isOpen={isSModalOpen}
         closeModal={closeSModal}
