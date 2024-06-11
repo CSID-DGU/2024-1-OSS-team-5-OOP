@@ -82,6 +82,7 @@ const TutorialDetailPage = () => {
         <>
           <div className="image-container">
             <img src={response.imageUrl[currentIndex]} className={`image ${isFading ? 'fade-out' : 'fade-in'}`} alt="Tutorial" />
+            <img src="/skip.png" className={`nextbutton ${isFading ? 'fade-out' : 'fade-in'}`} onClick={showPopup} />
           </div>
           <div className="description-container">
             <div>
@@ -90,9 +91,6 @@ const TutorialDetailPage = () => {
               </p>
             </div>
           </div>
-          {/* <div className="nextbutton-container">
-            <p className="nextbutton" onClick={showPopup}>[설명 건너뛰기]</p>
-          </div> */}
           <SuccessModal
             isOpen={isModalOpen}
             closeModal={closeModal}

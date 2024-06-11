@@ -177,13 +177,13 @@ function BlockPage() {
         <Block type="sound()" />
         <Block type="animal" />
       </>}
-      {problemId === 4 && <>
+      {problemId === 5 && <>
         <Block type="interface" />
         <Block type="move()" />
         <Block type="attack()" />
         <Block type="game" />
       </>}
-      {problemId === 5 && <>
+      {problemId === 4 && <>
         <Block type="interface" />
         <Block type="on()" />
         <Block type="off()" />
