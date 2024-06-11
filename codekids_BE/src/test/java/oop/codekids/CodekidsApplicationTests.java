@@ -565,6 +565,7 @@ class CodekidsApplicationTests {
                 .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/concept/polymorphism/poly5.jpg")
                 .tutorial(poly)
                 .build();
+
         tutorialDetailRepository.save(po_detail1);
         tutorialDetailRepository.save(po_detail2);
         tutorialDetailRepository.save(po_detail3);
@@ -579,19 +580,45 @@ class CodekidsApplicationTests {
     @DisplayName("3. Problem: 문제 데이터 전부 저장하기")
     void saveAllProblem() {
 
-        Problem workBook1 = Problem.builder()
-                .title("업/앤 다운 게임 만들기")
-                .concept(Concept.ENCAPSULATION)
-                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/upanddown.jpg")
-                .build();
-        problemRepository.save(workBook1);
-
         Problem workBook2 = Problem.builder()
                 .title("계산기 만들기")
                 .concept(Concept.ENCAPSULATION)
                 .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/calculator.jpg")
                 .build();
         problemRepository.save(workBook2);
+
+        ProblemDetail problem2_1 = ProblemDetail.builder()
+                .level(1)
+                .concept(Concept.ENCAPSULATION)
+                .hint("계산기 1단계 힌트입니다~")
+                .title("만약 입력받은 연산자가 + 라면 숫자 2개에 대해 덧셈을 수행하는 메소드를 만드세요.")
+                .answer("var _EA_B2_B0_EA_B3_BC, _EC_97_B0_EC_82_B0_EC_9E_90, _EC_88_AB_EC_9E_901, _EC_88_AB_EC_9E_902;\n" +
+                        "\n" +
+                        "if (_EC_97_B0_EC_82_B0_EC_9E_90 == '+') {\n" +
+                        "_EA_B2_B0_EA_B3_BC = _EC_88_AB_EC_9E_901 + _EC_88_AB_EC_9E_902;\n" +
+                        "}")
+                .problem(workBook2)
+                .build();
+        ProblemDetail problem2_2  = ProblemDetail.builder()
+                .level(2)
+                .concept(Concept.ENCAPSULATION)
+                .hint("계산기 2단계 힌트입니다~")
+                .title("계산 메소드는 숫자 2개와 연산자를 넘겨 받아 연산자에 해당하는 계산을 합니다. 덧셈, 뺄셈, 곱셈, 나눗셈을 수행할 수 있습니다.  계산 메소드를 만드세요.")
+                .answer("")
+                .problem(workBook2)
+                .build();
+
+        ProblemDetail problem2_3 = ProblemDetail.builder()
+                .level(3)
+                .concept(Concept.ENCAPSULATION)
+                .hint("계산기 1단계 힌트입니다~")
+                .title("계산 클래스를 만든 후, 계산 객체를 생성하고 숫자 2개와 연산자를 넣어 계산을 하도록 main을 채우세요.")
+                .answer("")
+                .problem(workBook2)
+                .build();
+        problemDetailRepository.save(problem2_1);
+        problemDetailRepository.save(problem2_2);
+        problemDetailRepository.save(problem2_3);
 
         Problem workBook3 = Problem.builder()
                 .title("도형의 넓이를 구해볼까요? ")
@@ -600,12 +627,185 @@ class CodekidsApplicationTests {
                 .build();
         problemRepository.save(workBook3);
 
+        ProblemDetail problem3_1 = ProblemDetail.builder()
+                .level(1)
+                .concept(Concept.POLYMORPHISM)
+                .hint("도형 1단계 힌트입니다~")
+                .title("넓이 구하기’를 할 수 있는 도형 추상 클래스를 만드세요.")
+                .answer("abscalss(figure)method:  cal()")
+                .problem(workBook3)
+                .build();
+        problemDetailRepository.save(problem3_1);
+
+        ProblemDetail problem3_2 = ProblemDetail.builder()
+                .level(2)
+                .concept(Concept.POLYMORPHISM)
+                .hint("도형 2단계 힌트입니다~")
+                .title("앞에서 만든 도형 추상 클래스를 이용해서 직사각형, 삼각형, 원 클래스를 만들고 각 도형에 맞추어 넓이 구하기 메소드를 채우세요. ")
+                .answer("")
+                .problem(workBook3)
+                .build();
+        problemDetailRepository.save(problem3_2);
+
+        ProblemDetail problem3_2_1 = ProblemDetail.builder()
+                .level(2)
+                .concept(Concept.POLYMORPHISM)
+                .hint("도형 2단계 힌트입니다~")
+                .title("앞에서 만든 도형 추상 클래스를 이용해서 직사각형, 삼각형, 원 클래스를 만들고 각 도형에 맞추어 넓이 구하기 메소드를 채우세요. ")
+                .answer("")
+                .problem(workBook3)
+                .build();
+        problemDetailRepository.save(problem3_2_1);
+
+        ProblemDetail problem3_2_2 = ProblemDetail.builder()
+                .level(2)
+                .concept(Concept.POLYMORPHISM)
+                .hint("도형 2단계 힌트입니다~")
+                .title("앞에서 만든 도형 추상 클래스를 이용해서 직사각형, 삼각형, 원 클래스를 만들고 각 도형에 맞추어 넓이 구하기 메소드를 채우세요. ")
+                .answer("")
+                .problem(workBook3)
+                .build();
+        problemDetailRepository.save(problem3_2_2);
+
+        ProblemDetail problem3_2_3 = ProblemDetail.builder()
+                .level(2)
+                .concept(Concept.POLYMORPHISM)
+                .hint("도형 2단계 힌트입니다~")
+                .title("앞에서 만든 도형 추상 클래스를 이용해서 직사각형, 삼각형, 원 클래스를 만들고 각 도형에 맞추어 넓이 구하기 메소드를 채우세요. ")
+                .answer("")
+                .problem(workBook3)
+                .build();
+        problemDetailRepository.save(problem3_2_3);
+
+        ProblemDetail problem3_2_4 = ProblemDetail.builder()
+                .level(2)
+                .concept(Concept.POLYMORPHISM)
+                .hint("도형 2단계 힌트입니다~")
+                .title("앞에서 만든 도형 추상 클래스를 이용해서 직사각형, 삼각형, 원 클래스를 만들고 각 도형에 맞추어 넓이 구하기 메소드를 채우세요. ")
+                .answer("")
+                .problem(workBook3)
+                .build();
+        problemDetailRepository.save(problem3_2_4);
+
+        ProblemDetail problem3_2_5 = ProblemDetail.builder()
+                .level(2)
+                .concept(Concept.POLYMORPHISM)
+                .hint("도형 2단계 힌트입니다~")
+                .title("앞에서 만든 도형 추상 클래스를 이용해서 직사각형, 삼각형, 원 클래스를 만들고 각 도형에 맞추어 넓이 구하기 메소드를 채우세요. ")
+                .answer("")
+                .problem(workBook3)
+                .build();
+        problemDetailRepository.save(problem3_2_5);
+
+        ProblemDetail problem3_3 = ProblemDetail.builder()
+                .level(3)
+                .concept(Concept.POLYMORPHISM)
+                .hint("동물 3단계 힌트입니다~")
+                .title("앞에서 만든 각 도형 클래스를 이용해서 직사각형, 삼각형, 원을 계산하세요.")
+                .answer(":  class:sclass:tclass:cobjectname:sobjectname:tobjectname:c")
+                .problem(workBook3)
+                .build();
+        problemDetailRepository.save(problem3_3);
+
         Problem workBook4 = Problem.builder()
                 .title("각 동물들은 어떤 소리를 낼까요?")
                 .concept(Concept.POLYMORPHISM)
                 .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/animal.jpg")
                 .build();
         problemRepository.save(workBook4);
+
+        ProblemDetail problem4_1 = ProblemDetail.builder()
+                .level(1)
+                .concept(Concept.POLYMORPHISM)
+                .hint("동물 1단계 힌트입니다~")
+                .title("‘소리내기’를 할 수 있는 동물 인터페이스를 만드세요.")
+                .answer("interface(animal)method:  sound()")
+                .problem(workBook4)
+                .build();
+        problemDetailRepository.save(problem4_1);
+
+        ProblemDetail problem4_2_1 = ProblemDetail.builder()
+                .level(2)
+                .concept(Concept.POLYMORPHISM)
+                .hint("동물 2단계 힌트입니다~")
+                .title("앞에서 만든 동물 인터페이스를 이용해서 강아지, 고양이, 새 클래스를 만들고 소리내기 메소드를 채우세요. 강아지는 멍멍!, 고양이는 야옹!, 새는 짹짹! 이라고 운답니다.")
+                .answer("classname:dogclass:(animal)sound:dog" +
+                        "classname:catclass:(animal)sound:cat" +
+                        "classname:birdclass:(animal)sound:bird")
+                .problem(workBook4)
+                .build();
+        problemDetailRepository.save(problem4_2_1);
+
+        ProblemDetail problem4_2_2 = ProblemDetail.builder()
+                .level(2)
+                .concept(Concept.POLYMORPHISM)
+                .hint("동물 2단계 힌트입니다~")
+                .title("앞에서 만든 동물 인터페이스를 이용해서 강아지, 고양이, 새 클래스를 만들고 소리내기 메소드를 채우세요. 강아지는 멍멍!, 고양이는 야옹!, 새는 짹짹! 이라고 운답니다.")
+                .answer("classname:dogclass:(animal)sound:dog" +
+                        "classname:birdclass:(animal)sound:bird" +
+                        "classname:catclass:(animal)sound:cat")
+                .problem(workBook4)
+                .build();
+        problemDetailRepository.save(problem4_2_2);
+
+        ProblemDetail problem4_2_3 = ProblemDetail.builder()
+                .level(2)
+                .concept(Concept.POLYMORPHISM)
+                .hint("동물 2단계 힌트입니다~")
+                .title("앞에서 만든 동물 인터페이스를 이용해서 강아지, 고양이, 새 클래스를 만들고 소리내기 메소드를 채우세요. 강아지는 멍멍!, 고양이는 야옹!, 새는 짹짹! 이라고 운답니다.")
+                .answer("classname:birdclass:(animal)sound:bird" +
+                        "classname:dogclass:(animal)sound:dog" +
+                        "classname:catclass:(animal)sound:cat")
+                .problem(workBook4)
+                .build();
+        problemDetailRepository.save(problem4_2_3);
+
+        ProblemDetail problem4_2_4 = ProblemDetail.builder()
+                .level(2)
+                .concept(Concept.POLYMORPHISM)
+                .hint("동물 2단계 힌트입니다~")
+                .title("앞에서 만든 동물 인터페이스를 이용해서 강아지, 고양이, 새 클래스를 만들고 소리내기 메소드를 채우세요. 강아지는 멍멍!, 고양이는 야옹!, 새는 짹! 이라고 운답니다.")
+                .answer("classname:birdclass:(animal)sound:bird" +
+                        "classname:catclass:(animal)sound:cat" +
+                        "classname:dogclass:(animal)sound:dog")
+                .problem(workBook4)
+                .build();
+        problemDetailRepository.save(problem4_2_4);
+
+        ProblemDetail problem4_2_5 = ProblemDetail.builder()
+                .level(2)
+                .concept(Concept.POLYMORPHISM)
+                .hint("동물 2단계 힌트입니다~")
+                .title("앞에서 만든 동물 인터페이스를 이용해서 강아지, 고양이, 새 클래스를 만들고 소리내기 메소드를 채우세요. 강아지는 멍멍!, 고양이는 야옹!, 새는 짹! 이라고 운답니다.")
+                .answer("classname:catclass:(animal)sound:cat" +
+                        "classname:birdclass:(animal)sound:bird" +
+                        "classname:dogclass:(animal)sound:dog")
+                .problem(workBook4)
+                .build();
+        problemDetailRepository.save(problem4_2_5);
+
+
+        ProblemDetail problem4_2_6 = ProblemDetail.builder()
+                .level(2)
+                .concept(Concept.POLYMORPHISM)
+                .hint("동물 2단계 힌트입니다~")
+                .title("앞에서 만든 동물 인터페이스를 이용해서 강아지, 고양이, 새 클래스를 만들고 소리내기 메소드를 채우세요. 강아지는 멍멍!, 고양이는 야옹!, 새는 짹! 이라고 운답니다.")
+                .answer("classname:catclass:(animal)sound:cat" +
+                        "classname:dogclass:(animal)sound:dog" +
+                        "classname:birdclass:(animal)sound:bird")
+                .problem(workBook4)
+                .build();
+        problemDetailRepository.save(problem4_2_6);
+
+        ProblemDetail problem4_3 = ProblemDetail.builder()
+                .level(3)
+                .concept(Concept.POLYMORPHISM)
+                .hint("동물 3단계 힌트입니다~")
+                .title("앞에서 만든 강아지, 고양이, 새 클래스를 이용해서 ‘포키’라는 강아지와 ‘달니’라는 고양이가 소리를 내게 하세요.")
+                .answer("dogclass:dagnamecatcalss:catnameobjectname:dognameobjectname:catname")
+                .problem(workBook4)
+                .build();
+        problemDetailRepository.save(problem4_3);
 
         Problem workBook5 = Problem.builder()
                 .title("로봇과 함께 편리한 세상을 위하여~!")
@@ -619,7 +819,15 @@ class CodekidsApplicationTests {
                 .concept(Concept.ABSTRACT)
                 .hint("로봇 1단계 힌트입니다~")
                 .title("전원 켜기,전원 끄기를 할 수 있는 로봇 인터페이스를 만드세요")
-                .answer("interface(로봇)메소드:  전원켜기()전원끄기()")
+                .answer("interface(robot)method:  on()off()")
+                .problem(workBook5)
+                .build();
+        ProblemDetail problemDetail1_1 = ProblemDetail.builder()
+                .level(1)
+                .concept(Concept.ABSTRACT)
+                .hint("로봇 1단계 힌트입니다~")
+                .title("전원 켜기,전원 끄기를 할 수 있는 로봇 인터페이스를 만드세요")
+                .answer("interface(robot)method:  off()on()")
                 .problem(workBook5)
                 .build();
 
@@ -628,8 +836,16 @@ class CodekidsApplicationTests {
                 .concept(Concept.ABSTRACT)
                 .hint("로봇 2단계 힌트입니다~")
                 .title("앞에서 만든 로봇 인터페이스를 이용해서 '청소하기' 기능을 가진 청소 로봇 클래스와 '요리하기' 기능을 가진 요리 로봇 클래스를 만드시오")
-                .answer("클래스이름:청소클래스:(로봇)전원켜기:  청소하기전원끄기:  청소하기기능추가:  청소하기" +
-                        "클래스이름:요리클래스:(로봇)전원켜기:  요리하기전원끄기:  요리하기기능추가:  요리하기")
+                .answer("classname:cookclass:(robot)on:  onoff:  offadd:cookclassname:cleanclass:(robot)on:  onoff:  offadd:clean")
+                .problem(workBook5)
+                .build();
+
+        ProblemDetail problemDetail2_1 = ProblemDetail.builder()
+                .level(2)
+                .concept(Concept.ABSTRACT)
+                .hint("로봇 2단계 힌트입니다~")
+                .title("앞에서 만든 로봇 인터페이스를 이용해서 '청소하기' 기능을 가진 청소 로봇 클래스와 '요리하기' 기능을 가진 요리 로봇 클래스를 만드시오")
+                .answer("classname:cleanclass:(robot)on:  onoff:  offadd:cleanclassname:cookclass:(robot)on:  onoff:  offadd:cook")
                 .problem(workBook5)
                 .build();
 
@@ -638,25 +854,64 @@ class CodekidsApplicationTests {
                 .concept(Concept.ABSTRACT)
                 .hint("로봇 2단계 힌트입니다~")
                 .title("앞에서 만든 클래스를 이용해서 청소 로봇 '아이언맨'과 요리 로봇 '토르' 객체를 생성하고 아이언맨이 전원을 키고 청소를 하도록 main을 채우시오")
-                .answer("청소로봇클래스:(로봇이름:아이언맨)요리로봇클래스:(로봇이름:토르)객체이름:아이언맨메소드 선택:op1객체이름:아이언맨메소드 선택:op3")
+                .answer(":  cleanrobotclass:ironmancookrobotclass:thorname:ironmanmethodop:op1name:ironmanmethodop:op3")
+                .problem(workBook5)
+                .build();
+
+        ProblemDetail problemDetail3_1 = ProblemDetail.builder()
+                .level(3)
+                .concept(Concept.ABSTRACT)
+                .hint("로봇 2단계 힌트입니다~")
+                .title("앞에서 만든 클래스를 이용해서 청소 로봇 '아이언맨'과 요리 로봇 '토르' 객체를 생성하고 아이언맨이 전원을 키고 청소를 하도록 main을 채우시오")
+                .answer("cookrobotclass:thorcleanrobotclass:ironmanname:ironmanmethodop:op1name:ironmanmethodop:op3")
                 .problem(workBook5)
                 .build();
 
         problemDetailRepository.save(problemDetail1);
+        problemDetailRepository.save(problemDetail1_1);
         problemDetailRepository.save(problemDetail2);
+        problemDetailRepository.save(problemDetail2_1);
         problemDetailRepository.save(problemDetail3);
+        problemDetailRepository.save(problemDetail3_1);
 
         Problem workBook6 = Problem.builder()
-                .title("연극 배우 공통점 찾기")
-                .concept(Concept.POLYMORPHISM)
-                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/show.png")
+                .title("해리포터는 윙가르디움레비오사~!")
+                .concept(Concept.ABSTRACT)
+                .imageUrl("https://codekids-bucket.s3.ap-northeast-2.amazonaws.com/problem/harry.png")
                 .build();
         problemRepository.save(workBook6);
 
+        ProblemDetail problemDetail6_1 = ProblemDetail.builder()
+                .level(1)
+                .concept(Concept.ABSTRACT)
+                .hint("게임 1단계 힌트입니다~")
+                .title("'움직이기', '공격하기'를 할 수 있도록 게임 캐릭터 인터페이스를 만드세요. ")
+                .answer("interface(animal)method:  sound()")
+                .problem(workBook5)
+                .build();
+        problemDetailRepository.save(problemDetail6_1);
 
+        ProblemDetail problemDetail6_2 = ProblemDetail.builder()
+                .level(2)
+                .concept(Concept.ABSTRACT)
+                .hint("게임 2단계 힌트입니다~")
+                .title("앞에서 만든 게임 캐릭터 인터페이스를 이용해 '움직이기'와 '공격하기' 기능을 가져와 '전사' 클래스와 '마법 사' 클래스를 만드세요. '마법사' 클래스는 '앞으로 움직이기'와 '뒤로 움직이기'가 가능합니다. ")
+                .answer("classname:trueclass:(game)move:trueattack:true" +
+                        "classname:trueclass:(game)move:trueattack:true")
+                .problem(workBook5)
+                .build();
+        problemDetailRepository.save(problemDetail6_2);
 
-
-        Assertions.assertThat(problemRepository.findAll()).hasSize(6);
+        ProblemDetail problemDetail6_3 = ProblemDetail.builder()
+                .level(3)
+                .concept(Concept.ABSTRACT)
+                .hint("게임 3단계 힌트입니다~")
+                .title("")
+                .answer(":  dogclass:dagnamecatcalss:catnameobjectname:dognameobjectname:catname")
+                .problem(workBook5)
+                .build();
+        problemDetailRepository.save(problemDetail6_3);
+        
     }
 
     @Test
