@@ -13,10 +13,11 @@ function BlocklyComponent(props) {
   const toolbox = useRef();
   const primaryWorkspace = useRef();
 
-  Blockly.Themes.Halloween = Blockly.Theme.defineTheme('halloween', {
+  const theme = Blockly.Theme.defineTheme('themeName', {
     'base': Blockly.Themes.Classic,
     'componentStyles': {
       'workspaceBackgroundColour': "#E7F6D9",
+      'toolboxBackgroundColour': "#E7F6D9",
       'flyoutBackgroundColour': '#F3F9E1',
       'flyoutForegroundColour': '#000000',
       'flyoutOpacity': 0.5,
@@ -26,14 +27,19 @@ function BlocklyComponent(props) {
       'scrollbarOpacity': 0.4,
       'cursorColour': '#d0d0d0',
       'blackBackground': '#333'
+    },
+    'fontStyle ': {
+      'family': "Nanum Gothic",
+      'weight': 'bold',
+      'size': 12
     }
-  });
+    });
 
   useEffect(() => {
     const { initialXml, ...rest } = props;
     primaryWorkspace.current = Blockly.inject(blocklyDiv.current, {
       toolbox: toolbox.current,
-      theme: Blockly.Themes.Halloween,
+      theme: theme,
       ...rest,
     });
 
