@@ -54,15 +54,27 @@ const QuizPage = () => {
   // Function to handle form submission
   const handleSubmit = () => {
     const result = response.data.map((item, idx) => {
-      let userAnswer;
+      var userAnswer;
       if (item.quizType === 'OX') {
         userAnswer = oxBtnActive[idx] || 'No answer selected';
       } else if (item.quizType === 'MULTI') {
         userAnswer = multiBtnActive[idx] !== undefined ? item.multichoose[multiBtnActive[idx]].choice : 'No answer selected';
       }
+      console.log(userAnswer);
 
-      const correctAnswer = item.quizType === 'OX' ? (item.answer === 'CORRECT' ? 'O' : 'X') : item.answer;
-      const isCorrect = userAnswer === correctAnswer;
+      // userAnswer가 문자열이 아닐 경우를 대비하여 문자열로 변환
+    if (typeof userAnswer !== 'string') {
+      userAnswer = String(userAnswer);
+    }
+
+      var correctAnswer = item.quizType === 'OX' ? (item.answer === 'CORRECT' ? 'O' : 'X') : item.answer;
+      if (typeof correctAnswer !== 'string') {
+        correctAnswer = String(correctAnswer);
+      }
+      const isCorrect = Object.is(userAnswer.trim().toLowerCase(), correctAnswer.trim().toLowerCase());
+      console.log(correctAnswer);
+      console.log(isCorrect);
+
 
       return {
         questionTitle: item.title,
@@ -93,7 +105,7 @@ const QuizPage = () => {
       <div className="Quizdiv">
         <h1 className='Quiz'>개념 퀴즈</h1>
       </div>
-      <span className='check'>지금까지 공부한 {concept}을 얼마나 잘 이해하고 있는지 확인해보세요.</span>
+      <span className='check'>지금까지 공부한 {concept} 얼마나 잘 이해하고 있는지 확인해보세요.</span>
       {response.data.map((item, idx) => (
         <>
         <div className='topdiv'>

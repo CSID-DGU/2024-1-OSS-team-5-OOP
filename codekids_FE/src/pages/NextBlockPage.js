@@ -230,12 +230,12 @@ function NextBlockPage() {
         <Block type="animal" />
         <Block type="methodname" />
       </>}
-      {problemId === 4 && <>
+      {problemId === 5 && <>
         <Block type="charclass" />
         <Block type="methodname" />
         <Block type="game" />
       </>}
-      {problemId === 5 && <>
+      {problemId === 4 && <>
         <Block type="robotclass" />
         <Block type="on" />
         <Block type="off" />
