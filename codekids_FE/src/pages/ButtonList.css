@@ -23,7 +23,6 @@
     font-size: 16px;
     vertical-align: top;
     position: relative;
-    overflow: hidden;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: transform 0.2s ease;
 }
@@ -48,6 +47,16 @@
     justify-content: center;
     align-items: center;
     background: rgba(255, 255, 255, 0.8);
+}
+
+.solved {
+    position: absolute;
+    top: -10px;
+    left: 272px;
+    width: 30px;
+}
+.solvedIcon {
+    width: 40px;
 }
 
 @media (max-width: 1004px) {

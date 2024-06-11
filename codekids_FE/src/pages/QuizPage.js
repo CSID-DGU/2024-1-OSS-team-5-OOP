@@ -8,6 +8,7 @@ const QuizPage = () => {
   const navigate = useNavigate();
   const concept = location.state.concept;
   const concept_eng = location.state.concept_eng;
+  const problemId = location.state.problemId;
   const path = location.pathname;
   const [response, setResponse] = useState({ data: [] });
 
@@ -26,7 +27,6 @@ const QuizPage = () => {
     fetchQuiz();
   }, []);
 
- 
 
   // Maintain an array to store the active state for each OX question
   const [oxBtnActive, setOxBtnActive] = useState([]);
@@ -75,8 +75,7 @@ const QuizPage = () => {
         isCorrect,
       };
     })
-
-    navigate(`${path}/check`, { state: { concept, result }});
+    navigate(`${path}/check`, { state: { problemId, concept, result }});
   };
 
   var index = 0;

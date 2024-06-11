@@ -6,10 +6,11 @@ import './QuizPage.css';
 const QuizCheckPage = () => {
     const navigate = useNavigate();
     const location = useLocation();
+    const problemId = location.state.problemId;
     const result = location.state.result;
 
     const handleSubmit = () => {
-    
+        localStorage.setItem(problemId, 'true');
         navigate(`/`);
       };
 

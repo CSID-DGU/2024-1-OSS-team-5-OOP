@@ -9,6 +9,6 @@ import java.util.Optional;
 
 @Repository
 public interface ProblemDetailRepository extends JpaRepository<ProblemDetail, Long> {
-    Optional<ProblemDetail> findByProblemIdAndLevel(Long problemId, int level);
+    List<ProblemDetail> findByProblemIdAndLevel(Long problemId, int level);
     Optional<ProblemDetail> findByProblemIdAndLevelAndAnswer(Long problemId, int level,String answer);
 }

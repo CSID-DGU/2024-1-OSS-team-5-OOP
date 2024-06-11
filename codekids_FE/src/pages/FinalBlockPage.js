@@ -68,7 +68,6 @@ function FinalBlockPage() {
         console.log('Error fetching data:', error);
       }
     };
-
     console.log(code);
     fetchCheck(); // Wait for fetchBlock to complete
 
