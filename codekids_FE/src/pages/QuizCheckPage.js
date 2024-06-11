@@ -8,6 +8,8 @@ const QuizCheckPage = () => {
     const location = useLocation();
     const problemId = location.state.problemId;
     const result = location.state.result;
+    const concept = location.state.concept;
+
 
     const handleSubmit = () => {
         localStorage.setItem(problemId, 'true');
@@ -30,7 +32,7 @@ const QuizCheckPage = () => {
             <div className="Quizdiv">
                 <h1 className='Quiz'>개념 퀴즈</h1>
             </div>
-            <span className='check'>지금까지 공부한 다형성을 얼마나 잘 이해하고 있는지 확인해보세요.</span>
+            <span className='check'>지금까지 공부한 {concept} 얼마나 잘 이해하고 있는지 확인해보세요.</span>
             {result.map((item, index) => (
                 <>
                     <div className='topdiv'>
@@ -59,7 +61,7 @@ const QuizCheckPage = () => {
                                         <span className='fivetext'>{choice.detail}</span>
                                     </div>
                                 )))}
-                                <p className='descrip'>{item.questiondescription}</p>
+                                <p className='descrip'>정답: {item.correctAnswer} 해설: {item.questiondescription}</p>
                     </div>
 
                 </>

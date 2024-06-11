@@ -29,7 +29,7 @@ const ProblemPage = () => {
 
   const isSolved = () => {
     return (
-      <div className="solved"><img src="/solved.png" className="solvedIcon"></img></div>
+      <div className="solved"><img src="/solved.png" className="solvedIcon" /></div>
     )
   }
 

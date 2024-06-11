@@ -25,15 +25,11 @@
     color: #A1C398;
 }
 
-.nextbutton-container {
-    height: 40px;
-}
-
 .nextbutton {
-    margin: 0;
-    font-family: "Nanum Gothic Bold", sans-serif;
-    font-size: 20px;
-    color: #555555;
+    position: absolute;
+    right: 50px;
+    bottom: 65px;
+    width: 50px;
     cursor: pointer;
 }
 

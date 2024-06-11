@@ -58,19 +58,22 @@
   border: none;
   background-color: #FEFDE9;
   margin-right: 0.3%;
+  cursor: pointer;
 }
 .hintBtn {
   border: none;
   background-color: #FEFDE9;
   margin-right: 0.3%;
+  cursor: pointer;
 }
 .resetBtn {
   border: none;
   background-color: #FEFDE9;
   margin-right: 10%;
+  cursor: pointer;
 }
 
-.FaPlayBtn {
+.FaPlayBtn, .FaQuestion, .FaRedo{
   vertical-align: middle;
 }
 
@@ -80,4 +83,3 @@
   font-weight: bold;
   margin-left: 8px;
 }
-

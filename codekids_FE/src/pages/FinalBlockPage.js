@@ -321,14 +321,14 @@ function FinalBlockPage() {
         <Block type="objectname" />
         <Block type="obmethod" />
       </>}
-      {problemId === 4 && <>
+      {problemId === 5 && <>
         <Block type="main" />
         <Block type="a" />
         <Block type="b" />
         <Block type="objectname" />
         <Block type="bmethod" />
       </>}
-      {problemId === 5 && <>
+      {problemId === 4 && <>
         <Block type="main" />
         <Block type="cleanuprobot" />
         <Block type="cookrobot" />
@@ -397,4 +397,3 @@ function FinalBlockPage() {
 }
 
 export default FinalBlockPage;
-

@@ -93,7 +93,7 @@ const QuizPage = () => {
       <div className="Quizdiv">
         <h1 className='Quiz'>개념 퀴즈</h1>
       </div>
-      <span className='check'>지금까지 공부한 {concept}을 얼마나 잘 이해하고 있는지 확인해보세요.</span>
+      <span className='check'>지금까지 공부한 {concept} 얼마나 잘 이해하고 있는지 확인해보세요.</span>
       {response.data.map((item, idx) => (
         <>
         <div className='topdiv'>
