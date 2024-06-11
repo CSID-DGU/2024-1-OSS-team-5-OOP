@@ -51,7 +51,7 @@ function FinalBlockPage() {
   }, [response]);
 
   const generateCode = () => {
-    const code = String(javascriptGenerator.workspaceToCode(primaryWorkspace.current));
+    const code = javascriptGenerator.workspaceToCode(primaryWorkspace.current);
     const fetchCheck = async () => {
       const url2 = `/problem/checkAnswer?id=${problemId}&level=3&answer=${code}`;
       try {
@@ -75,7 +75,7 @@ function FinalBlockPage() {
 
   };
 
-  const modalContent = '나는 읽기 쉬운 마음이야 당신도 쓱 훑고 가셔요\n달랠 길 없는 외로운 마음 있지 머물다 가셔요\n내게 긴 여운을 남겨줘요 사랑을, 사랑을 해줘요 할 수 있다면 그럴 수만 있다면 새하얀 빛으로 그댈 비춰 줄게요\n그러다 밤이 찾아오면 우리 둘만의 비밀을 새겨요 추억할 그 밤 위에 갈피를 꽂고선 남몰래 펼쳐보아요\n나의 자라나는 마음을 못 본채 꺾어 버릴 순 없네 미련 남길 바엔 그리워 아픈 게 나아\n서둘러 안겨본 그 품은 따스할 테니';
+  const modalContent = `${response.data.hint}`;
 
   const showPopup = () => {
     setIsModalOpen(true);
@@ -123,9 +123,6 @@ function FinalBlockPage() {
         <img className='quizImg' src={`${process.env.PUBLIC_URL}/quiz.png`} />
         <span className='quiz'>{response.data.problem_detail_title}</span>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'center', right: '20%', width: '100%' }}>
-        <p className="nextbutton" onClick={showPopup}>힌트</p>
-      </div>
 
       {isBlocklyVisible && !isModalOpen && !isSModalOpen && !isFModalOpen && (
         <BlocklyComponent
@@ -150,7 +147,7 @@ function FinalBlockPage() {
           }}
           initialXml={`<xml xmlns="http://www.w3.org/1999/xhtml"></xml>`}>
           {problemId === 2 && <>
-            
+
           </>}
           {problemId === 4 && <>
             <Block type="main" />
@@ -189,7 +186,7 @@ function FinalBlockPage() {
         modalLink={FmodalLink}
       />
       <div className='btnBox'>
-      <button className='hintBtn' onClick={() => {
+        <button className='hintBtn' onClick={() => {
           showPopup();
         }}>
           <FaQuestion className='FaPlayBtn' size="30" color='#FFD15B' />

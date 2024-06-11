@@ -60,21 +60,21 @@ javascriptGenerator.forBlock['robot'] = function(block, generator) {
 javascriptGenerator.forBlock['robotclass'] = function(block, generator) {
   var text______ = block.getFieldValue('클래스이름');
   var value____ = generator.valueToCode(block, '클래스', Order.ATOMIC);
-  var statements_____1 = generator.statementToCode(block, '전원켜기');
-  var statements_____2 = generator.statementToCode(block, '전원끄기');
-  var statements_____3 = generator.statementToCode(block, '기능추가');
-  if ((text______==='청소')&&(statements_____3==='  청소하기')){
+  var statements1 = generator.statementToCode(block, '전원켜기');
+  var statements2 = generator.statementToCode(block, '전원끄기');
+  var statements3 = generator.statementToCode(block, '기능추가');
+  if ((text______==='청소')&&(statements3==='  청소하기')){
     text______ = 'clean';
-    statements_____3 ='clean';
-  } else if ((text______==='요리')&&(statements_____3==='  요리하기')){
+    statements3 ='clean';
+  } else if ((text______==='요리')&&(statements3==='  요리하기')){
     text______ = 'cook';
-    statements_____3 ='cook';
+    statements3 ='cook';
   } else {
     text______ = 'false';
-    statements_____3 ='fasle';
+    statements3 ='fasle';
   }
   
-  const code = `classname:${text______}class:${value____}on:${statements_____1}off:${statements_____2}add:${statements_____3}`;
+  const code = `classname:${text______}class:${value____}on:${statements1}off:${statements2}add:${statements3}`;
   return code;
 };
 

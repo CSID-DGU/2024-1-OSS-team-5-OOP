@@ -138,6 +138,8 @@ Blockly.Blocks['robotclass'] = {
   }
 };
 
+
+
 //로봇문제 - 청소로봇 클래스
 Blockly.Blocks['cleanuprobot'] = {
   init: function() {
