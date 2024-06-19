@@ -1,38 +1,16 @@
-# 아키텍쳐
-## 디렉터리 구조
+## 아키텍쳐
+**디렉터리 구조**
 ```
 .
 ├── codekids_BE
 │   ├── HELP.md
 │   ├── bin
-│   │   ├── main
-│   │   │   ├── application.properties
-│   │   │   └── oop
-│   │   │       └── codekids
-│   │   │           └── CodekidsApplication.class
-│   │   └── test
-│   │       └── oop
-│   │           └── codekids
-│   │               └── CodekidsApplicationTests.class
 │   ├── build
-│   │   └── classes
-│   │       └── java
-│   │           └── main
-│   │               └── oop
-│   │                   └── codekids
-│   │                       └── controller
-│   │                           └── TutorialController.class
 │   ├── build.gradle
 │   ├── gradle
-│   │   └── wrapper
-│   │       ├── gradle-wrapper.jar
-│   │       └── gradle-wrapper.properties
 │   ├── gradlew
 │   ├── gradlew.bat
 │   ├── out
-│   │   └── production
-│   │       └── resources
-│   │           └── application.yaml
 │   ├── settings.gradle
 │   └── src
 │       ├── main
