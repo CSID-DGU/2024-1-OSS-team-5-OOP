@@ -61,13 +61,13 @@ $ npm start
 
 ## Blockly 블록 커스텀 하기 🧩
 
-커스텀 블록을 제작하고 블록 정의 코드와 generator 코드를 확인할 수 있습니다.
+🪄커스텀 블록을 제작하고 블록 정의 코드와 generator 코드를 확인할 수 있습니다. <br>
 [Blockly Developer Tools](https://blockly-demo.appspot.com/static/demos/blockfactory/index.html?hl=ko/)
 
-Blockly에 관련된 전반적인 가이드를 확인할 수 있습니다.
+🔎Blockly에 관련된 전반적인 가이드를 확인할 수 있습니다. <br>
 [Blockly 가이드]([https://blockly-demo.appspot.com/static/demos/blockfactory/index.html?hl=ko](https://developers.google.com/blockly/guides/get-started/what-is-blockly?hl=ko&_gl=1*cu5rb6*_up*MQ..*_ga*MjY3NDk2NzE3LjE3MTg3Nzc5ODQ.*_ga_R5G2Y6GLVC*MTcxODc3Nzk4NC4xLjEuMTcxODc3Nzk4NC4wLjAuMA..)/)
 
-react에서 Blockly를 불러오는 법을 확인할 수 있습니다.
+🖥️react에서 Blockly를 불러오는 법을 확인할 수 있습니다. <br>
 [Blockly-react 오픈소스](https://github.com/google/blockly-samples/)
 
 ## 화면 구성 📺
