@@ -1,3 +1,65 @@
+## 🍀 Code-kids: 객체 지향 교육용 프로그램
+![image 4](https://github.com/CSID-DGU/2024-1-OSS-team-5-OOP/assets/111877048/2ce8a60e-1f89-4589-b66d-2a4d0b128d8c)
+
+### ✨ 프로젝트 소개
+_**객체 지향의 개념을 누구보다 쉽게**_<br>
+객체 지향 프로그래밍에 대해 깊이 이해하고 적용할 수 있도록 돕기 위해, 블록 코딩을 활용한 시각적 설명을 준비했습니다. 이를 통해 추상화, 캡슐화, 상속, 다형성 등의 개념을 친근하게 전달하며, 복잡한 개념도 쉽게 이해하고 프로그래밍 실력을 향상할 수 있도록 설계했습니다.
+
+여러분들이 객체 지향 프로그래밍을 배우는 데 도움이 되기를 바랍니다!
+
+## 🧑🏻‍💻 팀원 소개
+|     허은정     |     서건우     |     이해니    |
+|:--------------:|:--------------:|:--------------:|
+| <img src="https://avatars.githubusercontent.com/u/111877048?v=4" width="200px"/> | <img src="https://avatars.githubusercontent.com/u/10668347?v=4" width="200px"/> | <img src="https://avatars.githubusercontent.com/u/149465566?v=4" width="200px"/> |
+|     [@eundeang](https://github.com/eundeang)     |     [@Shilvister](https://github.com/gws8820)     |     [@haeni82](https://github.com/haeni82)     |
+| Backend, Team Leader | Frontend | Frontend|
+<!-- 역할 분담 작성 -->
+
+<br>
+
+## 🗂 백엔드 기술 스택
+<!-- 버전 명시 -->
+<img src="https://img.shields.io/badge/java 17-007396?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"> <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"> <img src="https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white"> ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white)
+## 🗂 프론트엔드 기술 스택
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+## 📣 Communication
+![Notion](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white)
+![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)
+
+## 🛠️ 서비스 아키텍처
+
+![image](https://github.com/CSID-DGU/2024-1-OSS-team-5-OOP/assets/111877048/d32d7360-28a0-4be5-b804-0b8352d7bfe8)
+
+## 💎 시작 가이드
+### Requirements
+For building and running the application you need:
+
+- [Node.js 14.19.3](https://nodejs.org/ca/blog/release/v14.19.3/)
+- [Npm 9.2.0](https://www.npmjs.com/package/npm/v/9.2.0)
+- [JAVA 17.0.9](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
+
+### Installation
+``` bash
+$ git clone https://github.com/CSID-DGU/2024-1-OSS-team-5-OOP.git
+$ cd 2024-1-OSS-team-5-OOP
+```
+
+#### Backend
+```
+$ cd codekids_BE
+$ ./gradlew build
+$ java -jar codekids_BE.jar
+```
+
+#### Frontend
+```
+$ cd codekids_FE
+$ nvm use v.14.19.3
+$ npm install 
+$ npm start
+```
+
+---
 ---
 ## 화면 구성 📺
 
