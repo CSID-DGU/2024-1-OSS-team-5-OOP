@@ -62,6 +62,12 @@ $ npm start
 ---
 ## 화면 구성 📺
 
+|이론 페이지|
+|---------|
+|<img width='600' src='https://github.com/CSID-DGU/2024-1-OSS-team-5-OOP/assets/149465566/3853c576-8706-4a5c-aac8-96ca6f69aee0'/>|
+|개념 설명입니다!|
+
+
 |이론 페이지|문제 페이지|
 |-------------------------------------------|------------|
 |<img width='329' src='https://github.com/CSID-DGU/2024-1-OSS-team-5-OOP/assets/149465566/3853c576-8706-4a5c-aac8-96ca6f69aee0'/>|<img width='329' src='https://github.com/CSID-DGU/2024-1-OSS-team-5-OOP/assets/149465566/b84c0f66-43d5-44ac-bd67-61cebc3fe4e9'/>|  
