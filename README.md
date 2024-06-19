@@ -74,15 +74,6 @@ $ npm start
 ```
 .
 ├── codekids_BE
-│   ├── HELP.md
-│   ├── bin
-│   ├── build
-│   ├── build.gradle
-│   ├── gradle
-│   ├── gradlew
-│   ├── gradlew.bat
-│   ├── out
-│   ├── settings.gradle
 │   └── src
 │       ├── main
 │       │   ├── java
@@ -191,4 +182,5 @@ $ npm start
 ├── node_modules
 ├── package-lock.json
 └── package.json
+* 중요 파일들만 명시함
 ```
