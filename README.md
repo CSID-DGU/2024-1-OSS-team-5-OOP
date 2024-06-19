@@ -60,14 +60,13 @@ $ npm start
 ```
 
 ---
----
 ## 화면 구성 📺
 
-| 이론 페이지  |  문제 페이지   |
-| :-------------------------------------------: | :------------: |
-|  <img width="329" src="(https://github.com/CSID-DGU/2024-1-OSS-team-5-OOP/assets/149465566/3853c576-8706-4a5c-aac8-96ca6f69aee0"/> |  <img width="329" src="https://github.com/CSID-DGU/2024-1-OSS-team-5-OOP/assets/149465566/b84c0f66-43d5-44ac-bd67-61cebc3fe4e9"/>|  
-| 퀴즈 페이지   |  개발자에게 문 페이지   |  
-| <img width="329" src="https://github.com/CSID-DGU/2024-1-OSS-team-5-OOP/assets/149465566/f86020a5-8bef-4653-8753-1a047e85aad3"/>   |  <img width="329" src="https://github.com/CSID-DGU/2024-1-OSS-team-5-OOP/assets/149465566/292a651e-1763-4a44-b6f6-119b036fb417"/>     |
+|이론 페이지|문제 페이지|
+|-------------------------------------------|------------|
+|<img width='329' src='https://github.com/CSID-DGU/2024-1-OSS-team-5-OOP/assets/149465566/3853c576-8706-4a5c-aac8-96ca6f69aee0'/>|<img width='329' src='https://github.com/CSID-DGU/2024-1-OSS-team-5-OOP/assets/149465566/b84c0f66-43d5-44ac-bd67-61cebc3fe4e9'/>|  
+|퀴즈 페이지|개발자에게 문의 페이지|  
+|<img width='329' src='https://github.com/CSID-DGU/2024-1-OSS-team-5-OOP/assets/149465566/f86020a5-8bef-4653-8753-1a047e85aad3'/>|<img width='329' src='https://github.com/CSID-DGU/2024-1-OSS-team-5-OOP/assets/149465566/292a651e-1763-4a44-b6f6-119b036fb417'/>|
 ---
 ## 아키텍쳐
 **디렉터리 구조**
