@@ -11,7 +11,7 @@ _**객체 지향의 개념을 누구보다 쉽게**_<br>
 |     허은정     |     서건우     |     이해니    |
 |:--------------:|:--------------:|:--------------:|
 | <img src="https://avatars.githubusercontent.com/u/111877048?v=4" width="200px"/> | <img src="https://avatars.githubusercontent.com/u/10668347?v=4" width="200px"/> | <img src="https://avatars.githubusercontent.com/u/149465566?v=4" width="200px"/> |
-|     [@eundeang](https://github.com/eundeang)     |     [@Geonwoo Seo](https://github.com/gws8820)     |     [@haeni82](https://github.com/haeni82)     |
+|     [@eundeang](https://github.com/eundeang)     |     [@gws8820](https://github.com/gws8820)     |     [@haeni82](https://github.com/haeni82)     |
 | Backend, Team Leader | Frontend | Frontend|
 <!-- 역할 분담 작성 -->
 
